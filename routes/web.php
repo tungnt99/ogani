@@ -40,6 +40,19 @@ Route::get('/login', 'LoginController@login')-> name('home.login');
 
 // Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
 
-Route::group(['namespace' => 'Admin'], function () {
+// Route::group(['namespace' => 'Admin'], function () {
 
+// });
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
+
+    Route::resources([
+        'category' => 'CategoryController',
+        'product' => 'ProductController',
+        'banner' => 'BannerController',
+        'account' => 'AccountController',
+        'blog' => 'BlogController',
+        'order' => 'OrderController',
+    ]);
 });

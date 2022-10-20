@@ -10,4 +10,7 @@ class LoginController extends Controller
     public function login(){
         return view('layouts.app');
     }
+    public function dashboard(Request $request) {
+        return view('backend.dashboard');
+    }
 }
