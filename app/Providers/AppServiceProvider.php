@@ -22,6 +22,8 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		//
+		// $this->app->singleton(abstract: ProductRepositoryInterface::class, function(){
+		// 	return new ProductRepository(new Product());
+		// });
 	}
 }
