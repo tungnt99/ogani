@@ -31,21 +31,18 @@ Route::get('/blogdetail', 'IndexController@blogdetail')-> name('home.blog-detail
 
 Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 
-Route::get('/login', 'LoginController@login')-> name('home.login');
+Route::get('/register', 'LoginController@register')-> name('home.register');
 
 Route::post('/post-account', [
     'as' => 'post-account',
     'uses' => 'App\Http\Controllers\LoginController@addAccount'
 ]);
 
-// Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
+Route::get('/login', 'LoginController@login')-> name('home.login');
+// Route::post('/login-account', [
+//     'as' => 'login-account',
+//     'uses' => 'App\Http\Controllers\LoginController@loginAccount'
+// ]);
+Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
-
-Route::group(['namespace' => 'Admin'], function () {
-
-});
