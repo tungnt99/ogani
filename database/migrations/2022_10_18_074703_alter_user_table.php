@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('provider_id')->nullable();
             $table->string('provider', 50)->nullable();
             $table->string('phone_number', 20);
-            $table->string('address', 150);
-            $table->unsignedBigInteger('role_id');
+            $table->string('address', 150)->nullable();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('role');
         });
     }
