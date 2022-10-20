@@ -38,11 +38,19 @@ Route::post('/post-account', [
     'uses' => 'App\Http\Controllers\LoginController@addAccount'
 ]);
 
-
 Route::get('/login', 'LoginController@login')-> name('home.login');
-// Route::post('/login-account', [
-//     'as' => 'login-account',
-//     'uses' => 'App\Http\Controllers\LoginController@loginAccount'
-// ]);
+
 Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
+
+    Route::resources([
+        'category' => 'CategoryController',
+        'product' => 'ProductController',
+        'banner' => 'BannerController',
+        'account' => 'AccountController',
+        'blog' => 'BlogController',
+        'order' => 'OrderController',
+    ]);
+});
 

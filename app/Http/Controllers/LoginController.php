@@ -20,9 +20,9 @@ class LoginController extends Controller
             return redirect()->back();
         }
     }
-
     public function register(){
         return view('layouts.app');
+
     }
 
      public function addAccount(Request $request){
