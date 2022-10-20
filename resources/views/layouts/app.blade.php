@@ -85,7 +85,6 @@
 
     .submit{
     background: -webkit-linear-gradient(0deg,  #2dfbff 0%, #3c96ff 100%);
-    border-radius: 25px;
     color: #fff;
     }
 
@@ -128,7 +127,7 @@
 <body>
     <div id="logreg-forms">
         {{-- form login --}}
-        <form class="form-signin">
+        <form class="form-signin" >
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
@@ -136,10 +135,10 @@
             </div>
             <p style="text-align:center"> OR  </p>
             <div class="input-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required="" autofocus="">
             </div>
             <div class="input-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required="">
             </div>
             <div class="input-group">
               <button class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
@@ -151,12 +150,13 @@
         </form>
         {{-- form reset --}}
         <form action="#" class="form-reset">
-            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" name="email" required="" autofocus="">
             <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
                 <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
         {{-- form register --}}
-        <form action="#" class="form-signup">
+        <form action="{{ route('post-account') }}" method="post" class="form-signup">
+            {{ csrf_field() }}
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
                 </div>
@@ -166,10 +166,11 @@
 
             <p style="text-align:center">OR</p>
 
-            <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
-            <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
-            <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
-            <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" required autofocus="">
+            <input type="text" id="user-name" class="form-control" placeholder="Full name" name="name" required="" autofocus="">
+            <input type="email" id="user-email" class="form-control" placeholder="Email address" name="email" required autofocus="">
+            <input type="password" id="user-pass" class="form-control" placeholder="Password" name="password" required autofocus="">
+            <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" name="confirm-password" required autofocus="">
+            <input type="number" id="user-phone" class="form-control" placeholder="Phone Number" name="phone_number" required autofocus="">
 
             <div class="input-group">
                 <button class="btn btn-md btn-block submit" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
@@ -177,8 +178,6 @@
 
             <a href="#" id="cancel_signup"><i class="fa fa-angle-left"></i> Back</a>
         </form>
-            <br>
-
     </div>
 
 <script type="text/javascript">
