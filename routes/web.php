@@ -31,6 +31,7 @@ Route::get('/blogdetail', 'IndexController@blogdetail')-> name('home.blog-detail
 
 Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 
+Route::get('/login', 'LoginController@login')-> name('home.login');
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
