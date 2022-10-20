@@ -23,6 +23,5 @@ class LoginController extends Controller
             'phone_number' => $phone_number,
         ]);
         return redirect('/login');
-
     }
 }
