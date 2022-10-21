@@ -41,7 +41,7 @@ Route::post('/post-account', [
 Route::get('/login', 'LoginController@login')-> name('home.login');
 Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>'auth'], function () {
     Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
 
     Route::resources([
