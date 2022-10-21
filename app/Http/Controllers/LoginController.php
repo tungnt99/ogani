@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function login(){
@@ -15,10 +15,15 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if(Auth::check()){
-            return view('frontend.master');
+        if(Auth::attempt($request->only('email', 'password'),false)){
+            return redirect()->route('home.index');
+        } else{
+            return back()->with('status','Invalid login details');
         }
-        return back()->with('status','Invalid login details');
+        // if(Auth::check()){
+        //     return view('frontend.master');
+        // }
+        // return back()->with('status','Invalid login details');
 
     }
     
