@@ -11,15 +11,17 @@ class LoginController extends Controller
         return view('layouts.login');
     }
     public function loginAccount(Request $request){
-        dd($request->all());
-        dd(Auth::attempt($request->only('email', 'password')));
-        if(Auth::attempt($request->only('email', 'password'))){
-            return redirect()->route('master');
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        if(Auth::check()){
+            return view('frontend.master');
         }
-        else{
-            return redirect()->back();
-        }
+        return back()->with('status','Invalid login details');
+
     }
+    
     public function register(){
         return view('layouts.app');
 
