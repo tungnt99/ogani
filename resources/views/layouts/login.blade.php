@@ -136,11 +136,25 @@
         <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
     </div>
     <p style="text-align:center"> OR  </p>
-    <div class="input-group">
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required="" autofocus="">
+    <div class="input-group from-group">
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" @error('email') border-red-500 @enderror" 
+      value="{{ old('email') }}">
+      
     </div>
-    <div class="input-group">
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required="">
+    <div>
+        @error('email')
+        <div class="text-red-500 mt-2 text=sm">{{ $message }}</div>
+       @enderror
+    </div>
+    <div class="input-group from-group">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" @error('password') border-red-500 @enderror" 
+      value="{{ old('password') }}">
+    </div>
+    <div>
+        @error('password')
+        <div class="text-red-500 mt-2 text=sm">{{ $message }}</div>
+       @enderror
+
     </div>
     <div class="input-group">
       <button class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
