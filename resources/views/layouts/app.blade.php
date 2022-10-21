@@ -125,8 +125,6 @@
 </style>
 <body>
     <div id="logreg-forms">
-       
-       
         {{-- form register --}}
         <form action="{{ route('post-account') }}" method="post" class="form-signup">
             {{ csrf_field() }}
@@ -149,22 +147,12 @@
                 <button class="btn btn-md btn-block submit" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
             </div>
 
-            <a href="#" id="cancel_signup"><i class="fa fa-angle-left"></i> Back</a>
+            <a href="{{ route('home.login') }}" id="cancel_signup" onclick="return false"><i class="fa fa-angle-left"></i> Back</a>
         </form>
     </div>
 
 <script type="text/javascript">
-    function toggleResetPswd(e){
-        e.preventDefault();
-        $('#logreg-forms .form-signin').toggle() // display:block or none
-        $('#logreg-forms .form-reset').toggle() // display:block or none
-    }
-
-    function toggleSignUp(e){
-        e.preventDefault();
-        $('#logreg-forms .form-signin').toggle(); // display:block or none
-        $('#logreg-forms .form-signup').toggle(); // display:block or none
-    }
+       
 
     $(()=>{
         // Login Register Form
