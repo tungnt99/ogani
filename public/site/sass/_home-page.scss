@@ -295,3 +295,16 @@
 .from-blog__title {
     margin-bottom: 70px;
 }
+.content-wrapper{
+    .content{
+        padding: 0!important;
+        .card{
+            &-body{
+                padding: 0;
+            }
+        }
+    }
+}
+.content-wrapper>.content{
+    padding: 0!important;
+}
