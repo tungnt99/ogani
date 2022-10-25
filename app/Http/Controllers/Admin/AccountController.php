@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
+
       public function index(Request $request){
         // $users = DB::table('users')->get();
         // dd($user);
@@ -14,4 +15,5 @@ class AccountController extends Controller
         //     $users => $user,
         // ]);
       }
+
 }

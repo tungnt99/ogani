@@ -182,6 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Package Service Providers...
          */

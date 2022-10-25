@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
 
     Route::resources([
-        'category' => 'CategoryController',
+        'category' => 'App\Http\Controllers\Admin\CategoryController',
         'product' => 'ProductController',
         'banner' => 'BannerController',
         'account' => 'App\Http\Controllers\Admin\AccountController',
@@ -53,5 +53,12 @@ Route::group(['prefix' => 'admin'], function () {
         'order' => 'OrderController',
     ]);
 });
-// Route::get('/admin/account', 'App\Http\Controllers\Admin\AccountController@index');
-// 
+
+
+//fb
+Route::prefix('facebook')->name('facebook.')->group( function(){
+    Route::get('auth', 'FaceBookController@loginUsingFacebook')->name('login');
+    Route::get('callback', 'FaceBookController@callbackFromFacebook')->name('callback');
+});
+
+
