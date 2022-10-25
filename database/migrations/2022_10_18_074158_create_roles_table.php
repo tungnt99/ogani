@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname', 70);
-            $table->string('email', 150);
-            $table->string('phone_number', 20);
-            $table->text('note');
-            $table->date('feedback_date');
+            $table->string('name', 12);
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('roles');
     }
 };
