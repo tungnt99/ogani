@@ -7,5 +7,13 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    //
+
+      public function index(Request $request){
+        // $users = DB::table('users')->get();
+        // dd($user);
+        return view('backend.account.index');
+        //     $users => $user,
+        // ]);
+      }
+
 }

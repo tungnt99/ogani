@@ -48,15 +48,17 @@ Route::group(['prefix' => 'admin'], function () {
         'category' => 'App\Http\Controllers\Admin\CategoryController',
         'product' => 'ProductController',
         'banner' => 'BannerController',
-        'account' => 'AccountController',
+        'account' => 'App\Http\Controllers\Admin\AccountController',
         'blog' => 'BlogController',
         'order' => 'OrderController',
     ]);
 });
+
 
 //fb
 Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('auth', 'FaceBookController@loginUsingFacebook')->name('login');
     Route::get('callback', 'FaceBookController@callbackFromFacebook')->name('callback');
 });
+
 
