@@ -1,15 +1,13 @@
 @extends('layouts.admin')
 
 @section('main')
-  <table class="table table-primary">
+  <table class="table table-bordered">
       <thead>
           <tr>
               <th>Id</th>
               <th>Name</th>
-              <th>Total product</th>
-              <th>Status</th>
-              <th>Image</th>
-              <th>Actions</th>
+              <th></th>
+              <th></th>
           </tr>
       </thead>
   </table>

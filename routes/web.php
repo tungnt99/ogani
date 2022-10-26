@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin'], function () {
         'blog' => 'BlogController',
         'order' => 'OrderController',
     ]);
+    Route::post('/delete-user', [
+        'as' => 'delete-user',
+        'uses' => 'App\Http\Controllers\Admin\AccountController@deleteUser',
+    ]);
 });
 
 
@@ -61,4 +65,7 @@ Route::prefix('facebook')->name('facebook.')->group( function(){
     Route::get('callback', 'FaceBookController@callbackFromFacebook')->name('callback');
 });
 
-
+Route::post('/post-contact', [
+    'as' => 'post-contact',
+    'uses' => 'App\Http\Controllers\Admin\ContactController@addContact'
+]);
