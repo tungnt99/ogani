@@ -43,7 +43,7 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone_number }}</td>
                             <td>{{ $item->address}}</td>
-                            <td><a href="{{ 'input-user' }}?id={{ $item->id }}"><button onclick="editStudent({{ $item->id }})" class="btn btn-primary">Edit</button></a></td>
+                            <td><a href="{{ 'edit-user' }}?id={{ $item->id }}"><button onclick="editUser({{ $item->id }})" class="btn btn-primary">Edit</button></a></td>
                             <td><button onclick="deleteUser({{ $item->id }})" class="btn btn-danger">Delete</button></td>
                         </tr>
                         @endforeach

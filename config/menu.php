@@ -90,6 +90,18 @@ return [
                 'route' => 'order.create',
             ]
         ]
+    ],
+    [
+        'label' => 'Feedback',
+        'route' => 'feedback.index',
+        'icon' => 'fa-envelope',
+        'items' => [  
+            [
+                'label' => 'List feedback',
+                'route' => 'feedback.index',
+            ]
+          
+        ]
     ]
 ];
 

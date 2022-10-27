@@ -51,10 +51,23 @@ Route::group(['prefix' => 'admin'], function () {
         'account' => 'App\Http\Controllers\Admin\AccountController',
         'blog' => 'BlogController',
         'order' => 'OrderController',
+        'feedback'=> 'App\Http\Controllers\Admin\ContactController',
     ]);
     Route::post('/delete-user', [
         'as' => 'delete-user',
         'uses' => 'App\Http\Controllers\Admin\AccountController@deleteUser',
+    ]);
+    Route::post('/update-user', [
+        'as' => 'update-user',
+        'uses' => 'App\Http\Controllers\Admin\AccountController@updateUser',
+    ]);
+    Route::get('/edit-user', [
+        'as' => 'edit-user',
+        'uses' => 'App\Http\Controllers\Admin\AccountController@editUser',
+    ]);
+    Route::post('/delete-feedback', [
+        'as' => 'delete-feedback',
+        'uses' => 'App\Http\Controllers\Admin\ContactController@deleteFeedback',
     ]);
 });
 
