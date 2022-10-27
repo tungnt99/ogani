@@ -69,6 +69,10 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'delete-feedback',
         'uses' => 'App\Http\Controllers\Admin\ContactController@deleteFeedback',
     ]);
+    // Route::post('/create', [
+    //     'as' => 'create',
+    //     'uses' => 'App\Http\Controllers\LoginController@create'
+    // ]);
 });
 
 
