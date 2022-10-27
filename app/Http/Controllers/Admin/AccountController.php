@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Hash;
 class AccountController extends Controller
 {
       public function index(Request $request){
@@ -15,7 +17,7 @@ class AccountController extends Controller
           'users' => $users
         ]);
       }
-        
+    
       public function deleteUser(Request $request){
         DB::table('users')->where('id', $request->id)->delete();
       }
@@ -32,19 +34,12 @@ class AccountController extends Controller
           ->update([
             'name' => $name,
             'email' => $email,
-            'password' => $password,
-            'phone_number' => $phone_number,
-            'address' => $address
-          ]);
-        }else{
-          $user = DB::table('users')->insert([
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
+            'password'=>bcrypt($request->password),
             'phone_number' => $phone_number,
             'address' => $address
           ]);
         }
+       
         
         return redirect('/admin/account');
       }
@@ -64,15 +59,30 @@ class AccountController extends Controller
                   $phone_number = $std[0]->phone_number;
                   $address = $std[0]->address;
               }
-      }
-      return view('backend.account.edit-user')->with([
-          'id' => $id,
-          'name' => $name,
-          'email' => $email,
-          'password' => $password,
-          'phone_number' => $phone_number,
-          'address' => $address,
-      ]);
+        }
+        return view('backend.account.edit-user')->with([
+            'id' => $id,
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
+            'phone_number' => $phone_number,
+            'address' => $address,
+        ]);
         // return view('backend.account.edit-user');
+      }
+
+      public function create(Request $request){
+        return view('backend.account.add-user');
+      }
+
+      public function store(Request $request){
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        $user->save();
+        return redirect()->route('account.index');
       }
 }

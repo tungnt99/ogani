@@ -13,6 +13,10 @@ return [
             [
                 'label' => 'List account',
                 'route' => 'account.index',
+            ],
+            [
+                'label' => 'Add account',
+                'route' => 'account.create',
             ]
         ]
     ],
