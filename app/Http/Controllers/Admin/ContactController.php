@@ -17,6 +17,14 @@ class ContactController extends Controller
             'note' => $request->note
         ]);
         return redirect('/contact');
-
     }
+    public function index(Request $request){
+        $feedback = DB::table('feedback')->select('id','fullname', 'email', 'phone_number', 'note')->get();
+        return view('backend.feedback.index')->with([
+          'feedback' => $feedback
+        ]);
+    }
+    public function deleteFeedback(Request $request){
+        DB::table('feedback')->where('id', $request->id)->delete();
+      }
 }
