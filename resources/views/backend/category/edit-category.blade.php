@@ -4,21 +4,19 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h2 class="text-center">
-                Input Category
-
+                Edit Category
             </h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('category.store') }}" method="post">
+            <form action="{{ route('update-category') }}" method="post">
                 {{ csrf_field() }}
-                {{-- <input hidden type="text" name="id" class="form-control" value="{{ $id }}"> --}}
+                <input hidden type="text" name="id" class="form-control" value="{{ $id }}">
                 <div class="form-group">
                     <label for="fullname" class="form-label">Fullname:</label>
-                    <input required type="text" class="form-control" name="name" id="fullname">
+                    <input required type="text" class="form-control" name="name" id="fullname" value="{{ $name }}">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-danger">Add</button>
-
+                    <button class="btn btn-danger">Update</button>
                 </div>
             </form>
         </div>

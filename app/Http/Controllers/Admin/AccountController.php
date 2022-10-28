@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use Illuminate\Routing\Route;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;

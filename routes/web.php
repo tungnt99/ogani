@@ -65,14 +65,25 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'edit-user',
         'uses' => 'App\Http\Controllers\Admin\AccountController@editUser',
     ]);
+  
+    // Category
+    Route::post('/delete-category', [
+        'as' => 'delete-category',
+        'uses' => 'App\Http\Controllers\Admin\CategoryController@deleteCategory',
+    ]);
+    Route::post('/update-category', [
+        'as' => 'update-category',
+        'uses' => 'App\Http\Controllers\Admin\CategoryController@updateCategory',
+    ]);
+    Route::get('/edit-category', [
+        'as' => 'edit-category',
+        'uses' => 'App\Http\Controllers\Admin\CategoryController@editCategory',
+    ]);
+    // Feedback
     Route::post('/delete-feedback', [
         'as' => 'delete-feedback',
         'uses' => 'App\Http\Controllers\Admin\ContactController@deleteFeedback',
     ]);
-    // Route::post('/create', [
-    //     'as' => 'create',
-    //     'uses' => 'App\Http\Controllers\LoginController@create'
-    // ]);
 });
 
 

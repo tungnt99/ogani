@@ -4,7 +4,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h2 class="text-center">
-                Input Student Information
+                Edit User Information
 
             </h2>
         </div>
