@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('total_money');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

@@ -27,6 +27,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('facebook_id');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 };
