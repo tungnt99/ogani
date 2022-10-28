@@ -16,7 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('mainad') }}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{ url('site') }}/sass/style.css">
-
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -287,5 +287,6 @@
 <script src="{{ url('mainad') }}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('mainad') }}/dist/js/pages/dashboard.js"></script>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('banner', function (Blueprint $table) {
             $table->id();
             $table->string('title', 150);
-            $table->string('thumbnail', 500);
+            $table->text('thumbnail');
             $table->string('description', 150);
             $table->string('link', 150);
             $table->rememberToken();
