@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
         'product' => 'ProductController',
         'banner' => 'BannerController',
         'account' => 'App\Http\Controllers\Admin\AccountController',
-        'blog' => 'BlogController',
+        'blog' => 'App\Http\Controllers\Admin\BlogController',
         'order' => 'OrderController',
         'feedback'=> 'App\Http\Controllers\Admin\ContactController',
     ]);
@@ -79,6 +79,8 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'edit-category',
         'uses' => 'App\Http\Controllers\Admin\CategoryController@editCategory',
     ]);
+    // Blog
+
     // Feedback
     Route::post('/delete-feedback', [
         'as' => 'delete-feedback',
