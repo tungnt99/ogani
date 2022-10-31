@@ -11,6 +11,16 @@ use Hash;
 
 class BlogController extends Controller
 {
+    public function blog() {
+        $blogs = DB::table('blogs')->select('id','title', 'thumbnail', 'description')->get();
+       return view('frontend.pages.blog')->with([
+        'blogs' => $blogs
+       ]);
+        // return view('frontend.pages.blog');
+    }
+    public function blogdetail() {
+        return view('frontend.pages.blog-detail');
+    }
     public function index(Request $request){
         $blogs = DB::table('blogs')->select('id','title', 'thumbnail', 'description')->get();
        return view('backend.blog.index')->with([
@@ -27,5 +37,5 @@ class BlogController extends Controller
         $blogs->description = $request->description;
         $blogs->save();
         return redirect()->route('blog.index');
-      }
+    }
 }
