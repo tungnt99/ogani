@@ -41,13 +41,13 @@ class IndexController extends Controller
         return view('frontend.pages.checkout');
     }
 
-    public function blog() {
-        return view('frontend.pages.blog');
-    }
+    // public function blog() {
+    //     return view('frontend.pages.blog');
+    // }
 
-    public function blogdetail() {
-        return view('frontend.pages.blog-detail');
-    }
+    // public function blogdetail() {
+    //     return view('frontend.pages.blog-detail');
+    // }
 
     public function contact() {
         return view('frontend.pages.contact');

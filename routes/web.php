@@ -25,9 +25,9 @@ Route::get('/cart', 'IndexController@cart')-> name('home.cart');
 
 Route::get('/checkout', 'IndexController@checkout')-> name('home.checkout');
 
-Route::get('/blog', 'IndexController@blog')-> name('home.blog');
+Route::get('/blog', 'App\Http\Controllers\Admin\BlogController@blog')-> name('home.blog');
 
-Route::get('/blogdetail', 'IndexController@blogdetail')-> name('home.blog-detail');
+Route::get('/blogdetail', 'App\Http\Controllers\Admin\BlogController@blogdetail')-> name('home.blog-detail');
 
 Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 

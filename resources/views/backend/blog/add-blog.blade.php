@@ -2,13 +2,14 @@
 
 
 @section('main')
+
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h2 class="text-center">Add Blog</h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('blog.store') }}" method="post">
+            <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title" class="form-label">Title:</label>
