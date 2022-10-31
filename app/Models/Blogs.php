@@ -3,13 +3,12 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Spatie\MediaLibrary\HasMedia\HasMedia;
+// use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
-class Blogs extends Model implements HasMedia
+class Blogs extends Model 
 {
-    use HasFactory;  use HasMediaTrait;
+    use HasFactory;  
     protected $fillable = [
         'title',
         'thumbnail',

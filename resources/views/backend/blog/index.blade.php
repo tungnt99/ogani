@@ -9,6 +9,7 @@
             <div class="panel-body container">
                 <div class="blog-list row">
                     @foreach($blogs as $item)
+                         
                         <div class="blog-list--item col-lg-3">
                             <img src={{ $item->thumbnail }} alt={{ $item->title }}>
                             <h2>{{ $item->title }}</h2>

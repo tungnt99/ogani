@@ -30,18 +30,22 @@ class BlogController extends Controller
         return view('backend.blog.add-blog');
     }
     public function store(Request $request){
-        $blogs = new Blogs($request->except(['thumbnail']));
-
-        if($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()){
-            $blogs->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
+        if($request->has('thumbnail')){
+            $blogs = $request->thumbnail;
+            $ext = $request->thumbnail->extension();
+            $blogs_image = time().'-'.'blog.'.$ext;
+            $blogs->move(public_path('uploads'), $blogs_image);
         }
-         
-
+        $request->merge(['image' => $blogs_image]);
+        $blogs = new Blogs;
         $blogs->title = $request->title;
         $blogs->thumbnail = $request->thumbnail;
         $blogs->description = $request->description;
         $blogs->save();
+        if(Blogs::create($request->all())){
+            return redirect()->route('blog.index')->with('success', 'Thêm bài viết mới');
 
-        return redirect()->route('blog.index');
+        }
     }
+
 }
