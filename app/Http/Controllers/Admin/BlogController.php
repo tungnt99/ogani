@@ -16,7 +16,6 @@ class BlogController extends Controller
        return view('frontend.pages.blog')->with([
         'blogs' => $blogs
        ]);
-        // return view('frontend.pages.blog');
     }
     public function blogdetail() {
         return view('frontend.pages.blog-detail');
@@ -31,11 +30,18 @@ class BlogController extends Controller
         return view('backend.blog.add-blog');
     }
     public function store(Request $request){
-        $blogs = new Blogs;
+        $blogs = new Blogs($request->except(['thumbnail']));
+
+        if($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()){
+            $blogs->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
+        }
+         
+
         $blogs->title = $request->title;
         $blogs->thumbnail = $request->thumbnail;
         $blogs->description = $request->description;
         $blogs->save();
+
         return redirect()->route('blog.index');
     }
 }
