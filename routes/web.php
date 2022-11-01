@@ -80,7 +80,19 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'App\Http\Controllers\Admin\CategoryController@editCategory',
     ]);
     // Blog
-
+    Route::get('add-blog', [BlogController::class, 'create']);
+    Route::post('/delete-blog', [
+        'as' => 'delete-blog',
+        'uses' => 'App\Http\Controllers\Admin\BlogController@deleteBlog',
+    ]);
+    Route::post('/update-blog', [
+        'as' => 'update-blog',
+        'uses' => 'App\Http\Controllers\Admin\BlogController@updateBlog',
+    ]);
+    Route::get('/edit-blog', [
+        'as' => 'edit-blog',
+        'uses' => 'App\Http\Controllers\Admin\BlogController@editBlog',
+    ]);
     // Feedback
     Route::post('/delete-feedback', [
         'as' => 'delete-feedback',

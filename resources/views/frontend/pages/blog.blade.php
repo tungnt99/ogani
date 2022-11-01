@@ -146,7 +146,7 @@
                             <div class="blog__item">
 
                                 <div class="blog__item__pic">
-                                    <img src={{ $item->thumbnail }} alt={{ $item->title }}>
+                                    <img src={{ asset('uploads/blogs/'.$item->thumbnail) }} alt={{ $item->title }}>
 
                                 </div>
                                 <div class="blog__item__text">

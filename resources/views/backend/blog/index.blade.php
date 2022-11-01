@@ -1,4 +1,17 @@
 @extends('layouts.admin');
+<script type="text/javascript">
+    function deleteBlog(id){
+        $.post("{{ route('delete-blog')}}",
+        {
+            '_token': $('[name=_token]').val(),
+            id: id
+        },
+        function(data, status){
+            location.reload();
+        }
+        )
+    }
+</script>
 @section('main')
     {{ csrf_field() }}
     <div class="container">
@@ -11,9 +24,27 @@
                     @foreach($blogs as $item)
                          
                         <div class="blog-list--item col-lg-3">
-                            <img src={{ $item->thumbnail }} alt={{ $item->title }}>
-                            <h2>{{ $item->title }}</h2>
-                            <p>{{ $item->description }}</p>
+                            <div class="blog-body">
+                                <img src={{ asset('uploads/blogs/'.$item->thumbnail) }} alt={{ $item->title }}>
+                                <div class="blog-body-text">
+                                    <h2 class="blog-body-title">{{ $item->title }}</h2>
+                                    <p class="blog-body-desc">{{ $item->description }}</p>
+                                    {{-- <p>{{ $item->updated_at }}</p> --}}
+
+                                </div>
+                            </div>
+
+                            <div class="blog-feature">
+                                <div class="blog-feature-content">
+                                    <div class="blog-feature-content-item">
+                                        <a href="{{ 'edit-blog' }}?id={{ $item->id }}"><button class="btn btn-danger">Edit</button></a>
+                                    </div>
+                                    <div class="blog-feature-content-item">
+                                        <button onclick="deleteBlog({{ $item->id }})" class="btn btn-warning">Delete</button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
