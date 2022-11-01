@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Blogs extends Model 
 {
     use HasFactory;  
+    protected $table = 'blogs';
+
     protected $fillable = [
         'title',
         'thumbnail',

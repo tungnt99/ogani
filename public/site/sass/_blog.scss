@@ -79,3 +79,73 @@
         content: '';
     }
 }
+.panel-body{
+    .blog-list{
+        &--item{
+            position: relative;
+            margin-bottom: 15px;
+            display: block;
+            .blog-body{
+                border: 0.5px solid #ccc;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+                &-text{
+                    padding: 10px;
+                    .blog-body-title{
+                        font-size: 22px;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        text-overflow: ellipsis;
+                    }
+                    .blog-body-desc{
+                        font-size: 16px;
+                        height: 80px;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+            .blog-feature{
+                animation: slideUp 0.3s ease-in-out;
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+                margin-left: 7.5px;
+                margin-right: 7.5px;
+                &-content{
+                    margin-top: 50%;
+                    transform: translateY(-50%);
+                    &-item{
+                        text-align: center;
+                        margin: 5px 0;
+                    }
+                }
+            }
+        }
+        &--item:hover .blog-feature{
+            display: block;
+        }
+    }
+}
+
+@keyframes slideUp{
+    from{
+        transform: translateY(200px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
