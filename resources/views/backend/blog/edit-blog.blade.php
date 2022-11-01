@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description" class="form-label">Description: </label>
-                    <textarea class="form-control" name="description" id="description" value="{{ $description }}"></textarea>
+                    <input class="form-control" name="description" id="description" value="{{ $description }}">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-danger">Update</button>
