@@ -32,7 +32,7 @@ class BlogController extends Controller
     public function store(Request $request){
         $blog = new Blogs;
         $blog->title = $request->input('title');
-        $blog->description = $request->input('description');
+        $blog->description = $request->description;
     
         if($request->hasfile('thumbnail')){
             $file = $request->file('thumbnail');
@@ -69,8 +69,7 @@ class BlogController extends Controller
 
     public function editBlog(Request $request){
         $id = 0;
-        $title = '';
-        $description = '';
+        $title = $description ='';
         if(isset($request->id) && $request->id > 0){
           $id = $request->id;
           $std = DB::table('blogs')
