@@ -44,7 +44,6 @@ class BlogController extends Controller
        
         $blog->save();
         
-        // return redirect()->back()->with('status', 'Blog Image Added Successfully');
         return redirect()->route('blog.index')->with('success', 'Thêm bài viết mới');
     }
     public function deleteBlog(Request $request){

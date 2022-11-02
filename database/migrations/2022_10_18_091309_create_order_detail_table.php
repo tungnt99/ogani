@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('total_money');
             $table->foreign('order_id')->references('id')->on('order');
-            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->rememberToken();
             $table->timestamps();
         });
