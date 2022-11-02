@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title', 150);
             $table->text('thumbnail');
             $table->string('description', 150);
-            $table->string('link', 150);
             $table->rememberToken();
             $table->timestamps();
         });
