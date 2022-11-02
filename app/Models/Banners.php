@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Blogs extends Model 
+class Banners extends Model
 {
-    use HasFactory;  
-    protected $table = 'blogs';
-
+    use HasFactory;
+    protected $table = 'banners';
     protected $fillable = [
         'title',
         'thumbnail',

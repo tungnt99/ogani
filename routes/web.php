@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'IndexController@index')-> name('home.index');
+Route::get('/', 'App\Http\Controllers\Admin\BannerController@home')-> name('home.index');
 
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resources([
         'category' => 'App\Http\Controllers\Admin\CategoryController',
         'product' => 'ProductController',
-        'banner' => 'BannerController',
+        'banner' => 'App\Http\Controllers\Admin\BannerController',
         'account' => 'App\Http\Controllers\Admin\AccountController',
         'blog' => 'App\Http\Controllers\Admin\BlogController',
         'order' => 'OrderController',
@@ -92,6 +92,19 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/edit-blog', [
         'as' => 'edit-blog',
         'uses' => 'App\Http\Controllers\Admin\BlogController@editBlog',
+    ]);
+    // Banner
+    Route::post('/delete-banner', [
+        'as' => 'delete-banner',
+        'uses' => 'App\Http\Controllers\Admin\BannerController@deleteBanner',
+    ]);
+    Route::post('/update-banner', [
+        'as' => 'update-banner',
+        'uses' => 'App\Http\Controllers\Admin\BannerController@updateBanner',
+    ]);
+    Route::get('/edit-banner', [
+        'as' => 'edit-banner',
+        'uses' => 'App\Http\Controllers\Admin\BannerController@editBanner',
     ]);
     // Feedback
     Route::post('/delete-feedback', [
