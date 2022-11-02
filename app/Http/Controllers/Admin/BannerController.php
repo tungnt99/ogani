@@ -6,6 +6,7 @@ use Illuminate\Routing\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banners;
+
 use Illuminate\Support\Facades\Auth;
 use Hash;
 
@@ -16,7 +17,7 @@ class BannerController extends Controller
         return view('frontend.pages.home')->with([
             'banners' => $banners,
         ]);
-
+       
        
     }
   
@@ -76,7 +77,7 @@ class BannerController extends Controller
 
     public function editBanner(Request $request){
         $id = 0;
-        $title = $description ='';
+        $title = $description = $thumbnail = '';
       
         if(isset($request->id) && $request->id > 0){
           $id = $request->id;
@@ -93,6 +94,7 @@ class BannerController extends Controller
             'id' => $id,
             'title' => $title,
             'description' => $description,
+            'thumbnail' => $thumbnail
         ]);
     }
 }

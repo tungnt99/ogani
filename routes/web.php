@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resources([
         'category' => 'App\Http\Controllers\Admin\CategoryController',
-        'product' => 'ProductController',
+        'product' => 'App\Http\Controllers\Admin\ProductController',
         'banner' => 'App\Http\Controllers\Admin\BannerController',
         'account' => 'App\Http\Controllers\Admin\AccountController',
         'blog' => 'App\Http\Controllers\Admin\BlogController',

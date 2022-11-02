@@ -11,7 +11,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Models;
  */
-class Product extends Model implements Transformable
+class Products extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -20,6 +20,13 @@ class Product extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'price',
+        'discount',
+        'description',
+        'category_id'
+    ];
 
 }
