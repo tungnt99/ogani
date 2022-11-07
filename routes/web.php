@@ -111,6 +111,19 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'delete-feedback',
         'uses' => 'App\Http\Controllers\Admin\ContactController@deleteFeedback',
     ]);
+    // Product
+    Route::get('/edit-product', [
+        'as' => 'edit-product',
+        'uses' => 'App\Http\Controllers\Admin\ProductController@editProduct',
+    ]);
+    
+    Route::delete('/delete/{id}',[ProductController::class,'destroy']);
+    // Route::get('/edit/{id}',[ProductController::class,'edit']);
+
+    Route::delete('/deleteimage/{id}',[ProductController::class,'deleteimage']);
+    Route::delete('/deletecover/{id}',[ProductController::class,'deletecover']);
+
+    Route::put('/update/{id}',[ProductController::class,'update']);
 });
 
 

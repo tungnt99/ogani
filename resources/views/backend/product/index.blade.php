@@ -1,72 +1,50 @@
 @extends('layouts.admin');
-<script type="text/javascript">
-    function deleteBlog(id){
-        $.post("{{ route('delete-blog')}}",
-        {
-            '_token': $('[name=_token]').val(),
-            id: id
-        },
-        function(data, status){
-            location.reload();
-        }
-        )
-    }
-</script>
+
 @section('main')
-    {{ csrf_field() }}
-    <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h2 class="text-center">Danh sách sản phẩm</h2>
-            </div>
-            <div class="panel-body container">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Title</th>
-                            <th>Thumbnail</th>
-                            <th>Price</th>
-                            <th>Discount</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<div class="container" style="margin-top: 50px;">
 
-                    </tbody>
-                </table>
-                {{-- <div class="blog-list row">
-                    @foreach($product as $item)
-                         
-                        <div class="blog-list--item col-lg-3">
-                            <div class="blog-body">
-                                <img src={{ asset('uploads/blogs/'.$item->thumbnail) }} alt={{ $item->title }}>
-                                <div class="blog-body-text">
-                                    <h2 class="blog-body-title">{{ $item->title }}</h2>
-                                    <p class="blog-body-desc">{{ $item->description }}</p>
+    <h3 class="text-center text-danger"><b>Laravel CRUD With Multiple Image Upload</b> </h3>
 
-                                </div>
-                            </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Cover</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
 
-                            <div class="blog-feature">
-                                <div class="blog-feature-content">
-                                    <div class="blog-feature-content-item">
-                                        <a href="{{ 'edit-blog' }}?id={{ $item->id }}"><button class="btn btn-danger">Edit</button></a>
-                                    </div>
-                                    <div class="blog-feature-content-item">
-                                        <button onclick="deleteBlog({{ $item->id }})" class="btn btn-warning">Delete</button>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> --}}
-            </div>
-        </div>
-    </div>
+            @foreach ($products as $products)
+         <tr>
+               <th scope="row">{{ $products->id }}</th>
+               <td>{{ $products->title }}</td>
+               <td>{{ $products->price }}</td>
+               <td>{{ $products->discount }}</td>
+               <td>{{ $products->description }}</td>
+               <td>{{ $products->category_id }}</td>
+               <td><img src="{{ $products->cover }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
+               <td><a href="{{ 'edit-product' }}?id={{ $products->id }}" class="btn btn-outline-primary">Update</a></td>
+               <td>
+                   <form action="/delete/{{ $products->id }}" method="post">
+                    <button class="btn btn-outline-danger" onclick="return confirm('Are you sure?');" type="submit">Delete</button>
+                    @csrf
+                    @method('delete')
+                </form>
+               </td>
+
+           </tr>
+           @endforeach
+
+        </tbody>
+      </table>
+</div>
 @endsection
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use App\Models\Image;
 
 /**
  * Class Product.
@@ -22,11 +23,14 @@ class Products extends Model implements Transformable
      */
     protected $fillable = [
         'title',
-        'thumbnail',
+        'cover',
         'price',
         'discount',
         'description',
         'category_id'
     ];
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
 
 }
