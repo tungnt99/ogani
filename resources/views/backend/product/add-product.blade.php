@@ -16,10 +16,6 @@
                     <input required type="text" class="form-control" name="title" id="title" >
                 </div>
                 <div class="form-group">
-                    <label for="thumbnail" class="form-label">Thumbnail:</label>
-                    <input required type="file" class="form-control" name="thumbnail" id="thumbnail" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                </div>
-                <div class="form-group">
                     <label for="price" class="form-label">Price:</label>
                     <input required type="number" class="form-control" name="price" id="price" >
                 </div>
@@ -28,17 +24,29 @@
                     <input required type="number" class="form-control" name="discount" id="discount" >
                 </div>
                 <div class="form-group">
+                    <label for="description" class="form-label">Description: </label>
+                    <textarea required class="form-control" name="description" id="description"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="category" class="form-label">Category:</label>
 
-                    <select name="category_id" class="form-control" id="category">
+                    <select name="category" class="form-control" id="category">
+                        <option value="">-- Select Category --</option>
+
                             @foreach($categories as $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="description" class="form-label">Description: </label>
-                    <textarea required class="form-control" name="description" id="description"></textarea>
+                    <label class="m-2">Cover Image</label>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="cover">
+
+                </div>
+                <div class="form-group">
+                    <label class="m-2">Images</label>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
+
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-danger">ADD</button>
