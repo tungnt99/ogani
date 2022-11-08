@@ -1,23 +1,20 @@
 <?php
-// namespace App\Http\Controllers\API;
 namespace App\Http\Controllers\Admin;
 use DB;
-// use Illuminate\Routing\Route;
+use Illuminate\Routing\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
-// use Illuminate\Support\Facades\Auth;
-// use Hash;
+use App\Models\Image;
+
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
     public function index(Request $request){
         $products = DB::select('SELECT * FROM products');
-
-
-       return view('backend.product.index')->with('products', $products);
+        return view('backend.product.index')->with('products', $products);
         
     }
     public function create(Request $request){
@@ -27,21 +24,91 @@ class ProductController extends Controller
         ]);
     }
     public function store(Request $request){
-        
+        $products = new Products();
+      
         if($request->hasFile("cover")){
             $file = $request->file("cover");
             $imageName=time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("cover/"),$imageName);
-            
-            $products =new Products([
-                "title" =>$request->title,
-                "price" =>$request->price,
-                "discount" =>$request->body,
-                "description" =>$request->description,
-                "category" =>$request->get('category'),
-                "cover" =>$imageName,
-            ]);
-           $products->save();
+            $file->move('uploads/cover/',$imageName);
+            $products->cover = $imageName;
         }
+        if($request->hasFile("images")){
+            $files = $request->file("images");
+            foreach($files as $file){
+                $imageName=time().'_'.$file->getClientOriginalName();
+                $request['products_id'] = $products->id;
+                $request['image'] = $imageName;
+                $file->move('uploads/images/', $imageName);
+                Image::create($request->all());
+            }
+        }
+        $products->title = $request->input('title');
+        $products->price = $request->input('price');
+        $products->discount = $request->input('discount');
+        $products->description = $request->input('description');
+        $products->category_id = $request->input('category_id');
+         
+        $products->save();
+        return redirect()->route('product.index')->with('success', 'Product Added Successfully');
+        
+    }
+    public function deleteProduct(Request $request){
+        DB::table('products')->where('id', $request->id)->delete();
+    }   
+
+    public function editProduct(Request $request){
+        $categories = DB::table('categories')->select('id', 'name')->get();
+
+        $id = 0;
+        $title = $price = $discount = $description = $category_id = '';
+        if(isset($request->id) && $request->id>0){
+            $id = $request->id;
+            $std = DB::table('products')
+                ->where('id', $id)
+                ->get();
+
+                if($std != null && count($std) > 0){
+                    $title = $std[0]->title;
+                    $price = $std[0]->price;
+                    $discount = $std[0]->discount;
+                    $description = $std[0]->description;
+                    $category_id = $std[0]->category_id;
+
+                }
+        }
+        // dd('asdsd');
+        return view('backend.product.edit-product')->with([
+            'id' => $id,
+            'title' => $title,
+            'price' => $price,
+            'discount' => $discount,
+            'description' => $description,
+            'category_id' => $category_id,
+            'categories' => $categories,
+        ]);
+    }
+    
+    public function deleteCover($id){
+        // $products = DB::select('SELECT * FROM products');
+
+        $cover = Products::findOrFail($id)->cover;
+        if(File::exists("uploads/cover/".$cover)){
+            File::delete("uploads/cover/".$cover);
+        }
+        return back()->with('products', $products);
+    }
+    public function deleteImage($id){
+        $products = DB::select('SELECT * FROM products');
+
+        $images=Image::findOrFail($id);
+        if (File::exists("uploads/images/".$images->image)) {
+           File::delete("uploads/images/".$images->image);
+       }
+
+       Image::find($id)->delete();
+       return back()->with([
+        'images'=> $images,
+        'products'=> $products
+    ]);
     }
 }

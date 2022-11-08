@@ -11,22 +11,22 @@
         <div class="panel-body row">
             <div class="col-lg-3">
                 <p>Cover:</p>
-                <form action="/deletecover/{{ $posts->id }}" method="post">
+                <form action="{{ route('deletecover') }}" method="post">
                 <button class="btn text-danger">X</button>
                 @csrf
                 @method('delete')
                 </form>
-                <img src="/cover/{{ $posts->cover }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+                <img src="asset('uploads/cover/'.$products->cover)" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                 <br>
-                @if (count($posts->images)>0)
+                @if (count($products->images)>0)
                  <p>Images:</p>
-                 @foreach ($posts->images as $img)
-                 <form action="/deleteimage/{{ $img->id }}" method="post">
+                 @foreach ($products->images as $img)
+                 <form action="{{ route('deleteimage') }}" method="post">
                      <button class="btn text-danger">X</button>
                      @csrf
                      @method('delete')
                      </form>
-                 <img src="/images/{{ $img->image }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+                 <img src="asset('uploads/images/'.$img->images)" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                  @endforeach
                  @endif
 
@@ -34,26 +34,27 @@
             <div class="col-lg-6">
                 <h3 class="text-center text-danger"><b>Udate Product</b> </h3>
                 <div class="form-group">
-                    <form action="/update/{{id }}" method="post" enctype="multipart/form-data">
-                        @csrf
+                    <form action="{{ route('update-product') }}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
                         <input hidden type="text" name="id" class="form-control" value="{{ $id }}">
 
                         <div class="form-group">
                             <label for="title" class="form-label">Title:</label>
-                            <input required type="text" class="form-control" name="title" id="title" value="{{ title}}">
+                            <input type="text" class="form-control" name="title" id="title" value="{{ $title }}">
                         </div>
                         <div class="form-group">
                             <label for="price" class="form-label">Price:</label>
-                            <input required type="number" class="form-control" name="price" id="price" value="{{price}}">
+                            <input type="number" class="form-control" name="price" id="price" value="{{ $price }}">
                         </div>
                         <div class="form-group">
                             <label for="discount" class="form-label">Discount:</label>
-                            <input required type="number" class="form-control" name="discount" id="discount" value="{{discount}}">
+                            <input type="number" class="form-control" name="discount" id="discount" value="{{ $discount }}">
                         </div>
                         <div class="form-group">
                             <label for="category" class="form-label">Category:</label>
             
-                            <select name="category_id" class="form-control" id="category">
+                            <select name="category_id" class="form-control" id="category" value="{{ $category_id }}">
                                     @foreach($categories as $item)
                                         <option value="{{ $item->name }}">{{ $item->name }}</option>
                                     @endforeach
@@ -61,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description" class="form-label">Description: </label>
-                            <textarea required class="form-control" name="description" id="description">{{description}}</textarea>
+                            <textarea class="form-control" name="description" id="description">{{ $description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Cover Image:</label>

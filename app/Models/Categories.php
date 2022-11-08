@@ -12,6 +12,7 @@ use App\Traits\HasPermissions;
 class Categories extends Model
 {
     protected $fillable = [
+        'id',
         'name',
     ];
 }

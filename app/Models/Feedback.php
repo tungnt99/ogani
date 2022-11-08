@@ -14,7 +14,7 @@ class Feedback extends Model
     use HasApiTokens, HasFactory, Notifiable, HasPermissions;
     protected $fillable = [
         
-        'fullname', 'email', 'note','phone_number',
+        'id','fullname', 'email', 'note','phone_number',
     ];
 
 }
