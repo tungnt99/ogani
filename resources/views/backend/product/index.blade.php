@@ -1,9 +1,22 @@
 @extends('layouts.admin');
-
+<script type="text/javascript">
+  function deleteProduct(id){
+      $.post("{{ route('delete-product')}}",
+      {
+          '_token': $('[name=_token]').val(),
+          id: id
+      },
+      function(data, status){
+          location.reload();
+      }
+      )
+  }
+</script>
 @section('main')
-<div class="container" style="margin-top: 50px;">
+{{ csrf_field() }}
 
-    <h3 class="text-center text-danger"><b>Laravel CRUD With Multiple Image Upload</b> </h3>
+<div class="container" style="margin-top: 50px;">
+  <h3 class="text-center text-danger"><b>Laravel CRUD With Multiple Image Upload</b> </h3>
 
     <table class="table">
         <thead>
@@ -20,27 +33,22 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($products as $item)
+            <tr>
+                  <th scope="row">{{ $item->id }}</th>
+                  <td>{{ $item->title }}</td>
+                  <td>{{ $item->price }}</td>
+                  <td>{{ $item->discount }}</td>
+                  <td>{{ $item->description }}</td>
+                  <td>{{ $item->category_id }}</td>
+                  <td><img src={{ asset('uploads/cover/'.$item->cover) }} class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
+                  <td><a href="{{ 'edit-product' }}?id={{ $item->id }}" class="btn btn-outline-primary">Update</a></td>
+                  <td>
+                    <button onclick="deleteProduct({{ $item->id }})" class="btn btn-warning">Delete</button>
+                  </td>
 
 
-            @foreach ($products as $products)
-         <tr>
-               <th scope="row">{{ $products->id }}</th>
-               <td>{{ $products->title }}</td>
-               <td>{{ $products->price }}</td>
-               <td>{{ $products->discount }}</td>
-               <td>{{ $products->description }}</td>
-               <td>{{ $products->category_id }}</td>
-               <td><img src="{{ $products->cover }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
-               <td><a href="{{ 'edit-product' }}?id={{ $products->id }}" class="btn btn-outline-primary">Update</a></td>
-               <td>
-                   <form action="/delete/{{ $products->id }}" method="post">
-                    <button class="btn btn-outline-danger" onclick="return confirm('Are you sure?');" type="submit">Delete</button>
-                    @csrf
-                    @method('delete')
-                </form>
-               </td>
-
-           </tr>
+              </tr>
            @endforeach
 
         </tbody>

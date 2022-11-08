@@ -20,15 +20,15 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('discount');
             $table->text('description');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->bigInteger('category_id');
+            // $table->foreign('category_id')->references('id')->on('categories');
 
             $table->rememberToken();
             $table->timestamps();
 
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

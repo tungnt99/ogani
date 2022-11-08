@@ -10,7 +10,7 @@
         </div>
         <div class="panel-body">
             <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <div class="form-group">
                     <label for="title" class="form-label">Title:</label>
                     <input required type="text" class="form-control" name="title" id="title" >
@@ -29,10 +29,8 @@
                 </div>
                 <div class="form-group">
                     <label for="category" class="form-label">Category:</label>
-
-                    <select name="category" class="form-control" id="category">
+                    <select name="category_id" class="form-control" id="category">
                         <option value="">-- Select Category --</option>
-
                             @foreach($categories as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach

@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
 
+use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,19 +113,29 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'delete-feedback',
         'uses' => 'App\Http\Controllers\Admin\ContactController@deleteFeedback',
     ]);
+
     // Product
+    Route::post('/delete-product', [
+        'as' => 'delete-product',
+        'uses' => 'App\Http\Controllers\Admin\ProductController@deleteProduct',
+    ]);
+    
+    Route::post('/update-product', [
+        'as' => 'update-product',
+        'uses' => 'App\Http\Controllers\Admin\ProductController@updateProduct',
+    ]);
     Route::get('/edit-product', [
         'as' => 'edit-product',
         'uses' => 'App\Http\Controllers\Admin\ProductController@editProduct',
     ]);
-    
-    Route::delete('/delete/{id}',[ProductController::class,'destroy']);
-    // Route::get('/edit/{id}',[ProductController::class,'edit']);
-
-    Route::delete('/deleteimage/{id}',[ProductController::class,'deleteimage']);
-    Route::delete('/deletecover/{id}',[ProductController::class,'deletecover']);
-
-    Route::put('/update/{id}',[ProductController::class,'update']);
+    Route::get('/deletecover', [
+        'as' => 'deletecover',
+        'uses' => 'App\Http\Controllers\Admin\ProductController@deleteCover',
+    ]);
+    Route::get('/deleteimage', [
+        'as' => 'deleteimage',
+        'uses' => 'App\Http\Controllers\Admin\ProductController@deleteImage',
+    ]);
 });
 
 
