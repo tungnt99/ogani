@@ -5,34 +5,11 @@
 
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="text-center">Edit Product</h2>
-        </div>
+       
         <div class="panel-body row">
-            <div class="col-lg-3">
-                <p>Cover:</p>
-                <form action="{{ route('deletecover') }}" method="post">
-                <button class="btn text-danger">X</button>
-                @csrf
-                @method('delete')
-                </form>
-                <img src="asset('uploads/cover/'.$products->cover)" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
-                <br>
-                @if (count($products->images)>0)
-                 <p>Images:</p>
-                 @foreach ($products->images as $img)
-                 <form action="{{ route('deleteimage') }}" method="post">
-                     <button class="btn text-danger">X</button>
-                     @csrf
-                     @method('delete')
-                     </form>
-                 <img src="asset('uploads/images/'.$img->images)" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
-                 @endforeach
-                 @endif
-
-            </div>
+          
             <div class="col-lg-6">
-                <h3 class="text-center text-danger"><b>Udate Product</b> </h3>
+                <h3 class="text-center text-danger"><b>Update Product</b> </h3>
                 <div class="form-group">
                     <form action="{{ route('update-product') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -54,9 +31,9 @@
                         <div class="form-group">
                             <label for="category" class="form-label">Category:</label>
             
-                            <select name="category_id" class="form-control" id="category" value="{{ $category_id }}">
+                            <select name="category_id" class="form-control" id="category">
                                     @foreach($categories as $item)
-                                        <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                             </select>
                         </div>
