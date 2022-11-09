@@ -58,6 +58,7 @@ class ProductController extends Controller
 
     public function editProduct(Request $request){
         $categories = DB::table('categories')->select('id', 'name')->get();
+        $products = DB::select('SELECT * FROM products');
 
         $id = 0;
         $title = $price = $discount = $description = $category_id = '';
@@ -85,15 +86,16 @@ class ProductController extends Controller
             'description' => $description,
             'category_id' => $category_id,
             'categories' => $categories,
+            'products' => $products
         ]);
     }
     
     public function deleteCover($id){
-        // $products = DB::select('SELECT * FROM products');
+        $products = DB::select('SELECT * FROM products');
 
         $cover = Products::findOrFail($id)->cover;
-        if(File::exists("uploads/cover/".$cover)){
-            File::delete("uploads/cover/".$cover);
+        if(File::exists("cover/".$cover)){
+            File::delete("cover/".$cover);
         }
         return back()->with('products', $products);
     }
@@ -101,14 +103,35 @@ class ProductController extends Controller
         $products = DB::select('SELECT * FROM products');
 
         $images=Image::findOrFail($id);
-        if (File::exists("uploads/images/".$images->image)) {
-           File::delete("uploads/images/".$images->image);
+        if (File::exists("images/".$images->image)) {
+           File::delete("images/".$images->image);
        }
 
        Image::find($id)->delete();
        return back()->with([
         'images'=> $images,
         'products'=> $products
-    ]);
+        ]);
+    }
+
+    public function updateProduct(Request $request){
+        $products = Products::all();
+        $id = $request->id;
+        $title = $request->title;
+        $price = $request->price;
+        $discount = $request->discount;
+        $description = $request->description;
+        $category_id = $request->category_id;
+        if($id > 0){
+            $products = DB::table('products')->where('id', $id)
+            ->update([
+                'title' => $title,
+                'price' => $price,
+                'discount' => $discount,
+                'description' => $description,
+                'category_id' => $category_id
+            ]);
+        }
+        return redirect('/admin/product');
     }
 }
