@@ -40,7 +40,7 @@
                   <td>{{ $item->price }}</td>
                   <td>{{ $item->discount }}</td>
                   <td>{{ $item->description }}</td>
-                  <td>{{ $item->category_id }}</td>
+                  <td>{{ $item->category->name }}</td>
                   <td><img src={{ asset('uploads/cover/'.$item->cover) }} class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
                   <td><a href="{{ 'edit-product' }}?id={{ $item->id }}" class="btn btn-outline-primary">Update</a></td>
                   <td>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
     public function index(Request $request){
-        $products = DB::select('SELECT * FROM products');
+        $products = Products::with('category')->get();
         return view('backend.product.index')->with('products', $products);
         
     }

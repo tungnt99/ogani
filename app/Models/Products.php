@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use App\Models\Image;
+use App\Models\Categories;
 
 /**
  * Class Product.
@@ -36,5 +37,7 @@ class Products extends Model implements Transformable
     public function images(){
         return $this->hasMany(Image::class);
     }
-
+    public function category() {
+        return $this->belongsTo(Categories::class,'category_id','id');
+    }
 }
