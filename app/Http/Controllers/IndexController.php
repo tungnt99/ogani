@@ -27,7 +27,7 @@ class IndexController extends Controller
     public function index(Request $request) {
         $banners = DB::select('SELECT * FROM banners');
         $categories = DB::select('SELECT * FROM categories');
-
+        
         return view('frontend.pages.home')->with([
             'banners' => $banners,
             'categories' => $categories,

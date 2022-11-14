@@ -26,13 +26,13 @@ class ProductController extends Controller
     public function store(Request $request){
         $products = new Products();
 
-        $image = $request->file('file');
-        $avatarName = $image->getClientOriginalName();
-        $image->move(public_path('images'),$avatarName);
-        $imageUpload = new Image();
-        $imageUpload->image = $avatarName;
-        $imageUpload->save();
-        return response()->json(['success'=>$avatarName]);
+        // $image = $request->file('file');
+        // $avatarName = $image->getClientOriginalName();
+        // $image->move(public_path('images'),$avatarName);
+        // $imageUpload = new Image();
+        // $imageUpload->image = $avatarName;
+        // $imageUpload->save();
+        // return response()->json(['success'=>$avatarName]);
         
         if($request->hasFile("cover")){
             $file = $request->file("cover");
@@ -40,16 +40,16 @@ class ProductController extends Controller
             $file->move('uploads/cover/',$imageName);
             $products->cover = $imageName;
         }
-        // if($request->hasFile("images")){
-        //     $files = $request->file("images");
-        //     foreach($files as $file){
-        //         $imageName=time().'_'.$file->getClientOriginalName();
-        //         $request['products_id'] = $products->id;
-        //         $request['image'] = $imageName;
-        //         $file->move('uploads/images/', $imageName);
-        //         Image::create($request->all());
-        //     }
-        // }
+        if($request->hasFile("images")){
+            $files = $request->file("images");
+            foreach($files as $file){
+                $imageName=time().'_'.$file->getClientOriginalName();
+                $request['products_id'] = $products->id;
+                $request['image'] = $imageName;
+                $file->move('uploads/images/', $imageName);
+                Image::create($request->all());
+            }
+        }
         $products->title = $request->input('title');
         $products->price = $request->input('price');
         $products->discount = $request->input('discount');
