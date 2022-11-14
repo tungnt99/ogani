@@ -40,7 +40,12 @@ class IndexController extends Controller
 
 
     public function shop(Request $request) {
-        return view('frontend.pages.shop');
+        $categories = DB::select('SELECT * FROM categories');
+        $products = Products::with('category')->get();
+        return view('frontend.pages.shop')->with([
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 
     public function shopdetail() {
