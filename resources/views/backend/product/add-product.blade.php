@@ -46,11 +46,11 @@
                 </div>
                 <div class="form-group">
                     <label for="discount" class="form-label">Discount:</label>
-                    <input required type="number" class="form-control" name="discount" id="discount" >
+                    <input type="number" class="form-control" name="discount" id="discount" >
                 </div>
                 <div class="form-group">
                     <label for="description" class="form-label">Description: </label>
-                    <textarea required class="form-control" name="description" id="description"></textarea>
+                    <textarea class="form-control" name="description" id="description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="category" class="form-label">Category:</label>
@@ -62,12 +62,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="m-2">Cover Image</label>
+                    <label class="m-2"> Image</label>
                     <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="cover">
 
                 </div>
                 <div class="form-group">
-                    <label class="m-2">Images</label>
+                    <label class="m-2">Cover  cImages</label>
                     <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
                 </div>
 
