@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
+use App\Models\Banners;
+use Illuminate\Routing\Route;
 
 use Illuminate\Http\Request;
 
@@ -21,25 +24,32 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index() {
-        return view('frontend.pages.home');
+    public function index(Request $request) {
+        $banners = DB::select('SELECT * FROM banners');
+        $categories = DB::select('SELECT * FROM categories');
+
+        return view('frontend.pages.home')->with([
+            'banners' => $banners,
+            'categories' => $categories,
+        ]);
     }
 
-    public function shop() {
-        return view('frontend.pages.shop');
-    }
 
-    public function shopdetail() {
-        return view('frontend.pages.shop-detail');
-    }
+    // public function shop(Request $request) {
+    //     return view('frontend.pages.shop');
+    // }
 
-    public function cart() {
-        return view('frontend.pages.cart');
-    }
+    // public function shopdetail() {
+    //     return view('frontend.pages.shop-detail');
+    // }
 
-    public function checkout() {
-        return view('frontend.pages.checkout');
-    }
+    // public function cart() {
+    //     return view('frontend.pages.cart');
+    // }
+
+    // public function checkout() {
+    //     return view('frontend.pages.checkout');
+    // }
 
     // public function blog() {
     //     return view('frontend.pages.blog');
@@ -49,7 +59,7 @@ class IndexController extends Controller
     //     return view('frontend.pages.blog-detail');
     // }
 
-    public function contact() {
-        return view('frontend.pages.contact');
-    }
+    // public function contact() {
+    //     return view('frontend.pages.contact');
+    // }
 }

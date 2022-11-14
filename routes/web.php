@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ProductController;
 */
 
 
-Route::get('/', 'App\Http\Controllers\Admin\BannerController@home')-> name('home.index');
+Route::get('/', 'IndexController@index')-> name('home.index');
 
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 

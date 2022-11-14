@@ -59,6 +59,6 @@ class CategoryController extends Controller
         $categories = new Categories;
         $categories->name = $request->name;
         $categories->save();
-        return redirect()->route('category.index');
+        return view('backend.category.add-category');
       }
 }
