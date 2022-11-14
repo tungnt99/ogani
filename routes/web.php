@@ -149,3 +149,8 @@ Route::post('/post-contact', [
     'as' => 'post-contact',
     'uses' => 'App\Http\Controllers\Admin\ContactController@addContact'
 ]);
+
+
+// Image controller
+Route::get('dropzone/image','ImageController@index');
+Route::post('dropzone/store','ImageController@store');
