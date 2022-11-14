@@ -44,7 +44,8 @@ class BlogController extends Controller
        
         $blog->save();
         
-        return redirect()->route('blog.index')->with('success', 'Thêm bài viết mới');
+        return view('backend.blog.add-blog');
+
     }
     public function deleteBlog(Request $request){
         DB::table('blogs')->where('id', $request->id)->delete();
