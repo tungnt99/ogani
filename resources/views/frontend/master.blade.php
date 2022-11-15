@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ url('site') }}/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url('site') }}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url('site') }}/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url('site') }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ url('site') }}/css/style.css">
     <!-- DropZone -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
