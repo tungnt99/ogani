@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ProductController;
 
 
 Route::get('/', 'IndexController@index')-> name('home.index');
+Route::get('/product_details/{id}', 'IndexController@productview')-> name('productview');
 
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 

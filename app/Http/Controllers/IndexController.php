@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Models\Banners;
-use Illuminate\Routing\Route;
 use App\Models\Categories;
 use App\Models\Products;
+use Illuminate\Routing\Route;
 
 use Illuminate\Http\Request;
 
@@ -70,5 +70,10 @@ class IndexController extends Controller
 
     public function contact() {
         return view('frontend.pages.contact');
+    }
+    public function productview($id)
+    {
+        $products = Products::find($id);
+        return view('frontend.products.view',compact('products'));
     }
 }
