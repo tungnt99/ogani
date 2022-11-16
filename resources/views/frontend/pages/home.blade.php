@@ -103,8 +103,8 @@
                             <div class="featured__item">
                                 <div class="featured__item__pic set-bg" data-setbg="{{ asset('uploads/cover/'.$pro->cover) }}">
                                     <ul class="featured__item__pic__hover">
-                                        <li><a><i class="fa fa-heart"></i></a></li>
-                                        <li><a><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><button><i class="fa fa-heart"></i></button></li>
+                                        <li><button><i class="fa fa-shopping-cart"></i></button></li>
                                     </ul>
                                 </div>
                                 <div class="featured__item__text">
