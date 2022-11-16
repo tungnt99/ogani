@@ -24,21 +24,23 @@ class ProductController extends Controller
         ]);
     }
     public function store(Request $request){
-        $products = new Products();
 
-        // $image = $request->file('file');
-        // $avatarName = $image->getClientOriginalName();
-        // $image->move(public_path('images'),$avatarName);
-        // $imageUpload = new Image();
-        // $imageUpload->image = $avatarName;
-        // $imageUpload->save();
-        // return response()->json(['success'=>$avatarName]);
+
         
         if($request->hasFile("cover")){
             $file = $request->file("cover");
             $imageName=time().'_'.$file->getClientOriginalName();
             $file->move('uploads/cover/',$imageName);
-            $products->cover = $imageName;
+            $products = new Products([
+                "title" => $request->title,
+                "price" => $request->price,
+                "discount" => $request->discount,
+                "description" => $request->description,
+                "category_id" => $request->category_id,
+                "cover" => $imageName
+            ]);
+            $products->save();
+
         }
         if($request->hasFile("images")){
             $files = $request->file("images");
@@ -50,14 +52,9 @@ class ProductController extends Controller
                 Image::create($request->all());
             }
         }
-        $products->title = $request->input('title');
-        $products->price = $request->input('price');
-        $products->discount = $request->input('discount');
-        $products->description = $request->input('description');
-        $products->category_id = $request->input('category_id');
-         
-        $products->save();
-        return redirect()->route('product.index')->with('success', 'Product Added Successfully');
+
+        return redirect("/admin/product/create");
+      
         
     }
     public function deleteProduct(Request $request){
