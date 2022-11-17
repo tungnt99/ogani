@@ -99,20 +99,21 @@
             <div class="row featured__filter">
                 @foreach ($products as $pro)
                     <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                        <a href="{{ url('product_details/'.$pro->id) }}">
-                            <div class="featured__item">
-                                <div class="featured__item__pic set-bg" data-setbg="{{ asset('uploads/cover/'.$pro->cover) }}">
-                                    <ul class="featured__item__pic__hover">
-                                        <li><button><i class="fa fa-heart"></i></button></li>
-                                        <li><button><i class="fa fa-shopping-cart"></i></button></li>
-                                    </ul>
-                                </div>
-                                <div class="featured__item__text">
-                                    <h6>{{ $pro->title }}</h6> 
-                                    <h5>{{ $pro->price }}</h5>
-                                </div>
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="{{ asset('uploads/cover/'.$pro->cover) }}">
+                                <ul class="featured__item__pic__hover">
+                                    <li><button><i class="fa fa-heart"></i></button></li>
+                                    <li><button><i class="fa fa-shopping-cart"></i></button></li>
+                                </ul>
                             </div>
-                        </a>
+                            <a href="{{ url('product_details/'.$pro->id) }}">
+                                <div class="product-price-discount">
+                                    <h6>{{ $pro->title }}</h6> 
+                                    <span>${{ $pro->price }}</span>
+                                    <span class="line-through">${{ $pro->discount }}</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

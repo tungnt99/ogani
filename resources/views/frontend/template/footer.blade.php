@@ -73,4 +73,5 @@
         </div>
     </div>
 </footer>
+@yield('scripts')
 <!-- Footer Section End -->

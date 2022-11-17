@@ -6,6 +6,8 @@ use App\Models\Banners;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Routing\Route;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -53,7 +55,8 @@ class IndexController extends Controller
     }
 
     public function cart() {
-        return view('frontend.pages.cart');
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.pages.cart', compact('cartItems'));
     }
 
     public function checkout() {

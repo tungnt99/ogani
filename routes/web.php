@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
-
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +23,6 @@ Route::get('/product_details/{id}', 'IndexController@productview')-> name('produ
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 
 Route::get('/shopdetail', 'IndexController@shopdetail')-> name('home.shop-detail');
-
-Route::get('/cart', 'IndexController@cart')-> name('home.cart');
 
 Route::get('/checkout', 'IndexController@checkout')-> name('home.checkout');
 
@@ -155,3 +153,9 @@ Route::post('/post-contact', [
 // Image controller
 Route::get('dropzone/image','ImageController@index');
 Route::post('dropzone/store','ImageController@store');
+
+Route::post('addToCart', 'App\Http\Controllers\Frontend\CartController@addToCart')->name('addToCart');
+Route::post('deleteCart', 'App\Http\Controllers\Frontend\CartController@deleteCart')->name('deleteCart');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', 'IndexController@cart')-> name('home.cart');
+});
