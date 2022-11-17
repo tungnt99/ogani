@@ -21,14 +21,11 @@
     </script>
 
 @section('main')
+
 <div class="container">
-      <h2>Laravel 6 Upload Image Using Dropzone Tutorial</h2><br/>
-      <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data"
-          class="dropzone" id="dropzone">
-        @csrf
-    </form>
-</div>
-<div class="container">
+    @if(session('status'))
+        <h4 class="alert alert-success">{{ session('status') }}</h4>
+    @endif
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h2 class="text-center">Add Product</h2>
