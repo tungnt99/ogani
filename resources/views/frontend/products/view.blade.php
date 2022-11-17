@@ -3,54 +3,18 @@
     <div class="pd-wrap">
 		<div class="container">
 	        <div class="heading-section">
-	            <h2>{{ $products->title }}</h2>
+	            <h2>{{ $products->title ?? 'null'}}</h2>
 	        </div>
-	        <div class="row">
+	        <div class="row product_data">
 	        	<div class="col-md-6">
 	        		<div id="slider" class="owl-carousel product-slider">
 						<div class="item">
 						  	<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
 						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
 					</div>
 					<div id="thumb" class="owl-carousel product-thumb">
 						<div class="item">
 						  	<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-						</div>
-						<div class="item">
-						  	<img src="https://i.ytimg.com/vi/PJ_zomNMK_s/maxresdefault.jpg" />
-						</div>
-						<div class="item">
-						  	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
 						</div>
 					</div>
 	        	</div>
@@ -74,19 +38,20 @@
 								<span>3 Reviews</span>
 							</div>
 		        			<div class="product-price-discount">
-                                <span>{{ $products->price }}$</span>
-                                <span class="line-through">{{ $products->discount }}$</span>
+                                <span>{{ $products->price ?? 'null'}}$</span>
+                                <span class="line-through">{{ $products->discount ?? 'null'}}$</span>
                             </div>
 		        		</div>
-	        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	        			<p>{{ $products->description ?? 'null'}}</p>
 	        			<div class="product-count">
+							<input type="hidden" value="{{ $products->id ?? 'null'}}" class="prod_id">
 	        				<label for="size">Quantity</label>
-	        				<form action="#" class="display-flex">
-							    <div class="qtyminus">-</div>
-							    <input type="text" name="quantity" value="1" class="qty">
-							    <div class="qtyplus">+</div>
-							</form>
-							<a href="#" class="round-black-btn">Add to Cart</a>
+							<div class="quantity">
+								<div class="pro-qty">
+									<input type="text" value="1" class="qty-input">
+								</div>
+							</div>
+							<button class="round-black-btn addToCartBtn">Add to Cart</button>
 	        			</div>
 	        		</div>
 	        	</div>
@@ -102,7 +67,7 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-				  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+						{{ $products->description ?? 'null'}}
 				  	</div>
 				  	<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 				  		<div class="review-heading">REVIEWS</div>
@@ -150,4 +115,33 @@
 			<div style="text-align:center;font-size:14px;padding-bottom:20px;">Get free icon packs for your next project at <a href="http://iiicons.in/" target="_blank" style="color:#ff5e63;font-weight:bold;">www.iiicons.in</a></div>
 		</div>
 	</div>
+@endsection
+
+@section('scripts')
+	<script>
+		$(document).ready(function () {
+			$('.addToCartBtn').click(function (e) {
+				e.preventDefault();
+				var product_id = $(this).closest('.product_data').find('.prod_id').val();
+				var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+				
+				$.ajax({
+					type: "POST",
+					url: "{{route('addToCart')}}",
+					data: {
+						'product_id': product_id,
+						'product_qty': product_qty,
+					},
+					success: function (response) {
+						swal(response.status);
+					}
+				});
+			})
+		});
+	</script>
 @endsection
