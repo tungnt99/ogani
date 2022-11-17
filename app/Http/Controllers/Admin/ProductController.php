@@ -53,7 +53,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect("/admin/product/create");
+        return redirect()->back()->with('status', 'Product successfully');
       
         
     }
