@@ -24,9 +24,6 @@ class ProductController extends Controller
         ]);
     }
     public function store(Request $request){
-
-
-        
         if($request->hasFile("cover")){
             $file = $request->file("cover");
             $imageName=time().'_'.$file->getClientOriginalName();
@@ -66,20 +63,19 @@ class ProductController extends Controller
         $products = DB::select('SELECT * FROM products');
 
         $id = 0;
-        $title = $price = $discount = $description = $category_id = '';
+        $title = $price = $discount = $description = $category_id = $cover ='';
         if(isset($request->id) && $request->id>0){
             $id = $request->id;
             $std = DB::table('products')
                 ->where('id', $id)
                 ->get();
-
                 if($std != null && count($std) > 0){
                     $title = $std[0]->title;
                     $price = $std[0]->price;
                     $discount = $std[0]->discount;
                     $description = $std[0]->description;
                     $category_id = $std[0]->category_id;
-
+                    $cover = $std[0]->cover;
                 }
         }
         // dd('asdsd');
@@ -91,7 +87,9 @@ class ProductController extends Controller
             'description' => $description,
             'category_id' => $category_id,
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
+            'cover' => $cover
+
         ]);
     }
     
@@ -127,6 +125,12 @@ class ProductController extends Controller
         $discount = $request->discount;
         $description = $request->description;
         $category_id = $request->category_id;
+
+       if($request->hasFile("cover")){
+        $file = $request->file("cover");
+        $imageUpdate = time().'_'.$file->getClientOriginalName();
+        $file->move('uploads/cover/', $imageUpdate);
+       }
         if($id > 0){
             $products = DB::table('products')->where('id', $id)
             ->update([
@@ -134,7 +138,8 @@ class ProductController extends Controller
                 'price' => $price,
                 'discount' => $discount,
                 'description' => $description,
-                'category_id' => $category_id
+                'category_id' => $category_id,
+                'cover' => $imageUpdate
             ]);
         }
         return redirect('/admin/product');
