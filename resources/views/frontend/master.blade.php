@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+
     <link rel="stylesheet" href="{{ url('site') }}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url('site') }}/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url('site') }}/css/elegant-icons.css" type="text/css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="{{ url('site') }}/css/style.css">
     <!-- DropZone -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

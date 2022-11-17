@@ -141,10 +141,10 @@
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name" name="fullname">
+                        <input type="text" required placeholder="Your name" name="fullname">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email" name="email">
+                        <input type="text" required placeholder="Your Email" name="email">
                     </div>
                    
                     <div class="col-lg-12 text-center">
