@@ -41,7 +41,7 @@
                   <td>{{ $item->discount }}</td>
                   <td>{{ $item->description }}</td>
                   <td>{{ $item->category->name }}</td>
-                  <td><img src={{ asset('uploads/cover/'.$item->cover) }} class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
+                  <td><img src="{{ asset('uploads/cover/'.$item->cover) }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
                   <td><a href="{{ 'edit-product' }}?id={{ $item->id }}" class="btn btn-outline-primary">Update</a></td>
                   <td>
                     <button onclick="deleteProduct({{ $item->id }})" class="btn btn-warning">Delete</button>
