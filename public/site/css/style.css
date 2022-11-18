@@ -512,7 +512,7 @@ ol {
 	margin-right: 0;
 }
 
-.header__cart ul li a {
+.header__cart ul li {
 	position: relative;
 }
 
@@ -521,7 +521,7 @@ ol {
 	color: #1c1c1c;
 }
 
-.header__cart ul li a span {
+.header__cart ul li span {
 	height: 13px;
 	width: 13px;
 	background: #7fad39;
@@ -533,8 +533,9 @@ ol {
 	display: inline-block;
 	border-radius: 50%;
 	position: absolute;
-	top: 0;
-	right: -12px;
+	top: -5px;
+	right: -11px;
+	display: none;
 }
 
 .header__cart .header__cart__price {
@@ -1982,21 +1983,19 @@ ol {
 	width: 225px;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty {
-	width: 120px;
-	height: 40px;
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .product-qty input {
+	color: #1c1c1c;
+	width: 30%;
+	text-align: center;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty input {
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .product-qty input::placeholder {
 	color: #1c1c1c;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty input::placeholder {
-	color: #1c1c1c;
-}
-
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .qtybtn {
-	width: 15px;
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .product-qty .qtybtn {
+	width: 30px;
+	border: none;
 }
 
 .primary-btn.cart-btn {
@@ -2261,6 +2260,19 @@ ol {
 	font-size: 18px;
 	color: #1c1c1c;
 	font-weight: 700;
+	border-top: 1px solid #e1e1e1;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.checkout__order .checkout__order__subtotal span {
+	float: right;
+}
+
+.checkout__order .checkout__order__shipping {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
 	border-bottom: 1px solid #e1e1e1;
 	border-top: 1px solid #e1e1e1;
 	padding-bottom: 15px;
@@ -2268,7 +2280,7 @@ ol {
 	padding-top: 15px;
 }
 
-.checkout__order .checkout__order__subtotal span {
+.checkout__order .checkout__order__shipping span {
 	float: right;
 }
 

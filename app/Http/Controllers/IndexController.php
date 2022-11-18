@@ -66,13 +66,8 @@ class IndexController extends Controller
     }
 
     public function checkout() {
-        $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->get();
-
-        return view('frontend.pages.checkout')->with([
-            'categories' => $categories,
-            'products' => $products,
-        ]);
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.pages.checkout', compact('cartItems'));
     }
 
     public function blog() {
