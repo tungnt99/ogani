@@ -106,19 +106,6 @@
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
                                 <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -134,26 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Ship to a different address?
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
                                 <input type="text"
@@ -165,21 +133,21 @@
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
-                                    <li>Vegetable’s Package <span>$75.99</span></li>
-                                    <li>Fresh Vegetable <span>$151.99</span></li>
-                                    <li>Organic Bananas <span>$53.99</span></li>
+                                    @php
+                                        $total = 0;
+                                        $taxRate = 10.00;
+                                    @endphp
+                                    @foreach ($cartItems as $item)
+                                        <li>{{ $item->products->title }}<span>${{ $item->products->price * $item->prod_qty }}</span></li>
+                                        @php
+                                            $total += $item->products->price * $item->prod_qty;
+                                        @endphp
+                                    @endforeach
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <div class="checkout__order__subtotal">Subtotal <span>${{ $total }}</span></div>
+                                <div class="checkout__order__shipping">Shipping <span>${{ $taxRate}}</span></div>
+                                <div class="checkout__order__total">Total <span>${{ $total +  $taxRate}}</span></div>
+                                
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment

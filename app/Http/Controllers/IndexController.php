@@ -60,7 +60,8 @@ class IndexController extends Controller
     }
 
     public function checkout() {
-        return view('frontend.pages.checkout');
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.pages.checkout', compact('cartItems'));
     }
 
     public function blog() {

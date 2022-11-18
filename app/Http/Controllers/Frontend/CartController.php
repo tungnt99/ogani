@@ -67,12 +67,12 @@ class CartController extends Controller
         if(Auth::check())
         {
             if(Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->exists())
-                {
-                    $cart = Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
-                    $cart->prod_qty = $product_qty;
-                    $cart->update();
-                    return response()->json(['status' => "Product deleted successful"]);
-                }
+            {
+                $cartItem = Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
+                $cartItem->prod_qty = $product_qty;
+                $cartItem->update();
+                return response()->json(['status' => "Product deleted successful"]);
+            }
         }
     }
 }

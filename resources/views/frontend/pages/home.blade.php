@@ -103,7 +103,11 @@
                             <div class="featured__item__pic set-bg" data-setbg="{{ asset('uploads/cover/'.$pro->cover) }}">
                                 <ul class="featured__item__pic__hover">
                                     <li><button><i class="fa fa-heart"></i></button></li>
-                                    <li><button><i class="fa fa-shopping-cart"></i></button></li>
+                                    <li>
+                                        <button class="add">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <a href="{{ url('product_details/'.$pro->id) }}">

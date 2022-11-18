@@ -74,7 +74,7 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
-            <div class="row product_data">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
@@ -88,38 +88,41 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $total = 0;
+                                    $taxRate = 10.00;
+                                @endphp
                                 @foreach ($cartItems as $item)
-                                    <tr>
+                                    <tr class="product_data">
                                         <td class="shoping__cart__item">
                                             <div class="shoping__cart__item--img">
                                                 <img src="{{ asset('uploads/cover/'.$item->products->cover) }}" alt="">
                                             </div>
                                             <h5>{{ $item->products->title }}</h5>
                                         </td>
-                                        @php
-                                            $total = 0;
-                                        @endphp
                                         <td class="shoping__cart__price">
                                             ${{ $item->products->price }}
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <input type="hidden" value="{{ $item->products->id }}" class="prod_id">
                                             <div class="quantity">
-                                                <div class="pro-qty">
+                                                <div class="product-qty">
+                                                    <button class="dec-btn qtybtn changeQuantity">-</button>
                                                     <input type="text" value="{{ $item->prod_qty }}" class="qty-input">
+                                                    <button class="inc-btn qtybtn changeQuantity">+</button>
                                                 </div>
                                             </div>
                                         </td>
-                                        @php
-                                            $total += $item->products->price * $item->prod_qty;
-                                        @endphp
                                         <td class="shoping__cart__total">
-                                            ${{ $total }}
+                                            ${{ $item->products->price * $item->prod_qty }}
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <button class="delete-cart-item"><span class="icon_close"></span></button>
                                         </td>
                                     </tr>
+                                    @php
+                                        $total += $item->products->price * $item->prod_qty;
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -149,8 +152,9 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>${{ $total }}</span></li>
+                            <li>Subtotal <span>${{ $total}}</span></li>
+                            <li>Shipping <span>${{ $taxRate}}</span></li>
+                            <li>Total <span>${{ $total +  $taxRate}}</span></li>
                         </ul>
                         <a href="{{ route('home.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
