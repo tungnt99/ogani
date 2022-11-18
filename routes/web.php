@@ -156,6 +156,7 @@ Route::post('dropzone/store','ImageController@store');
 
 Route::post('addToCart', 'App\Http\Controllers\Frontend\CartController@addToCart')->name('addToCart');
 Route::post('deleteCart', 'App\Http\Controllers\Frontend\CartController@deleteCart')->name('deleteCart');
+Route::post('updateCart', 'App\Http\Controllers\Frontend\CartController@updateCart')->name('updateCart');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', 'IndexController@cart')-> name('home.cart');
 });

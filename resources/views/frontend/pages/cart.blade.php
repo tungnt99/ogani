@@ -96,6 +96,9 @@
                                             </div>
                                             <h5>{{ $item->products->title }}</h5>
                                         </td>
+                                        @php
+                                            $total = 0;
+                                        @endphp
                                         <td class="shoping__cart__price">
                                             ${{ $item->products->price }}
                                         </td>
@@ -103,12 +106,15 @@
                                             <input type="hidden" value="{{ $item->products->id }}" class="prod_id">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value="{{ $item->prod_qty }}">
+                                                    <input type="text" value="{{ $item->prod_qty }}" class="qty-input">
                                                 </div>
                                             </div>
                                         </td>
+                                        @php
+                                            $total += $item->products->price * $item->prod_qty;
+                                        @endphp
                                         <td class="shoping__cart__total">
-                                            $110.00
+                                            ${{ $total }}
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <button class="delete-cart-item"><span class="icon_close"></span></button>
@@ -144,7 +150,7 @@
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Total <span>${{ $total }}</span></li>
                         </ul>
                         <a href="{{ route('home.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
