@@ -32,9 +32,10 @@
                             <label for="category" class="form-label">Category:</label>
             
                             <select name="category_id" class="form-control" id="category" value="{{ $category_id }}">
-                                    @foreach($categories as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
+                                
+                                @foreach($categories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -43,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Cover Image:</label>
-                            <input  type="file" class="form-control m-2" name="cover" id="input-file-now-custom-3">
+                            <input  type="file" class="form-control m-2" name="cover" id="input-file-now-custom-3" value="{{$cover}}">
                         </div>
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Images:</label>

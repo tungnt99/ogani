@@ -50,8 +50,14 @@ class IndexController extends Controller
         ]);
     }
 
-    public function shopdetail() {
-        return view('frontend.pages.shop-detail');
+    public function shopdetail(Request $request) {
+        $categories = DB::select('SELECT * FROM categories');
+        $products = Products::with('category')->get();
+
+        return view('frontend.pages.shop-detail')->with([
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 
     public function cart() {
@@ -60,15 +66,33 @@ class IndexController extends Controller
     }
 
     public function checkout() {
-        return view('frontend.pages.checkout');
+        $categories = DB::select('SELECT * FROM categories');
+        $products = Products::with('category')->get();
+
+        return view('frontend.pages.checkout')->with([
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 
     public function blog() {
-        return view('frontend.pages.blog');
+        $categories = DB::select('SELECT * FROM categories');
+        $blogs = DB::select('SELECT * FROM blogs');
+        return view('frontend.pages.blog')->with([
+            'categories' => $categories,
+            'blogs' => $blogs
+
+        ]);
     }
 
     public function blogdetail() {
-        return view('frontend.pages.blog-detail');
+        $categories = DB::select('SELECT * FROM categories');
+        $products = Products::with('category')->get();
+
+        return view('frontend.pages.blog-detail')->with([
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 
     public function contact() {

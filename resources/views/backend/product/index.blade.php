@@ -27,7 +27,7 @@
             <th>Discount</th>
             <th>Description</th>
             <th>Category</th>
-            <th>Cover</th>
+            <th>Image</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
