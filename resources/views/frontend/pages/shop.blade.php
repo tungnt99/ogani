@@ -2,6 +2,9 @@
 @section('main')
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
+        @if(session('status'))
+            <h4 class="alert alert-success">{{ session('status') }}</h4>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">

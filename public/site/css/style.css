@@ -2236,12 +2236,19 @@ ol {
 	margin-bottom: 10px;
 }
 
+.checkout__order .checkout__order__products ul {
+	display: flex;
+	justify-content: space-between;
+}
+
 .checkout__order .checkout__order__products span {
 	float: right;
 }
 
 .checkout__order ul {
 	margin-bottom: 12px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .checkout__order ul li {

@@ -151,11 +151,15 @@
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
-                        <ul>
-                            <li>Subtotal <span>${{ $total}}</span></li>
-                            <li>Shipping <span>${{ $taxRate}}</span></li>
-                            <li>Total <span>${{ $total +  $taxRate}}</span></li>
-                        </ul>
+                        <div id="totalajaxcall">
+                            <div class="totalpricingload">
+                                <ul>
+                                    <li>Subtotal <span>${{ $total}}</span></li>
+                                    <li>Shipping <span>${{ $taxRate}}</span></li>
+                                    <li>Total <span>${{ $total +  $taxRate}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
                         <a href="{{ route('home.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>

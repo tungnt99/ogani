@@ -161,4 +161,5 @@ Route::post('deleteCart', 'App\Http\Controllers\Frontend\CartController@deleteCa
 Route::post('updateCart', 'App\Http\Controllers\Frontend\CartController@updateCart')->name('updateCart');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', 'IndexController@cart')-> name('home.cart');
+    Route::post('/place-order', 'App\Http\Controllers\Frontend\CheckoutController@placeorder')->name('place-order');
 });
