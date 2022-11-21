@@ -31,7 +31,7 @@ class IndexController extends Controller
     public function index(Request $request) {
         $banners = DB::select('SELECT * FROM banners');
         $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->get();
+        $products = Products::with('category')->take(12)->get();
 
         return view('frontend.pages.home')->with([
             'banners' => $banners,
@@ -39,6 +39,7 @@ class IndexController extends Controller
             'products' => $products,
         ]);
     }
+
 
 
     public function shop(Request $request) {
@@ -76,7 +77,6 @@ class IndexController extends Controller
         return view('frontend.pages.blog')->with([
             'categories' => $categories,
             'blogs' => $blogs
-
         ]);
     }
 
@@ -97,5 +97,19 @@ class IndexController extends Controller
     {
         $products = Products::find($id);
         return view('frontend.products.view',compact('products'));
+    }
+
+    public function viewcategory($id)
+    {
+        
+        if(Categories::where("id", $id)->exists()){
+            $category = Categories::where("id", $id)->first();
+            $products = Products::where("category_id", $category->id)->get();
+            // dd($products);
+            return view('frontend.pages.product-cate', compact("category", 'products'));
+        }else{
+            return redirect('/')->with('status', 'id doesnot exists');
+        }
+
     }
 }

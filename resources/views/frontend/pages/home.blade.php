@@ -12,7 +12,7 @@
                         </div>
                         <ul>
                             @foreach ($categories as $item)
-                                <li><a href="#">{{$item->name}}</a></li>
+                                <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
 
                             @endforeach
                             
@@ -85,15 +85,7 @@
                     <div class="section-title">
                         <h2>Featured Product</h2>
                     </div>
-                    <div class="featured__controls">
-                        <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".oranges">Oranges</li>
-                            <li data-filter=".fresh-meat">Fresh Meat</li>
-                            <li data-filter=".vegetables">Vegetables</li>
-                            <li data-filter=".fastfood">Fastfood</li>
-                        </ul>
-                    </div>
+                   
                 </div>
             </div>
             <div class="row featured__filter">

@@ -19,16 +19,17 @@ use App\Http\Controllers\Admin\CartController;
 
 Route::get('/', 'IndexController@index')-> name('home.index');
 Route::get('/product_details/{id}', 'IndexController@productview')-> name('productview');
-
+Route::get('/view-category/{id}', 'IndexController@viewcategory')-> name('home.viewcategory');
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 
 Route::get('/shopdetail', 'IndexController@shopdetail')-> name('home.shop-detail');
 
 Route::get('/checkout', 'IndexController@checkout')-> name('home.checkout');
 
-Route::get('/blog', 'App\Http\Controllers\Admin\BlogController@blog')-> name('home.blog');
 
-Route::get('/blogdetail', 'App\Http\Controllers\Admin\BlogController@blogdetail')-> name('home.blog-detail');
+Route::get('/blog', 'IndexController@blog')-> name('home.blog');
+
+Route::get('/blogdetail', 'IndexController@blogdetail')-> name('home.blog-detail');
 
 Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 
@@ -123,6 +124,7 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'update-product',
         'uses' => 'App\Http\Controllers\Admin\ProductController@updateProduct',
     ]);
+    
     Route::get('/edit-product', [
         'as' => 'edit-product',
         'uses' => 'App\Http\Controllers\Admin\ProductController@editProduct',
