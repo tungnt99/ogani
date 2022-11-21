@@ -11,9 +11,8 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            @foreach ($categories as $item)
+                            @foreach ($cartItems as $item)
                                 <li><a href="#">{{$item->name}}</a></li>
-
                             @endforeach
                         </ul>
                     </div>
@@ -75,63 +74,62 @@
             </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form action="{{ url('place-order') }}" method="POST">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <label>Full Name<span>*</span></label>
+                                        <input type="text" name="name">
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
+                                <label>Address<span>*</span></label>
+                                <input type="text" name="address" placeholder="Street Address" class="checkout__input__add">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <label>Phone<span>*</span></label>
+                                        <input type="text" name="phone_number">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <label>Email<span>*</span></label>
+                                        <input type="text" name="email">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
+                                <label>Order notes<span>*</span></label>
+                                <input type="text" name="note"
                                     placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
-                                <div class="checkout__order__products">Products <span>Total</span></div>
+                                <div class="checkout__order__products">
+                                    <ul>
+                                        <li>Products</li>
+                                        <li>Quantity</li>
+                                        <li>Total</li>
+                                    </ul>
+                                </div>
                                 <ul>
                                     @php
                                         $total = 0;
                                         $taxRate = 10.00;
                                     @endphp
                                     @foreach ($cartItems as $item)
-                                        <li>{{ $item->products->title }}<span>${{ $item->products->price * $item->prod_qty }}</span></li>
+                                        <li>{{ $item->products->title }}</li>
+                                        <li>{{ $item->prod_qty }}</li>
+                                        <li>${{ $item->products->price * $item->prod_qty }}</li>
                                         @php
                                             $total += $item->products->price * $item->prod_qty;
                                         @endphp

@@ -54,6 +54,7 @@ $(document).ready(function () {
 
     $('.changeQuantity').click(function (e) {
         e.preventDefault();
+        var thisClick = $(this);
         var prod_id = $(this).closest('.product_data').find('.prod_id').val();
         var qty = $(this).closest('.product_data').find('.qty-input').val();
         $.ajaxSetup({
@@ -69,8 +70,8 @@ $(document).ready(function () {
                 'prod_qty': qty,
             },
             success: function (response) {
-                window.location.reload();
-                // console.log(response);
+                thisClick.closest('.product_data').find('.shoping__cart__total').text(response.gtprice);
+                $('#totalajaxcall').load(location.href + ' .totalpricingload');
             }
         });
     });
