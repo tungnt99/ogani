@@ -93,29 +93,7 @@ class ProductController extends Controller
         ]);
     }
     
-    public function deleteCover($id){
-        $products = DB::select('SELECT * FROM products');
 
-        $cover = Products::findOrFail($id)->cover;
-        if(File::exists("cover/".$cover)){
-            File::delete("cover/".$cover);
-        }
-        return back()->with('products', $products);
-    }
-    public function deleteImage($id){
-        $products = DB::select('SELECT * FROM products');
-
-        $images=Image::findOrFail($id);
-        if (File::exists("images/".$images->image)) {
-           File::delete("images/".$images->image);
-       }
-
-       Image::find($id)->delete();
-       return back()->with([
-        'images'=> $images,
-        'products'=> $products
-        ]);
-    }
 
     public function updateProduct(Request $request){
         $products = Products::all();
