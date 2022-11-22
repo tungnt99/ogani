@@ -18,7 +18,7 @@
 <div class="container" style="margin-top: 50px;">
   <h3 class="text-center text-danger"><b>Laravel CRUD With Multiple Image Upload</b> </h3>
 
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
           <tr>
             <th>ID</th>
@@ -35,7 +35,7 @@
         <tbody>
           @foreach ($products as $item)
             <tr>
-                  <th scope="row">{{ $item->id }}</th>
+                  <th scope="row">{{ $index++ }}</th>
                   <td>{{ $item->title }}</td>
                   <td>{{ $item->price }}</td>
                   <td>{{ $item->discount }}</td>
@@ -53,6 +53,10 @@
 
         </tbody>
       </table>
+      <div class="paginate-products d-flex justify-content-center">
+        {{ $products->links() }}
+
+      </div>
 </div>
 @endsection
 

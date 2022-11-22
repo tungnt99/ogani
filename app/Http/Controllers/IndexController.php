@@ -31,7 +31,7 @@ class IndexController extends Controller
     public function index(Request $request) {
         $banners = DB::select('SELECT * FROM banners');
         $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->take(12)->get();
+        $products = Products::with('category')->paginate(12);
 
         return view('frontend.pages.home')->with([
             'banners' => $banners,
@@ -114,7 +114,7 @@ class IndexController extends Controller
             $categories = DB::select('SELECT * FROM categories');
 
             $category = Categories::where("id", $id)->first();
-            $products = Products::where("category_id", $category->id)->get();
+            $products = Products::where("category_id", $category->id)->paginate(6);
             // dd($products);
             return view('frontend.pages.product-cate', compact("category", 'products', 'categories'));
         }else{
