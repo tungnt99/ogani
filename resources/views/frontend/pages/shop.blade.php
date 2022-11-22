@@ -163,29 +163,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="sidebar__item">
-                            <div class="latest-product__text">
-                                <h4>Latest Products</h4>
-                                <div class="latest-product__slider owl-carousel">
-                                    <div class="latest-prdouct__slider__item">
-                                        @foreach($products as $item)
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="{{ asset('uploads/cover/'.$item->cover) }}" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>{{ $item->title }}</h6>
-                                                    <span>${{ $item->discount }}</span>
-                                                </div>
-                                            </a>
-
-                                        @endforeach
-                                       
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -233,7 +211,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
+                                    <h6><span>{{$count}}</span> Products found</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -261,16 +239,13 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
+
                       
                     </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
+                        <div class="paginate-products d-flex justify-content-center">
+                            {{ $products->links() }}
+                        </div>
                 </div>
             </div>
         </div>
