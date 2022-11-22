@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
         'banner' => 'App\Http\Controllers\Admin\BannerController',
         'account' => 'App\Http\Controllers\Admin\AccountController',
         'blog' => 'App\Http\Controllers\Admin\BlogController',
-        'order' => 'OrderController',
+        'order' => 'App\Http\Controllers\Admin\OrderController',
         'feedback'=> 'App\Http\Controllers\Admin\ContactController',
     ]);
     Route::post('/delete-user', [
@@ -137,6 +137,11 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'deleteimage',
         'uses' => 'App\Http\Controllers\Admin\ProductController@deleteImage',
     ]);
+    //Orde
+    Route::get('view-order/{id}', [
+        'as' => 'view-order/{id}',
+        'uses' => 'App\Http\Controllers\Admin\OrderController@view',
+    ]);
 });
 
 
@@ -159,6 +164,7 @@ Route::post('dropzone/store','ImageController@store');
 Route::post('addToCart', 'App\Http\Controllers\Frontend\CartController@addToCart')->name('addToCart');
 Route::post('deleteCart', 'App\Http\Controllers\Frontend\CartController@deleteCart')->name('deleteCart');
 Route::post('updateCart', 'App\Http\Controllers\Frontend\CartController@updateCart')->name('updateCart');
+Route::get('load-cart-data', 'App\Http\Controllers\Frontend\CartController@loadCart')->name('load-cart-data');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', 'IndexController@cart')-> name('home.cart');
     Route::post('/place-order', 'App\Http\Controllers\Frontend\CheckoutController@placeorder')->name('place-order');

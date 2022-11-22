@@ -535,7 +535,7 @@ ol {
 	position: absolute;
 	top: -5px;
 	right: -11px;
-	display: none;
+	/* display: none; */
 }
 
 .header__cart .header__cart__price {
@@ -2253,7 +2253,7 @@ ol {
 	float: right;
 }
 
-.checkout__order ul {
+.checkout__order ul ul.item {
 	margin-bottom: 12px;
 	display: flex;
 	justify-content: space-between;

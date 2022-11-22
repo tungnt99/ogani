@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone_number', 20);
             $table->string('address', 150);
             $table->text('note');
+            $table->string('total_price');
             $table->rememberToken();
             $table->timestamps();
         });

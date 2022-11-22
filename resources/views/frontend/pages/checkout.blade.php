@@ -127,9 +127,11 @@
                                         $taxRate = 10.00;
                                     @endphp
                                     @foreach ($cartItems as $item)
-                                        <li>{{ $item->products->title }}</li>
-                                        <li>{{ $item->prod_qty }}</li>
-                                        <li>${{ $item->products->price * $item->prod_qty }}</li>
+                                        <ul class="item">
+                                            <li>{{ $item->products->title }}</li>
+                                            <li>{{ $item->prod_qty }}</li>
+                                            <li>${{ $item->products->price * $item->prod_qty }}</li>
+                                        </ul>
                                         @php
                                             $total += $item->products->price * $item->prod_qty;
                                         @endphp
