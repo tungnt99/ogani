@@ -113,6 +113,9 @@
                     </div>
                 @endforeach
             </div>
+            <div class="paginate-products d-flex justify-content-center">
+                {{ $products->links() }}
+            </div>
         </div>
     </section>
     <!-- Featured Section End -->
