@@ -762,6 +762,8 @@ ol {
 .categories__item {
 	height: 270px;
 	position: relative;
+	border: 0.5px solid #ccc;
+
 }
 
 .categories__item h5 {
@@ -862,6 +864,8 @@ ol {
 
 .featured__item {
 	margin-bottom: 50px;
+	border: 0.5px solid #ccc;
+
 }
 
 .featured__item .product-price-discount {
@@ -1281,7 +1285,9 @@ ol {
 .product__discount {
 	padding-bottom: 50px;
 }
-
+.product__discount__item{
+	border: 0.5px solid #ccc;
+}
 .product__discount__title {
 	text-align: left;
 	margin-bottom: 65px;
@@ -1548,6 +1554,8 @@ ol {
 
 .product__item {
 	margin-bottom: 50px;
+	border: 0.5px solid #ccc;
+
 }
 
 .product__item:hover .product__item__pic .product__item__pic__hover {
