@@ -44,10 +44,13 @@ class IndexController extends Controller
 
     public function shop(Request $request) {
         $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->get();
+        $products = Products::with('category')->paginate(9);
+
+        $count = DB::table('products')->count();
         return view('frontend.pages.shop')->with([
             'categories' => $categories,
             'products' => $products,
+            'count' => $count,
         ]);
     }
 

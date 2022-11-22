@@ -13,8 +13,16 @@ use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
     public function index(Request $request){
-        $products = Products::with('category')->get();
-        return view('backend.product.index')->with('products', $products);
+        $products = Products::with('category')->paginate(10);
+        $page = 1;
+        if(isset($request->page)){
+            $page = $request->page;
+        }
+        $index = ($page-1)*10;
+        return view('backend.product.index')->with([
+            'products'=> $products,
+            'index'=>$index
+        ]);
         
     }
     public function create(Request $request){
