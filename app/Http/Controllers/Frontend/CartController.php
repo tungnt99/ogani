@@ -5,6 +5,7 @@ use DB;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use App\Models\Products;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -82,5 +83,11 @@ class CartController extends Controller
                 ]);
             }
         }
+    }
+
+    public function loadCart()
+    {
+       $cartcount = Cart::where('user_id', Auth::id())->count();
+       return response()->json(['count' => $cartcount]);
     }
 }
