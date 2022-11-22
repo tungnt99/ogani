@@ -62,8 +62,9 @@ class IndexController extends Controller
     }
 
     public function cart() {
+        $categories = DB::select('SELECT * FROM categories');
         $cartItems = Cart::where('user_id', Auth::id())->get();
-        return view('frontend.pages.cart', compact('cartItems'));
+        return view('frontend.pages.cart', compact('cartItems', 'categories'));
     }
 
     public function checkout() {
@@ -91,7 +92,11 @@ class IndexController extends Controller
     }
 
     public function contact() {
-        return view('frontend.pages.contact');
+        $categories = DB::select('SELECT * FROM categories');
+
+        return view('frontend.pages.contact')->with([
+            'categories' => $categories,
+        ]);
     }
     public function productview($id)
     {
@@ -103,10 +108,12 @@ class IndexController extends Controller
     {
         
         if(Categories::where("id", $id)->exists()){
+            $categories = DB::select('SELECT * FROM categories');
+
             $category = Categories::where("id", $id)->first();
             $products = Products::where("category_id", $category->id)->get();
             // dd($products);
-            return view('frontend.pages.product-cate', compact("category", 'products'));
+            return view('frontend.pages.product-cate', compact("category", 'products', 'categories'));
         }else{
             return redirect('/')->with('status', 'id doesnot exists');
         }

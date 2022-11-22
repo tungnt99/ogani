@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Cover Image:</label>
                             <input  type="file" class="form-control m-2" name="cover" id="input-file-now-custom-3" value="{{$cover}}">
-                            <img src="{{asset('uploads/cover/'.$products->cover)}}" alt="">
+                            <!-- <img src="{{asset('uploads/cover/'.$products->cover)}}" alt=""> -->
                         </div>
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Images:</label>

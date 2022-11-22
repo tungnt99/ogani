@@ -65,7 +65,7 @@
                     @foreach ($products as $item)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="{{ asset('uploads/cover/'.$item->cover) }}">
-                                <h5><a href="#">{{ $item->category->name }}</a></h5>
+                                <h5><a href="{{ url('view-category/'.$item->id) }}">{{ $item->category->name }}</a></h5>
                             </div>
                         </div>
 
