@@ -12,7 +12,8 @@
                         </div>
                         <ul>
                             @foreach ($categories as $item)
-                                <li><a href="#">{{$item->name}}</a></li>
+                            <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+
 
                             @endforeach
                         </ul>

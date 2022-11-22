@@ -11,9 +11,9 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                     
-                               <!-- category:name -->
-
+                            @foreach ($categories as $item)
+                                <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
