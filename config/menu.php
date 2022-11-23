@@ -88,10 +88,6 @@ return [
             [
                 'label' => 'List order',
                 'route' => 'order.index',
-            ],
-            [
-                'label' => 'Add order',
-                'route' => 'order.create',
             ]
         ]
     ],

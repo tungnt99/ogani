@@ -22,6 +22,14 @@ class CheckoutController extends Controller
         $order->phone_number = $request->input('phone_number');
         $order->address = $request->input('address');
         $order->note = $request->input('note');
+        $total = 0;
+        $taxRate = 10.00;
+        $cartitesms_total = Cart::where('user_id', Auth::id())->get();
+        foreach ($cartitesms_total as $prod)
+        {
+            $total += (($prod->products->price * $prod->prod_qty) + $taxRate);
+        }
+        $order->total_price = $total;
         $order->save();
 
         $cartItems = Cart::where('user_id', Auth::id())->get();
@@ -33,9 +41,9 @@ class CheckoutController extends Controller
                 'qty' => $item->prod_qty,
                 'price'=>$item->products->price,
             ]);
-            $prod = Products::where('id', $item->prod_id)->first();
-            $prod->qty = $prod->qty - $item->prod_qty;
-            $prod->update();
+            // $prod = Products::where('id', $item->prod_id)->first();
+            // $prod->qty = $prod->qty - $item->prod_qty;
+            // $prod->update();
         }
 
         if(Auth::user()->address == NULL)
@@ -47,7 +55,6 @@ class CheckoutController extends Controller
             $user->address = $request->input('address');
             $user->update();
         }
-
         $cartItems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartItems);
         return redirect('/shop')->with('status','Order placed successfully');
