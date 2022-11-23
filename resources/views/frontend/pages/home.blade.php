@@ -12,8 +12,7 @@
                         </div>
                         <ul>
                             @foreach ($categories as $item)
-                                <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
-
+                                <li><a href="{{ url('category/'.$item->id) }}">{{$item->name}}</a></li>
                             @endforeach
                             
                         </ul>
@@ -65,7 +64,7 @@
                     @foreach ($products as $item)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="{{ asset('uploads/cover/'.$item->cover) }}">
-                                <h5><a href="{{ url('view-category/'.$item->id) }}">{{ $item->category->name }}</a></h5>
+                                <h5><a href="{{ url('category/'.$item->id) }}">{{ $item->category->name }}</a></h5>
                             </div>
                         </div>
 
@@ -102,7 +101,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="{{ url('product_details/'.$pro->id) }}">
+                            <a href="{{ url('category/'.$pro->category->id.'/'.$pro->id) }}">
                                 <div class="product-price-discount">
                                     <h6>{{ $pro->title }}</h6> 
                                     <span>${{ $pro->price }}</span>
