@@ -187,7 +187,7 @@
                                             </div>
                                             <div class="product__discount__item__text">
                                                 <span>{{ $item->category->name }}</span>
-                                                <h5><a href="#">{{ $item->title }}</a></h5>
+                                                <h5><a href="{{ url('product_details/'.$item->id) }}">{{ $item->title }}</a></h5>
                                                 <div class="product__item__price">${{$item->discount}}<span>${{$item->price}}</span></div>
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6><a href="#">{{$item->title}}</a></h6>
+                                        <h6><a href="{{ url('product_details/'.$item->id) }}">{{$item->title}}</a></h6>
                                         <h5>${{$item->price}}</h5>
                                     </div>
                                 </div>
