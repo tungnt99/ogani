@@ -128,7 +128,12 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li>
+                            <a href="{{ route('wishlist') }}">
+                                <i class="fa fa-heart"></i> 
+                            </a>
+                            <span id="wishlistCount">0</span>
+                        </li>
                         <li class="basket-item-count">
                             <a href="{{ route('home.cart') }}">
                                 <i class="fa fa-shopping-bag"></i> 

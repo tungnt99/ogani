@@ -164,8 +164,14 @@ Route::post('dropzone/store','ImageController@store');
 Route::post('addToCart', 'App\Http\Controllers\Frontend\CartController@addToCart')->name('addToCart');
 Route::post('deleteCart', 'App\Http\Controllers\Frontend\CartController@deleteCart')->name('deleteCart');
 Route::post('updateCart', 'App\Http\Controllers\Frontend\CartController@updateCart')->name('updateCart');
-Route::get('load-cart-data', 'App\Http\Controllers\Frontend\CartController@loadCart')->name('load-cart-data');
+Route::get('/load-cart-data', 'App\Http\Controllers\Frontend\CartController@loadCart')->name('load-cart-data');
+
+Route::post('addToWishlist', 'App\Http\Controllers\Frontend\WishlistController@addToWishlist')->name('addToWishlist');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', 'IndexController@cart')-> name('home.cart');
     Route::post('/place-order', 'App\Http\Controllers\Frontend\CheckoutController@placeorder')->name('place-order');
+    
+    Route::get('/wishlist', 'App\Http\Controllers\Frontend\WishlistController@index')-> name('wishlist');
+    Route::get('/load-wishlist-count', 'App\Http\Controllers\Frontend\WishlistController@wishlistCount')-> name('load-wishlist-count');
 });

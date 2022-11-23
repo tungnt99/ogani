@@ -149,3 +149,25 @@
     </div>
     <!-- Contact Form End -->
 @endsection
+@section('scripts')
+	<script>
+		$(document).ready(function () {
+			cartload();
+			function cartload() {
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+				$.ajax({
+					type: "GET",
+					url: "load-cart-data",
+					success: function (response) {
+					$('#itemCount').html('');
+					$('#itemCount').html(response.count);
+					}
+				});
+			}
+		});
+	</script>
+@endsection
