@@ -29,7 +29,7 @@ Route::get('/checkout', 'IndexController@checkout')-> name('home.checkout');
 
 Route::get('/blog', 'IndexController@blog')-> name('home.blog');
 
-Route::get('/blogdetail', 'IndexController@blogdetail')-> name('home.blog-detail');
+Route::get('/blog-detail/{id?}', 'IndexController@blogdetail')-> name('home.blog-detail');
 
 Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 

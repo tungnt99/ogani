@@ -7,6 +7,8 @@ use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Routing\Route;
 use App\Models\Cart;
+use App\Models\Blogs;
+
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -84,14 +86,11 @@ class IndexController extends Controller
         ]);
     }
 
-    public function blogdetail() {
+    public function blogdetail($id) {
         $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->get();
-
-        return view('frontend.pages.blog-detail')->with([
-            'categories' => $categories,
-            'products' => $products,
-        ]);
+        $blogs = Blogs::find($id);
+        // dd($blogs);
+        return view('frontend.pages.blog-detail', compact('blogs', 'categories'));
     }
 
     public function contact() {
