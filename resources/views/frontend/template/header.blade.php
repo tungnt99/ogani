@@ -93,7 +93,8 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+                            <!-- <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a> -->
+                            <a href="#">{{ Auth::user()->name }}</a>
                         </div>
                     </div>
                 </div>
