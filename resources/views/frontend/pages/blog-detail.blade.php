@@ -135,8 +135,9 @@
                 </div>
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
-                        <img src="{{ url('site') }}/img/blog/details/details-pic.jpg" alt="">
-                        <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+                        <img src="{{ asset('uploads/blogs/'.$blogs->thumbnail) }}" alt="">
+                        <p> {{ $blogs->description }}.
+                            Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
                             dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
                             aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
                             sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
@@ -198,51 +199,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="{{ url('site') }}/img/blog/blog-1.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="{{ url('site') }}/img/blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                @foreach($blog as $item)
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{ asset('uploads/blogs/'.$item->thumbnail) }}" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i>{{$item->updated_at}}</li>
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><a href="#">{{ $item->title }}</a></h5>
+                                <p>{{ $item->description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="{{ url('site') }}/img/blog/blog-3.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Visit the clean farm in the US</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
+
+                @endforeach
+                
             </div>
         </div>
     </section>

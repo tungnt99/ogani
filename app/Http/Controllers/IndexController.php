@@ -80,6 +80,7 @@ class IndexController extends Controller
     public function blog() {
         $categories = DB::select('SELECT * FROM categories');
         $blogs = DB::select('SELECT * FROM blogs');
+        
         return view('frontend.pages.blog')->with([
             'categories' => $categories,
             'blogs' => $blogs
@@ -89,8 +90,8 @@ class IndexController extends Controller
     public function blogdetail($id) {
         $categories = DB::select('SELECT * FROM categories');
         $blogs = Blogs::find($id);
-        // dd($blogs);
-        return view('frontend.pages.blog-detail', compact('blogs', 'categories'));
+        $blog = Blogs::select('title', 'thumbnail', 'description', 'created_at', 'updated_at')->get()->take(3);
+        return view('frontend.pages.blog-detail', compact('blogs', 'categories', 'blog'));
     }
 
     public function contact() {
