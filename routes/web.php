@@ -18,8 +18,8 @@ use App\Http\Controllers\Admin\CartController;
 
 
 Route::get('/', 'IndexController@index')-> name('home.index');
-Route::get('/product_details/{id}', 'IndexController@productview')-> name('productview');
-Route::get('/view-category/{id}', 'IndexController@viewcategory')-> name('home.viewcategory');
+Route::get('/category/{cate_id}/{prod_id}', 'IndexController@productview')-> name('productview');
+Route::get('/category/{id}', 'IndexController@viewcategory')-> name('home.viewcategory');
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 
 Route::get('/shopdetail', 'IndexController@shopdetail')-> name('home.shop-detail');

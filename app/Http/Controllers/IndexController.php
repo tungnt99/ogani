@@ -101,12 +101,6 @@ class IndexController extends Controller
             'categories' => $categories,
         ]);
     }
-    public function productview($id)
-    {
-        $products = Products::find($id);
-        return view('frontend.products.view',compact('products'));
-    }
-
     public function viewcategory($id)
     {
         
@@ -121,5 +115,24 @@ class IndexController extends Controller
             return redirect('/')->with('status', 'id doesnot exists');
         }
 
+    }
+    public function productview($cate_id, $prod_id)
+    {
+        if(Categories::where('id', $cate_id)->exists())
+        {
+            if(Products::where('id', $prod_id)->exists())
+            {
+                $products = Products::where('id',$prod_id)->first();
+                return view('frontend.products.view',compact('products'));
+            }
+            else
+            {
+                return redirect('/')->with('status', "the link was broken");
+            }
+        }
+        else
+        {
+            return redirect('/')->with('status', "No such category found");   
+        }
     }
 }
