@@ -11,9 +11,9 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            {{-- @foreach ($categories as $item)
+                            @foreach ($categories as $item)
                                 <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
-                            @endforeach --}}
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                                     @foreach ($wishlist as $item)
                                         <tr class="product_data">
                                             <td class="wishlist__item__close">
-                                                <button class="delete-cart-item"><span class="icon_close"></span></button>
+                                                <button class="delete-wishlist-item"><span class="icon_close"></span></button>
                                             </td>
                                             <td>
                                                 <div class="wishlist__item__img">
@@ -92,13 +92,15 @@
                                                 </div>
                                             </td>
                                             <td class="wishlist__item__title">
+                                                <input type="hidden" value="{{ $item->products->id }}" class="prod_id">
+                                                <input type="hidden" value="1" class="qty-input">
                                                 <h5>{{ $item->products->title }}</h5>
                                             </td>
                                             <td class="wishlist__price">
                                                 ${{ $item->products->price }}
                                             </td>
                                             <td class="wishlist__add">
-                                                Add to cart
+                                                <button class="round-black-btn addToCartBtn">Add to Cart</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -133,22 +135,44 @@
 					}
 				});
 			}
-		});
-        loadwishlist();
-        function loadwishlist() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "GET",
-                url: "load-wishlist-count",
-                success: function (response) {
-                   $('#wishlistCount').html('');
-                   $('#wishlistCount').html(response.count);
-                }
-            });
-        }
+            loadwishlist();
+            function loadwishlist() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "load-wishlist-count",
+                    success: function (response) {
+                    $('#wishlistCount').html('');
+                    $('#wishlistCount').html(response.count);
+                    }
+                });
+            }
+            $('.addToCartBtn').click(function (e) {
+				e.preventDefault();
+				var product_id = $(this).closest('.product_data').find('.prod_id').val();
+				var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+				
+				$.ajax({
+					type: "POST",
+					url: "{{route('addToCart')}}",
+					data: {
+						'product_id': product_id,
+						'product_qty': product_qty,
+					},
+					success: function (response) {
+						swal(response.status);
+					}
+				});
+			})
+        });
 	</script>
 @endsection

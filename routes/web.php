@@ -167,11 +167,13 @@ Route::post('updateCart', 'App\Http\Controllers\Frontend\CartController@updateCa
 Route::get('/load-cart-data', 'App\Http\Controllers\Frontend\CartController@loadCart')->name('load-cart-data');
 
 Route::post('addToWishlist', 'App\Http\Controllers\Frontend\WishlistController@addToWishlist')->name('addToWishlist');
+Route::post('deleteWishlist', 'App\Http\Controllers\Frontend\WishlistController@deleteWishlist')->name('deleteWishlist');
+Route::get('/load-wishlist-count', 'App\Http\Controllers\Frontend\WishlistController@wishlistCount')-> name('load-wishlist-count');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', 'LoginController@logout')->name('logout');
     Route::get('/cart', 'IndexController@cart')-> name('home.cart');
     Route::post('/place-order', 'App\Http\Controllers\Frontend\CheckoutController@placeorder')->name('place-order');
     
     Route::get('/wishlist', 'App\Http\Controllers\Frontend\WishlistController@index')-> name('wishlist');
-    Route::get('/load-wishlist-count', 'App\Http\Controllers\Frontend\WishlistController@wishlistCount')-> name('load-wishlist-count');
 });

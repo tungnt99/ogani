@@ -142,18 +142,12 @@
                                 <div class="checkout__order__total">Total <span>${{ $total +  $taxRate}}</span></div>
                                 
                                 <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <label for="payment">Check Payment</label>
+                                    <input type="checkbox" id="payment">
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <label for="paypal">Paypal</label>
+                                    <input type="checkbox" id="paypal">
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
@@ -184,6 +178,22 @@
 					}
 				});
 			}
+            loadwishlist();
+            function loadwishlist() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "load-wishlist-count",
+                    success: function (response) {
+                    $('#wishlistCount').html('');
+                    $('#wishlistCount').html(response.count);
+                    }
+                });
+            }
 		});
 	</script>
 @endsection

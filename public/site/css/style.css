@@ -395,6 +395,18 @@ ol {
 
 .header__top__right__auth {
 	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.header__top__right__auth .header__top__right__auth--list {
+	display: flex;
+    align-items: center;
+}
+
+.header__top__right__auth .auth-image {
+	width: 20px;
+    margin-right: 5px;
 }
 
 .header__top__right__auth a {
@@ -405,6 +417,47 @@ ol {
 
 .header__top__right__auth a i {
 	margin-right: 6px;
+}
+
+.header__top__right__auth:hover ul {
+	top: 23px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.header__top__right__auth span {
+	font-size: 14px;
+	color: #1c1c1c;
+	position: relative;
+	top: 2px;
+}
+
+.header__top__right__auth ul {
+	background: #222222;
+	width: 100px;
+	text-align: left;
+	padding: 5px 0;
+	position: absolute;
+	left: 0;
+	top: 43px;
+	z-index: 9;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+}
+
+.header__top__right__auth ul li {
+	list-style: none;
+}
+
+.header__top__right__auth ul li a {
+	font-size: 14px;
+	color: #ffffff;
+	padding: 5px 10px;
 }
 
 .header__logo {
@@ -2173,6 +2226,9 @@ ol {
 
 .checkout__input__checkbox {
 	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .checkout__input__checkbox label {
@@ -2301,6 +2357,7 @@ ol {
 
 .checkout__order .checkout__input__checkbox label {
 	padding-left: 20px;
+	margin-bottom: 1px;
 }
 
 .checkout__order .checkout__order__total {
@@ -3807,7 +3864,7 @@ ol {
 	text-transform: uppercase;
 	cursor: pointer;
 }
-.product_data .wishlist__item__close .delete-cart-item {
+.product_data .wishlist__item__close .delete-wishlist-item {
 	border: none;
 	background-color: transparent;
 	color: red;

@@ -20,11 +20,14 @@ class LoginController extends Controller
         } else{
             return back()->with('status','Invalid login details');
         }
-        // if(Auth::check()){
-        //     return view('frontend.master');
-        // }
-        // return back()->with('status','Invalid login details');
+    }
 
+    public function logout() {
+        if(Auth::logout())
+        {
+            return redirect()->route('home.login');
+        }
+        return redirect()->route('home.index');
     }
     
     public function register(){
@@ -36,6 +39,7 @@ class LoginController extends Controller
         user::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'photo'=> 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
             'password'=>bcrypt($request->password),
             'phone_number'=>$request->phone_number
         ]);

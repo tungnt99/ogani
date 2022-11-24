@@ -168,6 +168,22 @@
 					}
 				});
 			}
+            loadwishlist();
+            function loadwishlist() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "load-wishlist-count",
+                    success: function (response) {
+                    $('#wishlistCount').html('');
+                    $('#wishlistCount').html(response.count);
+                    }
+                });
+            }
 		});
 	</script>
 @endsection
