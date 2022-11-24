@@ -50,6 +50,7 @@
     <script src="{{ url('site') }}/js/owl.carousel.min.js"></script>
     <script src="{{ url('site') }}/js/main.js"></script>
     <script src="{{ url('site') }}/js/customer.js"></script>
+    <script src="{{ url('site') }}/js/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </body>
 

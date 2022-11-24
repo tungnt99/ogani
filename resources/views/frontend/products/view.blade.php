@@ -139,22 +139,22 @@
 					}
 				});
 			}
-			// loadwishlist();
-			// function loadwishlist() {
-			// 	$.ajaxSetup({
-			// 		headers: {
-			// 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			// 		}
-			// 	});
-			// 	$.ajax({
-			// 		type: "GET",
-			// 		url: "{{ route('load-wishlist-count') }}",
-			// 		success: function (response) {
-			// 		$('#wishlistCount').html('');
-			// 		$('#wishlistCount').html(response.count);
-			// 		}
-			// 	});
-			// }
+			loadwishlist();
+            function loadwishlist() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('load-wishlist-count') }}",
+                    success: function (response) {
+                    $('#wishlistCount').html('');
+                    $('#wishlistCount').html(response.count);
+                    }
+                });
+            }
 			$('.addToCartBtn').click(function (e) {
 				e.preventDefault();
 				var product_id = $(this).closest('.product_data').find('.prod_id').val();

@@ -93,8 +93,22 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <!-- <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a> -->
-                            <a href="#">{{ Auth::user()->name }}</a>
+                            @if (Auth::check())
+                                <div class="header__top__right__auth--list">
+                                    <div class="auth-image">
+                                        <img src="{{ Auth::user()->photo}}" alt="">
+                                    </div>
+                                    {{ Auth::user()->name}}
+                                    <ul>
+                                        <li><a href="#">Account</a></li>
+                                        <li>
+                                            <a href="{{ url('logout') }}">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @else
+                                <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -129,16 +143,30 @@
                 <div class="header__cart">
                     <ul>
                         <li>
+                            @if (Auth::check())
                             <a href="{{ route('wishlist') }}">
                                 <i class="fa fa-heart"></i> 
                             </a>
                             <span id="wishlistCount">0</span>
+                            @else
+                            <a href="#">
+                                <i class="fa fa-heart"></i> 
+                            </a>
+                            <span id="wishlistCount">0</span>
+                            @endif
                         </li>
                         <li class="basket-item-count">
-                            <a href="{{ route('home.cart') }}">
-                                <i class="fa fa-shopping-bag"></i> 
-                            </a>
-                            <span id="itemCount">0</span>
+                            @if (Auth::check())
+                                <a href="{{ route('home.cart') }}">
+                                    <i class="fa fa-shopping-bag"></i> 
+                                </a>
+                                <span id="itemCount">0</span>
+                            @else
+                                <a href="#">
+                                    <i class="fa fa-shopping-bag"></i> 
+                                </a>
+                                <span id="itemCount">0</span>
+                            @endif
                         </li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>

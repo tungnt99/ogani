@@ -146,8 +146,7 @@
             <div class="input-group">
                 <button class="btn btn-md btn-block submit" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
             </div>
-
-            <a href="{{ route('home.login') }}" id="cancel_signup" ><i class="fa fa-angle-left"></i> Back</a>
+            <a href="{{ route('home.login') }}" id="cancel_signup"><i class="fa fa-angle-left"></i> Back</a>
         </form>
     </div>
 
