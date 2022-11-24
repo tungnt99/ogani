@@ -148,7 +148,7 @@
                                         <li><i class="fa fa-calendar-o"></i>{{$item->updated_at}}</li>
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
-                                    <h5><a href="#">{{ $item->title }}</a></h5>
+                                    <h5><a href="{{ url('blog-detail/'.$item->id) }}">{{ $item->title }}</a></h5>
                                     <p>{{ $item->description }}</p>
                                     <a href="{{ url('blog-detail/'.$item->id) }}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
