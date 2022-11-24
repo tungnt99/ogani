@@ -34,11 +34,13 @@ class IndexController extends Controller
         $banners = DB::select('SELECT * FROM banners');
         $categories = DB::select('SELECT * FROM categories');
         $products = Products::with('category')->paginate(12);
-
+        $blogs = DB::select('SELECT * FROM blogs');
+        // dd($blogs);
         return view('frontend.pages.home')->with([
             'banners' => $banners,
             'categories' => $categories,
             'products' => $products,
+            'blogs' => $blogs
         ]);
     }
 

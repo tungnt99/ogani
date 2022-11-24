@@ -132,7 +132,6 @@
                                 <li ><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                                 <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                                 <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
-                                <li><a href="{{ route('home.blog-detail') }}">Blog Details</a></li>
                             </ul>
                         </li>
                         <li class="{{ Request::segment(1) == 'blog' ? 'active' : '' }}"><a href="{{ route('home.blog') }}">Blog</a></li>
