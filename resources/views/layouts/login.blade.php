@@ -55,7 +55,7 @@
     }
 
     #logreg-forms a{
-        display: block;
+        /* display: block; */
         padding-top:10px;
         color:#fff;
     }
@@ -68,9 +68,13 @@
 
     #logreg-forms button[type="submit"]{ margin-top:10px; }
 
-    #logreg-forms .facebook-btn{  background-color:#3C589C; }
+    #logreg-forms .facebook-btn{  
+        background-color: #3C589C; 
+        margin: 0 auto;
+        line-height: 22px;
+        }
 
-    #logreg-forms .google-btn{ background-color: #DF4B3B; }
+    #logreg-forms .google-btn{ background-color: #DF4B3B; line-height: 26px;}
 
     #logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
 
