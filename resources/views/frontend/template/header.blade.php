@@ -11,8 +11,32 @@
     </div>
     <div class="humberger__menu__cart">
         <ul>
-            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li>
+                @if (Auth::check())
+                <a href="{{ route('wishlist') }}">
+                    <i class="fa fa-heart"></i>
+                </a>
+                <span id="wishlistCount">0</span>
+                @else
+                <a href="#">
+                    <i class="fa fa-heart"></i>
+                </a>
+                <span id="wishlistCount">0</span>
+                @endif
+            </li>
+            <li class="basket-item-count">
+                @if (Auth::check())
+                <a href="{{ route('home.cart') }}">
+                    <i class="fa fa-shopping-bag"></i>
+                </a>
+                <span id="itemCount">0</span>
+                @else
+                <a href="#">
+                    <i class="fa fa-shopping-bag"></i>
+                </a>
+                <span id="itemCount">0</span>
+                @endif
+            </li>
         </ul>
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
@@ -27,19 +51,34 @@
             </ul>
         </div>
         <div class="header__top__right__auth">
+            @if (Auth::check())
+            <div class="header__top__right__auth--list">
+                <div class="auth-image">
+                    <img src="{{ Auth::user()->photo}}" alt="">
+                </div>
+                {{ Auth::user()->name}}
+                <ul>
+                    <li><a href="#">Account</a></li>
+                    <li>
+                        <a href="{{ url('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            @else
             <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+            @endif
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="{{ Request::segment(1) == '/' ? 'active' : '' }}"><a href="{{ route('home.index') }}">Home</a></li>
+            <li class="{{ Request::segment(1) == '/' ? 'active' : '' }}"><a href="{{ route('home.index') }}">Home</a>
+            </li>
             <li><a href="{{ route('home.shop') }}">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                     <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                     <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
-                    <li><a href="{{ route('home.blog-detail') }}">Blog Details</a></li>
                 </ul>
             </li>
             <li><a href="{{ route('home.blog') }}">Blog</a></li>
@@ -94,26 +133,36 @@
                         </div>
                         <div class="header__top__right__auth">
                             @if (Auth::check())
-                                <div class="header__top__right__auth--list">
-                                    <div class="auth-image">
-                                        <img src="{{ Auth::user()->photo}}" alt="">
-                                    </div>
-                                    {{ Auth::user()->name}}
-                                    <ul>
-                                        <li><a href="{{ url('account-user') }}">Account</a></li>
-                                        <li>
-                                            <a href="{{ url('logout') }}">Logout</a>
-                                        </li>
-                                    </ul>
+
+                            <div class="header__top__right__auth--list">
+                                <div class="auth-image">
+                                    <img src="{{ Auth::user()->photo}}" alt="">
                                 </div>
-                            @else
-                                <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
-                            @endif
+                                {{ Auth::user()->name}}
+                                <ul>
+                                    <li><a href="{{ url('account-user') }}">Account</a></li>
+                                    <li>
+                                        <a href="{{ url('logout') }}">Logout</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            {{ Auth::user()->name}}
+                            <ul>
+                                <li><a href="#">Account</a></li>
+                                <li>
+                                    <a href="{{ url('logout') }}">Logout</a>
+                                </li>
+                            </ul>
                         </div>
+                        @else
+                        <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="container">
         <div class="row">
@@ -125,17 +174,21 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="{{ Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ route('home.index') }}">Home</a></li>
-                        <li class="{{ Request::segment(1) == 'shop' ? 'active' : '' }}"><a href="{{ route('home.shop') }}">Shop</a></li>
-                        <li ><a href="#">Pages</a>
+                        <li class="{{ Request::segment(1) == '' ? 'active' : '' }}"><a
+                                href="{{ route('home.index') }}">Home</a></li>
+                        <li class="{{ Request::segment(1) == 'shop' ? 'active' : '' }}"><a
+                                href="{{ route('home.shop') }}">Shop</a></li>
+                        <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li ><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
+                                <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                                 <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                                 <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
                             </ul>
                         </li>
-                        <li class="{{ Request::segment(1) == 'blog' ? 'active' : '' }}"><a href="{{ route('home.blog') }}">Blog</a></li>
-                        <li class="{{ Request::segment(1) == 'contact' ? 'active' : '' }}"><a href="{{ route('home.contact') }}">Contact</a></li>
+                        <li class="{{ Request::segment(1) == 'blog' ? 'active' : '' }}"><a
+                                href="{{ route('home.blog') }}">Blog</a></li>
+                        <li class="{{ Request::segment(1) == 'contact' ? 'active' : '' }}"><a
+                                href="{{ route('home.contact') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -145,27 +198,27 @@
                         <li>
                             @if (Auth::check())
                             <a href="{{ route('wishlist') }}">
-                                <i class="fa fa-heart"></i> 
+                                <i class="fa fa-heart"></i>
                             </a>
                             <span id="wishlistCount">0</span>
                             @else
                             <a href="#">
-                                <i class="fa fa-heart"></i> 
+                                <i class="fa fa-heart"></i>
                             </a>
                             <span id="wishlistCount">0</span>
                             @endif
                         </li>
                         <li class="basket-item-count">
                             @if (Auth::check())
-                                <a href="{{ route('home.cart') }}">
-                                    <i class="fa fa-shopping-bag"></i> 
-                                </a>
-                                <span id="itemCount">0</span>
+                            <a href="{{ route('home.cart') }}">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a>
+                            <span id="itemCount">0</span>
                             @else
-                                <a href="#">
-                                    <i class="fa fa-shopping-bag"></i> 
-                                </a>
-                                <span id="itemCount">0</span>
+                            <a href="#">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a>
+                            <span id="itemCount">0</span>
                             @endif
                         </li>
                     </ul>
@@ -191,7 +244,7 @@
                     </div>
                     <ul>
                         @foreach ($categories as $item)
-                            <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+                        <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
