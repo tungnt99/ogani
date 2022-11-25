@@ -75,8 +75,9 @@ class IndexController extends Controller
     }
 
     public function checkout() {
+        $categories = DB::select('SELECT * FROM categories');
         $cartItems = Cart::where('user_id', Auth::id())->get();
-        return view('frontend.pages.checkout', compact('cartItems'));
+        return view('frontend.pages.checkout', compact('cartItems', 'categories'));
     }
 
     public function blog() {
@@ -120,12 +121,13 @@ class IndexController extends Controller
     }
     public function productview($cate_id, $prod_id)
     {
+        $categories = DB::select('SELECT * FROM categories');
         if(Categories::where('id', $cate_id)->exists())
         {
             if(Products::where('id', $prod_id)->exists())
             {
                 $products = Products::where('id',$prod_id)->first();
-                return view('frontend.products.view',compact('products'));
+                return view('frontend.products.view',compact('products','categories'));
             }
             else
             {
@@ -136,5 +138,9 @@ class IndexController extends Controller
         {
             return redirect('/')->with('status', "No such category found");   
         }
+    }
+
+    public function accountUser() {
+        return view('layouts.account_user');
     }
 }

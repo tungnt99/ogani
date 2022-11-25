@@ -35,6 +35,8 @@ Route::get('/contact', 'IndexController@contact')-> name('home.contact');
 
 Route::get('/register', 'LoginController@register')-> name('home.register');
 
+Route::get('/account-user', 'IndexController@accountUser')->name('account-user');
+
 Route::post('/post-account', [
     'as' => 'post-account',
     'uses' => 'App\Http\Controllers\LoginController@addAccount'
