@@ -32,12 +32,14 @@ class AccountController extends Controller
         $name = $request->name;
         $email = $request->email;
         $password = $request->password;
+        $photo = $request->photo;
         $phone_number = $request->phone_number;
         $address = $request->address;
-        if ($request->hasFile("image")) {
-            $file = $request->file("image");
-            $imageName = time() . '_' . $file->getClientOriginalName();
-            $file->move('uploads/accountImage/', $imageName);
+        if ($request->hasFile("photo")) {
+            $file = $request->file("photo");
+            $imageName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/account/', $imageName);
+            $photo = $imageName;
         }
         if ($id > 0) {
             $users = DB::table('users')->where('id', $id)
@@ -47,7 +49,7 @@ class AccountController extends Controller
                     'password' => bcrypt($request->password),
                     'phone_number' => $phone_number,
                     'address' => $address,
-                    'image' => $imageName,
+                    'photo' => $imageName,
                 ]);
         }
 
