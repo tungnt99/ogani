@@ -31,7 +31,7 @@
                             <th>Address</th>
                             <th></th>
                             <th></th>
-                        </tr> 
+                        </tr>
                     </thead>
                     <tbody>
                         @php
@@ -41,7 +41,7 @@
                         <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td><img src="{{ asset('uploads/accountImage/'.$item->photo) }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
+                            <td><img src="{{ asset('uploads/account/'.$item->photo) }}" class="img-responsive" style="max-height:100px; max-width:100px" alt="" srcset=""></td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone_number }}</td>
                             <td>{{ $item->address}}</td>

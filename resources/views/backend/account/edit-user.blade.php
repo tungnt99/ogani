@@ -5,12 +5,12 @@
         <div class="panel-heading">
             <h2 class="text-center">
                 Edit User Information
-
             </h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('update-user') }}" method="post">
-                {{ csrf_field() }}
+            <form action="{{ route('update-user') }}" method="post" enctype="multipart/form-data">
+            @csrf
+
                 <input hidden type="text" name="id" class="form-control" value="{{ $id }}">
                 <div class="form-group">
                     <label for="fullname" class="form-label">Fullname:</label>
@@ -21,8 +21,8 @@
                     <input required type="text" class="form-control" name="email" id="email" value="{{ $email }}">
                 </div>
                 <div class="form-group">
-                    <label class="m-2">Cover  cImages</label>
-                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="image" value="{{ $photo }}" multiple>
+                    <label class="m-2">Cover Images</label>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="photo" value="{{ $photo }}" multiple>
                 </div>
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
