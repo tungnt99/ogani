@@ -133,7 +133,6 @@
                         </div>
                         <div class="header__top__right__auth">
                             @if (Auth::check())
-
                             <div class="header__top__right__auth--list">
                                 <div class="auth-image">
                                     <img src="{{ Auth::user()->photo}}" alt="">
@@ -147,13 +146,6 @@
                                 </ul>
 
                             </div>
-                            {{ Auth::user()->name}}
-                            <ul>
-                                <li><a href="#">Account</a></li>
-                                <li>
-                                    <a href="{{ url('logout') }}">Logout</a>
-                                </li>
-                            </ul>
                         </div>
                         @else
                         <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
@@ -244,7 +236,7 @@
                     </div>
                     <ul>
                         @foreach ($categories as $item)
-                        <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+                        <li><a href="{{ url('category/'.$item->id) }}">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

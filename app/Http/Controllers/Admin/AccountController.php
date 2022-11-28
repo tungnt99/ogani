@@ -25,20 +25,24 @@ class AccountController extends Controller
     $users = User::all();
     $id = $request->id;
     $name = $request->name;
-    $photo = $request->photo;
     $email = $request->email;
     $password = $request->password;
     $phone_number = $request->phone_number;
     $address = $request->address;
+    if($request->hasFile("image")){
+      $file = $request->file("image");
+      $imageName=time().'_'.$file->getClientOriginalName();
+      $file->move('uploads/accountImage/',$imageName);
+    }
     if($id > 0){
-      $user = DB::table('users')->where('id', $id)
+      $users = DB::table('users')->where('id', $id)
       ->update([
         'name' => $name,
-        'photo' => $photo,
         'email' => $email,
         'password'=>bcrypt($request->password),
         'phone_number' => $phone_number,
-        'address' => $address
+        'address' => $address,
+        'image' => $imageName,
       ]);
     }
     
@@ -70,8 +74,8 @@ class AccountController extends Controller
         'password' => $password,
         'phone_number' => $phone_number,
         'address' => $address,
+        'photo' => $photo,
     ]);
-    // return view('backend.account.edit-user');
   }
 
   public function create(Request $request){

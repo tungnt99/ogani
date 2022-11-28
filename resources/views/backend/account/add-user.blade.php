@@ -16,8 +16,8 @@
                     <input required type="text" class="form-control" name="name" id="fullname" >
                 </div>
                 <div class="form-group">
-                    <label class="m-2"> Image</label>
-                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="image">
+                    <label class="m-2">Cover  cImages</label>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
                 </div>
                 <div class="form-group">
                     <label for="email" class="form-label">Email:</label>
