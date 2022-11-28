@@ -6,98 +6,98 @@ return [
         'icon' => 'fa-home',
     ],
     [
-        'label' => 'Account Manager',
+        'label' => 'Quản lý tài khoản',
         'route' => 'account.index',
         'icon' => 'fa-user',
         'items' => [  
             [
-                'label' => 'List account',
+                'label' => 'Dách sách tài khoản',
                 'route' => 'account.index',
             ],
             [
-                'label' => 'Add account',
+                'label' => 'Thêm tài khoản',
                 'route' => 'account.create',
             ]
         ]
     ],
     [
-        'label' => 'Category Manager',
+        'label' => 'Quản lý danh mục',
         'route' => 'category.index',
         'icon' => 'fa-clipboard-list',
         'items' => [  
             [
-                'label' => 'List category',
+                'label' => 'Dách sách danh mục',
                 'route' => 'category.index',
             ],
             [
-                'label' => 'Add category',
+                'label' => 'Thêm dách mục',
                 'route' => 'category.create',
             ]
         ]
     ],
     [
-        'label' => 'Product Manager',
+        'label' => 'Quản lý sản phẩm',
         'route' => 'product.index',
         'icon' => 'fa-shopping-basket',
         'items' => [  
             [
-                'label' => 'List Product',
+                'label' => 'Dách sách sản phẩm',
                 'route' => 'product.index',
             ],
             [
-                'label' => 'Add Product',
+                'label' => 'Thêm sản phẩm',
                 'route' => 'product.create',
             ]
         ]
     ],
     [
-        'label' => 'Banner Manager',
+        'label' => 'Quản lý ảnh bìa',
         'route' => 'banner.index',
         'icon' => 'fa-image',
         'items' => [  
             [
-                'label' => 'List banner',
+                'label' => 'Dách sách ảnh bìa',
                 'route' => 'banner.index',
             ],
             [
-                'label' => 'Add banner',
+                'label' => 'Thêm ảnh bìa',
                 'route' => 'banner.create',
             ]
         ]
     ],
     [
-        'label' => 'Blog Manager',
+        'label' => 'Quản lý bài viết',
         'route' => 'blog.index',
         'icon' => 'fa-file',
         'items' => [  
             [
-                'label' => 'List blog',
+                'label' => 'Dách sách bài viết',
                 'route' => 'blog.index',
             ],
             [
-                'label' => 'Add blog',
+                'label' => 'Thêm bài viết',
                 'route' => 'blog.create',
             ]
         ]
     ],
     [
-        'label' => 'Order Manager',
+        'label' => 'Quản lý đặt hàng',
         'route' => 'order.index',
         'icon' => 'fa-shopping-cart',
         'items' => [  
             [
-                'label' => 'List order',
+                'label' => 'Dách sách đặt hàng',
                 'route' => 'order.index',
             ]
         ]
     ],
     [
-        'label' => 'Feedback',
+        'label' => 'Phản hồi',
         'route' => 'feedback.index',
         'icon' => 'fa-envelope',
         'items' => [  
             [
-                'label' => 'List feedback',
+                'label' => 'Dách sách phản hồi',
                 'route' => 'feedback.index',
             ]
           

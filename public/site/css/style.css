@@ -1125,6 +1125,7 @@ ol {
 	font-size: 46px;
 	color: #ffffff;
 	font-weight: 700;
+	text-transform: capitalize;
 }
 
 .breadcrumb__option a {
@@ -3601,6 +3602,7 @@ ol {
     padding-top: 10px;
     padding-bottom: 15px;
 	font-family: 'Poppins', sans-serif;
+	text-transform: capitalize;
 }
 .user-img {
     width: 80px;
@@ -3882,4 +3884,8 @@ ol {
 }
 .product_data .wishlist__add{
 	
+}
+.product-slider {
+	display: flex;
+	justify-content: center;
 }

@@ -39,7 +39,10 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{ asset('uploads/cover/'.$pro->cover) }}">
                         <ul class="featured__item__pic__hover">
-                            <li><button><i class="fa fa-heart"></i></button></li>
+                            <li>
+                                <input type="hidden" value="{{ $products->id ?? 'null'}}" class="prod_id">
+                                <button class="addToWishlist"><i class="fa fa-heart"></i></button>
+                            </li>
                             <li>
                                 <button class="add">
                                     <i class="fa fa-shopping-cart"></i>
@@ -352,13 +355,33 @@ $(document).ready(function() {
         });
         $.ajax({
             type: "GET",
-            url: "load-wishlist-count",
+            url: "{{ route('load-wishlist-count') }}",
             success: function(response) {
                 $('#wishlistCount').html('');
                 $('#wishlistCount').html(response.count);
             }
         });
     }
+    $('.addToWishlist').click(function (e) {
+        e.preventDefault();
+        var product_id = $(this).closest('.product_data').find('.prod_id').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        $.ajax({
+            type: "POST",
+            url: "{{route('addToWishlist')}}",
+            data: {
+                'product_id': product_id,
+            },
+            success: function (response) {
+                swal(response.status);
+            }
+        });
+    })
 });
 </script>
 @endsection
