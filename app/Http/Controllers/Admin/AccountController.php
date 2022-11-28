@@ -42,7 +42,7 @@ class AccountController extends Controller
         'password'=>bcrypt($request->password),
         'phone_number' => $phone_number,
         'address' => $address,
-        'image' => $imageName,
+        'photo' => $imageName,
       ]);
     }
     

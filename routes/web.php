@@ -22,8 +22,6 @@ Route::get('/category/{cate_id}/{prod_id}', 'IndexController@productview')-> nam
 Route::get('/category/{id}', 'IndexController@viewcategory')-> name('home.viewcategory');
 Route::get('/shop', 'IndexController@shop')-> name('home.shop');
 
-Route::get('/shopdetail', 'IndexController@shopdetail')-> name('home.shop-detail');
-
 Route::get('/checkout', 'IndexController@checkout')-> name('home.checkout');
 
 

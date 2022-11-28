@@ -58,16 +58,6 @@ class IndexController extends Controller
         ]);
     }
 
-    public function shopdetail(Request $request) {
-        $categories = DB::select('SELECT * FROM categories');
-        $products = Products::with('category')->get();
-
-        return view('frontend.pages.shop-detail')->with([
-            'categories' => $categories,
-            'products' => $products,
-        ]);
-    }
-
     public function cart() {
         $categories = DB::select('SELECT * FROM categories');
         $cartItems = Cart::where('user_id', Auth::id())->get();

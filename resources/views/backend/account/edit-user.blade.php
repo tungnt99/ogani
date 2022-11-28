@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label class="m-2">Cover  cImages</label>
-                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images" value="{{ $image }}" multiple>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="image" value="{{ $photo }}" multiple>
                 </div>
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>

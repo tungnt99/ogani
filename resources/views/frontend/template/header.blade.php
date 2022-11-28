@@ -38,7 +38,6 @@
                 @endif
             </li>
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
@@ -76,7 +75,6 @@
             <li><a href="{{ route('home.shop') }}">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                     <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                     <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
                 </ul>
@@ -172,7 +170,6 @@
                                 href="{{ route('home.shop') }}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                                 <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                                 <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
                             </ul>
@@ -214,7 +211,6 @@
                             @endif
                         </li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>
             </div>
         </div>
