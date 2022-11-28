@@ -114,8 +114,7 @@
 				  	</div>
 				</div>
 			</div>
-			
-			<div style="text-align:center;font-size:14px;padding-bottom:20px;">Get free icon packs for your next project at <a href="http://iiicons.in/" target="_blank" style="color:#ff5e63;font-weight:bold;">www.iiicons.in</a></div>
+
 		</div>
 	</div>
 @endsection
@@ -164,7 +163,7 @@
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-				
+
 				$.ajax({
 					type: "POST",
 					url: "{{route('addToCart')}}",
@@ -186,7 +185,7 @@
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-				
+
 				$.ajax({
 					type: "POST",
 					url: "{{route('addToWishlist')}}",

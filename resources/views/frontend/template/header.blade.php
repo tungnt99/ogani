@@ -135,7 +135,8 @@
                             @if (Auth::check())
                             <div class="header__top__right__auth--list">
                                 <div class="auth-image">
-                                    <img src="{{ Auth::user()->photo}}" alt="">
+                                    <img src="{{asset('uploads/account/'.Auth::user()->photo)}}" alt="">
+
                                 </div>
                                 {{ Auth::user()->name}}
                                 <ul>
