@@ -86,7 +86,6 @@ class ProductController extends Controller
                     $cover = $std[0]->cover;
                 }
         }
-        // dd('asdsd');
         return view('backend.product.edit-product')->with([
             'id' => $id,
             'title' => $title,
