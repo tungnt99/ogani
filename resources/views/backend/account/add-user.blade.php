@@ -1,23 +1,25 @@
 @extends('layouts.admin');
 @section('main')
 <div class="container">
+    @if(session('status'))
+        <h4 class="alert alert-success">{{ session('status') }}</h4>
+    @endif
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h2 class="text-center">
                 Input Student Information
-
             </h2>
         </div>
         <div class="panel-body">
-            <form action="{{ route('account.store') }}" method="post">
-                {{ csrf_field() }}
+            <form action="{{ route('account.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label for="fullname" class="form-label">Fullname:</label>
                     <input required type="text" class="form-control" name="name" id="fullname" >
                 </div>
                 <div class="form-group">
-                    <label class="m-2">Cover  cImages</label>
-                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
+                    <label class="m-2">Cover Images</label>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="photo">
                 </div>
                 <div class="form-group">
                     <label for="email" class="form-label">Email:</label>

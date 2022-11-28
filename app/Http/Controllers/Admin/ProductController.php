@@ -23,7 +23,7 @@ class ProductController extends Controller
             'products'=> $products,
             'index'=>$index
         ]);
-        
+
     }
     public function create(Request $request){
         $categories = DB::table('categories')->select('id', 'name')->get();
@@ -59,12 +59,12 @@ class ProductController extends Controller
         }
 
         return redirect()->back()->with('status', 'Product successfully');
-      
-        
+
+
     }
     public function deleteProduct(Request $request){
         DB::table('products')->where('id', $request->id)->delete();
-    }   
+    }
 
     public function editProduct(Request $request){
         $categories = DB::table('categories')->select('id', 'name')->get();
@@ -99,8 +99,6 @@ class ProductController extends Controller
 
         ]);
     }
-    
-
 
     public function updateProduct(Request $request){
         $products = Products::all();

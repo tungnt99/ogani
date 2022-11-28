@@ -5,7 +5,6 @@
         <div class="panel-heading">
             <h2 class="text-center">
                 Edit User Information
-
             </h2>
         </div>
         <div class="panel-body">
@@ -22,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label class="m-2">Cover  cImages</label>
-                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images" value="{{ $image }}" multiple>
+                    <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="photo" value="{{ $photo }}" multiple>
                 </div>
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
