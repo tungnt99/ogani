@@ -29,7 +29,7 @@ class LoginController extends Controller
         }
         return redirect()->route('home.index');
     }
-    
+
     public function register(){
         return view('layouts.app');
 
@@ -39,7 +39,6 @@ class LoginController extends Controller
         user::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'photo'=> 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
             'password'=>bcrypt($request->password),
             'phone_number'=>$request->phone_number
         ]);
