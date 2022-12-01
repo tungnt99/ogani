@@ -34,13 +34,13 @@ class AdminController extends Controller
         }
     }
 
-    // public function logout() {
-    //     if(Auth::logout())
-    //     {
-    //         return redirect()->route('backend.loginAdmin');
-    //     }
-    //     return redirect()->route('admin.index');
-    // }
+    public function logout() {
+        if(Auth::logout())
+        {
+            return redirect()->route('backend.login');
+        }
+        return redirect()->route('admin.index');
+    }
 
     // public function register(){
     //     return view('backend.register');
