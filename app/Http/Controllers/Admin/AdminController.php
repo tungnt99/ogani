@@ -12,21 +12,27 @@ class AdminController extends Controller
         return view('backend.dashboard');
     }
     // login
-    // public function loginAdmin(){
-    //     // return ("ABC");
-    //     return view('backend.loginAdmin');
-    // }
-    // public function loginAccountAdmin(Request $request){
-    //     $this->validate($request,[
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-    //     if(Auth::attempt($request->only('email', 'password'),false)){
-    //         return redirect()->route('home.index');
-    //     } else{
-    //         return back()->with('status','Invalid login details');
-    //     }
-    // }
+    public function login(){
+        // return ("ABC");
+        return view('backend.login');
+    }
+    public function loginAdmin(Request $request){
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $auth = array(
+            'email' =>$request->get('email'),
+            'password' => $request->get('password'),
+        );
+        if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
+            return redirect()->route('backend.dashboard');
+
+        } else{
+            return back()->with('status','Invalid login details');
+        }
+    }
 
     // public function logout() {
     //     if(Auth::logout())

@@ -131,7 +131,7 @@
 <div id="logreg-forms">
 
  {{-- form login --}}
- <form action="{{ route('login-account') }}" method="post" class="form-signin" >
+ <form action="{{ route('login-admin') }}" method="post" class="form-signin" >
     {{ csrf_field() }}
 
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in Admin</h1>
@@ -163,7 +163,7 @@
     <a href="#" id="forgot_pswd">Forgot password?</a>
     <hr>
     <!-- <p>Don't have an account!</p>  -->
-    <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> <a href="{{ route('admin.register') }}"> Sign up New Account</a></button>
+    <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> <a href="#"> Sign up New Account</a></button>
 </form>
  {{-- form reset --}}
  <form action="#" class="form-reset">
