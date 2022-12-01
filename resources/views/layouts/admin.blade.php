@@ -219,12 +219,6 @@ $menus = config('menu');
                             </li>
                         </ul>
                     </div>
-
-                    @else
-                    <div class="info">
-                        <a href="{{ route('backend.login') }}" class="d-flex align-items-center "><i class="fa fa-user mx-2"></i>Login</a>
-                    </div>
-
                     @endif
                 </div>
                 <!-- Sidebar Menu -->

@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function dashboard() {
-        return view('backend.dashboard');
+        if(!Auth::check())
+        {
+            return view('backend.login');
+        }
+        else
+        {
+            return view('backend.dashboard');
+        }
     }
     // login
     public function login(){
