@@ -68,8 +68,8 @@
 
     #logreg-forms button[type="submit"]{ margin-top:10px; }
 
-    #logreg-forms .facebook-btn{  
-        background-color: #3C589C; 
+    #logreg-forms .facebook-btn{
+        background-color: #3C589C;
         margin: 0 auto;
         line-height: 22px;
         }
@@ -136,14 +136,15 @@
 
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
     <div class="social-login">
-        <a href="{{ route('facebook.login') }}" class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </a>
-        <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+        <a href="{{ route('githublogin') }}" class="btn facebook-btn social-btn"><span><i class="fab fa-facebook-f"></i> Sign in with Github</span></a>
+        <a href="{{ route('googlelogin') }}" class="btn facebook-btn social-btn"><span><i class="fab fa-facebook-f"></i> Sign in with Google</span></a>
+
     </div>
     <p style="text-align:center"> OR  </p>
     <div class="input-group from-group">
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" @error('email') border-red-500 @enderror" 
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" @error('email') border-red-500 @enderror"
       value="{{ old('email') }}">
-      
+
     </div>
     <div>
         @error('email')
@@ -151,7 +152,7 @@
        @enderror
     </div>
     <div class="input-group from-group">
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" @error('password') border-red-500 @enderror" 
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" @error('password') border-red-500 @enderror"
       value="{{ old('password') }}">
     </div>
     <div>

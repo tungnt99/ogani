@@ -148,6 +148,7 @@
                         </div>
                         @else
                         <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+
                         @endif
                     </div>
                 </div>

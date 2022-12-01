@@ -31,10 +31,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'facebook' => [
-        'client_id' => '', //USE FROM FACEBOOK DEVELOPER ACCOUNT
-        'client_secret' => '', //USE FROM FACEBOOK DEVELOPER ACCOUNT
-        'redirect' => 'https://www.facebook.com/tranminhhieu.1809/facebook/callback/'
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT'),
+    ],
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT')
     ],
 
 ];
