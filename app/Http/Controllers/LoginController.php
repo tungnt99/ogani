@@ -15,7 +15,12 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if(Auth::attempt($request->only('email', 'password'),false)){
+
+        $auth = array(
+            'email' =>$request->get('email'),
+            'password' => $request->get('password'),
+        );
+        if(Auth::attempt($auth) && Auth::User()->role_name === 'user' || Auth::User()->role_name === 'admin'){
             return redirect()->route('home.index');
         } else{
             return back()->with('status','Invalid login details');
@@ -29,7 +34,7 @@ class LoginController extends Controller
         }
         return redirect()->route('home.index');
     }
-    
+
     public function register(){
         return view('layouts.app');
 
@@ -39,7 +44,6 @@ class LoginController extends Controller
         user::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'photo'=> 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
             'password'=>bcrypt($request->password),
             'phone_number'=>$request->phone_number
         ]);

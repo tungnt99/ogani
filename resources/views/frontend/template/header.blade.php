@@ -38,7 +38,6 @@
                 @endif
             </li>
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
@@ -76,7 +75,6 @@
             <li><a href="{{ route('home.shop') }}">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                     <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                     <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
                 </ul>
@@ -133,10 +131,10 @@
                         </div>
                         <div class="header__top__right__auth">
                             @if (Auth::check())
-
                             <div class="header__top__right__auth--list">
                                 <div class="auth-image">
-                                    <img src="{{ Auth::user()->photo}}" alt="">
+                                    <img src="{{asset('uploads/account/'.Auth::user()->photo)}}" alt="">
+
                                 </div>
                                 {{ Auth::user()->name}}
                                 <ul>
@@ -147,16 +145,10 @@
                                 </ul>
 
                             </div>
-                            {{ Auth::user()->name}}
-                            <ul>
-                                <li><a href="#">Account</a></li>
-                                <li>
-                                    <a href="{{ url('logout') }}">Logout</a>
-                                </li>
-                            </ul>
                         </div>
                         @else
                         <a href="{{ route('home.login') }}"><i class="fa fa-user"></i> Login</a>
+
                         @endif
                     </div>
                 </div>
@@ -174,21 +166,16 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="{{ Request::segment(1) == '' ? 'active' : '' }}"><a
-                                href="{{ route('home.index') }}">Home</a></li>
-                        <li class="{{ Request::segment(1) == 'shop' ? 'active' : '' }}"><a
-                                href="{{ route('home.shop') }}">Shop</a></li>
+                        <li class="{{ Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ route('home.index') }}">Home</a></li>
+                        <li class="{{ Request::segment(1) == 'shop' ? 'active' : '' }}"><a href="{{ route('home.shop') }}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{ route('home.shop-detail') }}">Shop Details</a></li>
                                 <li><a href="{{ route('home.cart') }}">Shoping Cart</a></li>
                                 <li><a href="{{ route('home.checkout') }}">Check Out</a></li>
                             </ul>
                         </li>
-                        <li class="{{ Request::segment(1) == 'blog' ? 'active' : '' }}"><a
-                                href="{{ route('home.blog') }}">Blog</a></li>
-                        <li class="{{ Request::segment(1) == 'contact' ? 'active' : '' }}"><a
-                                href="{{ route('home.contact') }}">Contact</a></li>
+                        <li class="{{ Request::segment(1) == 'blog' ? 'active' : '' }}"><a href="{{ route('home.blog') }}">Blog</a></li>
+                        <li class="{{ Request::segment(1) == 'contact' ? 'active' : '' }}"><a href="{{ route('home.contact') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -222,7 +209,6 @@
                             @endif
                         </li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>
             </div>
         </div>
@@ -244,7 +230,7 @@
                     </div>
                     <ul>
                         @foreach ($categories as $item)
-                        <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+                        <li><a href="{{ url('category/'.$item->id) }}">{{$item->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -270,5 +256,8 @@
             </div>
         </div>
     </div>
+    <script>
+        window.user = '{{ auth()->user() }}'
+    </script>
 </section>
 <!-- Hero Section End -->

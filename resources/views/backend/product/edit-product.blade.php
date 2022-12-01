@@ -1,21 +1,15 @@
 @extends('layouts.admin');
 
-
 @section('main')
-
 <div class="container">
     <div class="panel panel-primary">
-       
         <div class="panel-body row">
-          
             <div class="col-lg-6">
                 <h3 class="text-center text-danger"><b>Update Product</b> </h3>
                 <div class="form-group">
                     <form action="{{ route('update-product') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-
                         <input hidden type="text" name="id" class="form-control" value="{{ $id }}">
-
                         <div class="form-group">
                             <label for="title" class="form-label">Title:</label>
                             <input type="text" class="form-control" name="title" id="title" value="{{ $title }}">
@@ -30,9 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="category" class="form-label">Category:</label>
-            
                             <select name="category_id" class="form-control" id="category" value="{{ $category_id }}">
-                                
                                 @foreach($categories as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
@@ -45,7 +37,6 @@
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Cover Image:</label>
                             <input  type="file" class="form-control m-2" name="cover" id="input-file-now-custom-3" value="{{$cover}}">
-                            <!-- <img src="{{asset('uploads/cover/'.$products->cover)}}" alt=""> -->
                         </div>
                         <div class="form-group">
                             <label for="input-file-now-custom-3" class="form-label m-2">Images:</label>
@@ -57,7 +48,6 @@
                     </form>
                </div>
             </div>
-           
         </div>
     </div>
 </div>
