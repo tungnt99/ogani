@@ -1,4 +1,4 @@
-<?php 
+<?php
   $menus = config('menu');
 ?>
 
@@ -16,7 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('mainad') }}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{ url('site') }}/sass/style.css">
- 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -166,16 +166,14 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ url('mainad') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center  ">
+
         <div class="info">
-          <a href="#" class="d-block">Ogani</a>
+          <a href="{{ route('backend.loginAdmin') }}" class="d-flex align-items-center "><i class="fa fa-user mx-2"></i>Login</a>
         </div>
       </div>
 
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
