@@ -19,23 +19,41 @@ $menus = config('menu');
     <link rel="stylesheet" href="{{ url('site') }}/sass/style.css">
 
     <style>
+        .user-panel{
+            overflow: inherit;
+        }
         .user-panel-left{
             position: relative;
         }
         .user-panel-left .auth-name {
             color: #fff;
         }
+        .user-panel-left:hover.user-panel-left>ul{
+            display: block;
+        }
         .user-panel-left>ul{
             position: absolute;
             top: 25px;
             left: 0;
             right: 0;
-            background-color: blue;
-            z-index: 10000;
+            background-color: #ccc;
+            display: none;
+            z-index: 10;
+            width: 100%;
         }
 
         .user-panel-left>ul>li{
             list-style: none;
+            font-size: 18px;
+            border-bottom: 1px solid #000;
+        }
+        .user-panel-left>ul>li>a{
+            padding: 2px 2px 2px 12px;
+            display: block;
+            color: black !important;
+        }
+        .user-panel-left>ul>li>a:hover {
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -201,12 +219,6 @@ $menus = config('menu');
                             </li>
                         </ul>
                     </div>
-
-                    @else
-                    <div class="info">
-                        <a href="{{ route('backend.login') }}" class="d-flex align-items-center "><i class="fa fa-user mx-2"></i>Login</a>
-                    </div>
-
                     @endif
                 </div>
                 <!-- Sidebar Menu -->

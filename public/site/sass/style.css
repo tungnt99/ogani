@@ -1115,6 +1115,13 @@ ol {
   visibility: hidden;
 }
 
+.user-panel-left .auth-name {
+  color: #fff;
+}
+.user-panel-left ul li {
+  list-style: none;
+}
+
 /*---------------------
   Shop Grid
 -----------------------*/
