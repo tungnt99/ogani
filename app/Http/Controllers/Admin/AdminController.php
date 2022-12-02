@@ -5,22 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function dashboard() {
-        if(!Auth::check())
+        $role = DB::table('users')->select('role_name')->get();
+        if(!Auth::check() && !$role === 'admin')
         {
             return view('backend.login');
         }
         else
         {
-            return view('backend.dashboard');
+            return redirect('admin/login');
         }
     }
     // login
     public function login(){
-        // return ("ABC");
         return view('backend.login');
     }
     public function loginAdmin(Request $request){
@@ -34,19 +35,16 @@ class AdminController extends Controller
             'password' => $request->get('password'),
         );
         if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
-            return redirect()->route('backend.dashboard');
+            return view('backend.dashboard');
 
         } else{
             return back()->with('status','Invalid login details');
         }
     }
 
-    public function logout() {
-        if(Auth::logout())
-        {
-            return redirect()->route('backend.login');
-        }
-        return redirect()->route('admin.index');
+    public function logoutAdmin(Request $request) {
+        $request->session()->flush();
+        return redirect()->route('backend.login');
     }
 
     // public function register(){

@@ -33,7 +33,7 @@ $menus = config('menu');
         }
         .user-panel-left>ul{
             position: absolute;
-            top: 25px;
+            top: 15px;
             left: 0;
             right: 0;
             background-color: #ccc;
@@ -215,7 +215,7 @@ $menus = config('menu');
                         <ul>
                             <li><a href="#">Account</a></li>
                             <li>
-                                <a href="{{ url('logout') }}">Logout</a>
+                                <a href="{{ url('admin/logoutAdmin') }}">Logout</a>
                             </li>
                         </ul>
                     </div>
