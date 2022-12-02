@@ -163,7 +163,7 @@
             <input type="text" id="user-name" class="form-control" placeholder="Full name" name="name" required="" autofocus="">
             <input type="email" id="user-email" class="form-control" placeholder="Email address" name="email" required autofocus="">
             <input type="password" id="user-pass" class="form-control" placeholder="Password" name="password" required autofocus="">
-            <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" name="confirm-password" required autofocus="">
+            <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" name="confirmed" required autofocus="">
             <span id='message'></span>
             <input type="number" id="user-phone" class="form-control" placeholder="Phone Number" name="phone_number" required autofocus="">
             <div class="input-group">
