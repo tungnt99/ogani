@@ -163,7 +163,7 @@
     <a href="#" id="forgot_pswd">Forgot password?</a>
     <hr>
     <!-- <p>Don't have an account!</p>  -->
-    <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> <a href="#"> Sign up New Account</a></button>
+    <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> <a href="{{ route('backend.register') }}"> Sign up New Account</a></button>
 </form>
  {{-- form reset --}}
  <form action="#" class="form-reset">
