@@ -50,17 +50,18 @@ class AdminController extends Controller
         return redirect()->route('backend.login');
     }
 
-    // public function register(){
-    //     return view('backend.register');
+    public function register(){
+        // return('ABC');
+        return view('backend.register');
 
-    // }
-    // public function addAccount(Request $request){
-    //     user::create([
-    //         'name'=>$request->name,
-    //         'email'=>$request->email,
-    //         'password'=>bcrypt($request->password),
-    //         'phone_number'=>$request->phone_number
-    //     ]);
-    //     return redirect('login');
-    //  }
+    }
+    public function addAccountAdmin(Request $request){
+        user::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+            'phone_number'=>$request->phone_number
+        ]);
+        return redirect()->route('backend.login');
+     }
 }

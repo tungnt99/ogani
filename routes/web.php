@@ -53,11 +53,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/login-admin', 'App\Http\Controllers\Admin\AdminController@loginAdmin')->name('login-admin');
     Route::get('/logoutAdmin', 'App\Http\Controllers\Admin\AdminController@logoutAdmin')->name('logoutAdmin');
     // login admin
-    // Route::post('/post-account', [
-    //     'as' => 'post-account',
-    //     'uses' => 'App\Http\Controllers\Admin\AdminController@addAccount'
-    // ]);
-    // Route::get('/register', 'App\Http\Controllers\Admin\AdminController@register')->name('admin.register');
+    Route::post('/post-account-admin', [
+        'as' => 'post-account-admin',
+        'uses' => 'App\Http\Controllers\Admin\AdminController@addAccountAdmin'
+    ]);
+    Route::get('/register', 'App\Http\Controllers\Admin\AdminController@register')->name('backend.register');
 
     Route::resources([
         'category' => 'App\Http\Controllers\Admin\CategoryController',
