@@ -24,16 +24,18 @@ $menus = config('menu');
         }
         .user-panel-left{
             position: relative;
+            width: 50%;
         }
         .user-panel-left .auth-name {
             color: #fff;
+            cursor: pointer;
         }
         .user-panel-left:hover.user-panel-left>ul{
             display: block;
         }
         .user-panel-left>ul{
             position: absolute;
-            top: 15px;
+            top: 25px;
             left: 0;
             right: 0;
             background-color: #ccc;
@@ -41,7 +43,16 @@ $menus = config('menu');
             z-index: 10;
             width: 100%;
         }
-
+        .user-panel-left:hover.user-panel-left>ul::after{
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+        }
         .user-panel-left>ul>li{
             list-style: none;
             font-size: 18px;
