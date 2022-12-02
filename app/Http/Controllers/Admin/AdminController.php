@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
+
 class AdminController extends Controller
 {
     public function dashboard() {
@@ -24,14 +25,15 @@ class AdminController extends Controller
     public function login(){
         return view('backend.login');
     }
-    public function loginAdmin(Request $request){
-        $this->validate($request,[
+    public function loginAdmin(Request $request)
+    {
+        $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
         $auth = array(
-            'email' =>$request->get('email'),
+            'email' => $request->get('email'),
             'password' => $request->get('password'),
         );
         if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
