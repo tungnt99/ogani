@@ -215,7 +215,7 @@ $menus = config('menu');
                         <ul>
                             <li><a href="#">Account</a></li>
                             <li>
-                                <a href="{{ url('logout') }}">Logout</a>
+                                <a href="{{ url('admin/logout-admin') }}">Logout</a>
                             </li>
                         </ul>
                     </div>
