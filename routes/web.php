@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
     Route::get('/login', 'App\Http\Controllers\Admin\AdminController@login')->name('backend.login');
     Route::post('/login-admin', 'App\Http\Controllers\Admin\AdminController@loginAdmin')->name('login-admin');
-    Route::get('/logout-admin', 'App\Http\Controllers\Admin\AdminController@logoutAdmin')->name('logout-admin');
+    Route::get('/logoutAdmin', 'App\Http\Controllers\Admin\AdminController@logoutAdmin')->name('logoutAdmin');
     // login admin
     // Route::post('/post-account', [
     //     'as' => 'post-account',
