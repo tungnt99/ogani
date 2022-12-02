@@ -56,6 +56,15 @@ class AdminController extends Controller
 
     }
     public function addAccountAdmin(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'email' => 'email',
+            'password' => 'min:6|required_with:confirmed|same:confirmed',
+            'confirmed' => 'min:6',
+            'phone_number' => 'max:13',
+        ]);
+
         user::create([
             'name'=>$request->name,
             'email'=>$request->email,
