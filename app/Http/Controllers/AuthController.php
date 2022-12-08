@@ -50,7 +50,7 @@ class AuthController extends Controller
         if($user){
             // do login
             Auth::login($user);
-            return redirect('/');
+            return redirect('/home');
         }
         else{
             // register
@@ -64,7 +64,7 @@ class AuthController extends Controller
             $user->save();
             // dd($user);
             Auth::login($user);
-            return redirect('/');
+            return redirect('/home');
         }
     }
 }

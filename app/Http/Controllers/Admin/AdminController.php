@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function dashboard() {
+        return view('backend.dashboard');
+    }
+    public function main() 
+    {
         $role = DB::table('users')->select('role_name')->get();
         if(!Auth::check() && !$role === 'admin')
         {
@@ -18,7 +22,6 @@ class AdminController extends Controller
         }
         else
         {
-
             return redirect('admin/login');
         }
     }
@@ -38,8 +41,7 @@ class AdminController extends Controller
             'password' => $request->get('password'),
         );
         if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
-            return view('backend.dashboard');
-
+            return redirect()->route('backend.dashboard');
         } else{
             return back()->with('status','Invalid login details');
         }

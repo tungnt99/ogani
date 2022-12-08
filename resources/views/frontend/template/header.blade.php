@@ -133,12 +133,11 @@
                             @if (Auth::check())
                             <div class="header__top__right__auth--list">
                                 <div class="auth-image">
-                                    <img src="{{asset('uploads/account/'.Auth::user()->photo)}}" alt="">
-
+                                    <img src="{{asset(Auth::user()->photo)}}" alt="">
                                 </div>
                                 {{ Auth::user()->name}}
                                 <ul>
-                                    <li><a href="{{ url('account-user') }}">Account</a></li>
+                                    <li><a href="{{ url('account-user') }}">Profile</a></li>
                                     <li>
                                         <a href="{{ url('logout') }}">Logout</a>
                                     </li>
@@ -238,9 +237,22 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                        <form action="#" role="search">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="What do yo u need?">
+
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </div>
+                            <div class="search-result">
+                               <ul>
+                                <li>Search item</li>
+                                <li>Search item</li>
+                                <li>Search item</li>
+                                <li>Search item</li>
+                                <li>Search item</li>
+                               </ul>
+                            </div>
+
                         </form>
                     </div>
                     <div class="hero__search__phone">

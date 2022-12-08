@@ -20,9 +20,13 @@ class LoginController extends Controller
             'email' =>$request->get('email'),
             'password' => $request->get('password'),
         );
-        if(Auth::attempt($auth) && Auth::User()->role_name === 'user' || Auth::User()->role_name === 'admin'){
+        if(Auth::attempt($auth) && Auth::User()->role_name === 'user'){
             return redirect()->route('home.index');
-        } else{
+        }
+        else if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
+            return redirect()->route('home.index');
+        } 
+        else{
             return back()->with('status','Invalid login details');
         }
     }
