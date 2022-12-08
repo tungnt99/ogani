@@ -39,6 +39,8 @@ Route::get('/register', 'LoginController@register')->name('home.register');
 
 Route::get('/account-user', 'IndexController@accountUser')->name('account-user');
 
+Route::post('/account-user/updateImage','IndexController@upload');
+
 Route::post('/post-account', [
     'as' => 'post-account',
     'uses' => 'App\Http\Controllers\LoginController@addAccount'
@@ -48,7 +50,8 @@ Route::get('/login', 'LoginController@login')->name('home.login');
 Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
+    Route::get('/main', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
+    Route::get('/', 'App\Http\Controllers\Admin\AdminController@main')->name('backend.main');
     Route::get('/login', 'App\Http\Controllers\Admin\AdminController@login')->name('backend.login');
     Route::post('/login-admin', 'App\Http\Controllers\Admin\AdminController@loginAdmin')->name('login-admin');
     Route::get('/logoutAdmin', 'App\Http\Controllers\Admin\AdminController@logoutAdmin')->name('logoutAdmin');
@@ -193,3 +196,9 @@ Route::get('/auth/github/callback', [AuthController::class, 'githubcallback']);
 // google login
 Route::get('/auth/google/redirect', [AuthController::class, 'googleredirect'])->name('googlelogin');
 Route::get('/auth/google/callback', [AuthController::class, 'googlecallback']);
+
+// Route::group(['namespace' => 'Administrators'], function () {
+//     Route::group(['prefix' => 'backend', 'middleware' => 'auth'], function () {
+//         Route::get('/home', 'HomesController@index')->name('backend.home');
+//     });
+// });
