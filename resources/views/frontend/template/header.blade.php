@@ -243,17 +243,34 @@
 
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </div>
-                            <div class="search-result">
-                               <ul>
-                                <li>Search item</li>
-                                <li>Search item</li>
-                                <li>Search item</li>
-                                <li>Search item</li>
-                                <li>Search item</li>
-                               </ul>
-                            </div>
 
                         </form>
+                        <div class="search-result">
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Left-aligned</h4>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Left-aligned</h4>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Left-aligned</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">

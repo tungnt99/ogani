@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -10,10 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function dashboard() {
+    public function __construct()
+    {
+        $this->middleware('CheckLogin', ['except' => ['edit','update']]);
+    }
+
+
+    public function dashboard()
+    {
         return view('backend.dashboard');
     }
-    public function main() 
+    public function main()
     {
         $role = DB::table('users')->select('role_name')->get();
         if(!Auth::check() && !$role === 'admin')
@@ -26,7 +33,8 @@ class AdminController extends Controller
         }
     }
     // login
-    public function login(){
+    public function login()
+    {
         return view('backend.login');
     }
     public function loginAdmin(Request $request)
@@ -40,24 +48,26 @@ class AdminController extends Controller
             'email' => $request->get('email'),
             'password' => $request->get('password'),
         );
-        if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
+        if (Auth::attempt($auth) && Auth::User()->role_name === 'admin') {
             return redirect()->route('backend.dashboard');
-        } else{
-            return back()->with('status','Invalid login details');
+        } else {
+            return back()->with('status', 'Invalid login details');
         }
     }
 
-    public function logoutAdmin(Request $request) {
+    public function logoutAdmin(Request $request)
+    {
         $request->session()->flush();
         return redirect()->route('backend.login');
     }
 
-    public function register(){
+    public function register()
+    {
         // return('ABC');
         return view('backend.register');
-
     }
-    public function addAccountAdmin(Request $request){
+    public function addAccountAdmin(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
@@ -68,11 +78,11 @@ class AdminController extends Controller
         ]);
 
         user::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'phone_number'=>$request->phone_number
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone_number' => $request->phone_number
         ]);
         return redirect()->route('backend.login');
-     }
+    }
 }

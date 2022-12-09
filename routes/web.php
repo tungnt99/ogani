@@ -160,8 +160,13 @@ Route::group(['prefix' => 'admin'], function () {
     ]);
 });
 
-
-
+// Auth::routes(
+//     [
+//         'register' => false,
+//         'verify' => false,
+//         'reset' => false,
+//     ]
+// );
 
 Route::post('/post-contact', [
     'as' => 'post-contact',

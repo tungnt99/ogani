@@ -688,7 +688,7 @@ ol {
 }
 
 .hero__search {
-	overflow: hidden;
+	/* overflow: hidden; */
 	margin-bottom: 30px;
 }
 
@@ -925,7 +925,7 @@ ol {
 	text-align: center;
 }
 
-.featured__item .product-price-discount span:nth-child(1) { 
+.featured__item .product-price-discount span:nth-child(1) {
 	color: #212529;
 	font-weight: 600;
 }
@@ -3711,11 +3711,11 @@ ol {
     content: '\2605';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;    
+    color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
@@ -3741,7 +3741,7 @@ ol {
 	box-shadow: none;
 }
 .product-count {
-	margin-top: 15px; 
+	margin-top: 15px;
 }
 .product-count .product-qty input {
 	color: #1c1c1c;
@@ -3769,10 +3769,10 @@ ol {
     cursor: pointer;
 }
 .product-count .qtyminus {
-	border-radius: 3px 0 0 3px; 
+	border-radius: 3px 0 0 3px;
 }
 .product-count .qtyplus {
-	border-radius: 0 3px 3px 0; 
+	border-radius: 0 3px 3px 0;
 }
 .product-count .qty {
 	width: 60px;
@@ -3793,7 +3793,7 @@ ol {
     padding: 7px 45px;
     display: inline-block;
     margin-top: 20px;
-    border: solid 2px #212529; 
+    border: solid 2px #212529;
     transition: all 0.5s ease-in-out 0s;
 }
 .round-black-btn:hover,
@@ -3805,7 +3805,7 @@ ol {
 }
 
 .product-info-tabs {
-	margin-top: 25px; 
+	margin-top: 25px;
 }
 .product-info-tabs .nav-tabs {
 	border-bottom: 2px solid #d8d8d8;
@@ -3814,17 +3814,17 @@ ol {
 	margin-bottom: 0;
 }
 .product-info-tabs .nav-tabs .nav-link {
-	border: none; 
+	border: none;
 	border-bottom: 2px solid transparent;
 	color: #323232;
 }
 .product-info-tabs .nav-tabs .nav-item .nav-link:hover {
-	border: none; 
+	border: none;
 }
-.product-info-tabs .nav-tabs .nav-item.show .nav-link, 
-.product-info-tabs .nav-tabs .nav-link.active, 
+.product-info-tabs .nav-tabs .nav-item.show .nav-link,
+.product-info-tabs .nav-tabs .nav-link.active,
 .product-info-tabs .nav-tabs .nav-link.active:hover {
-	border: none; 
+	border: none;
 	border-bottom: 2px solid #d8d8d8;
 	font-weight: bold;
 }
@@ -3877,15 +3877,32 @@ ol {
 	height: 120px;
 }
 .product_data .wishlist__item__title{
-	
+
 }
 .product_data .wishlist__price{
-	
+
 }
 .product_data .wishlist__add{
-	
+
 }
 .product-slider {
 	display: flex;
 	justify-content: center;
+}
+.search-result{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-radius: 5px;
+    border: 0.5px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #fff;
+}
+.search-result .media{
+    cursor: pointer;
 }
