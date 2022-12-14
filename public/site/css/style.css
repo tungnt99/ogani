@@ -98,9 +98,10 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
 }
-
+a{
+    color: #000;
+}
 ul,
 ol {
 	padding: 0;
@@ -3895,6 +3896,8 @@ ol {
     left: 0;
     right: 0;
     z-index: 10;
+}
+.search-result .product-search-list{
     border-radius: 5px;
     border: 0.5px solid #ccc;
     padding: 10px;
@@ -3902,7 +3905,9 @@ ol {
     flex-direction: column;
     gap: 5px;
     background-color: #fff;
+
 }
-.search-result .media{
+.search-result .product-item{
     cursor: pointer;
+    display: flex;
 }

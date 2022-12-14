@@ -14,9 +14,9 @@ use App\Models\Categories;
  * @package namespace App\Models;
  */
 class Products extends Model implements Transformable
-{   
+{
     use TransformableTrait;
-    use HasFactory;  
+    use HasFactory;
 
 
     /**
@@ -39,5 +39,14 @@ class Products extends Model implements Transformable
     }
     public function category() {
         return $this->belongsTo(Categories::class,'category_id','id');
+    }
+
+    public function scopeSearch($query){
+        if(request('key')){
+            $key = request('key');
+            $query = $query->where('title', 'like', '%'.$key.'%');
+        }
+
+        return $query;
     }
 }

@@ -28,7 +28,7 @@
                             <h4>Department</h4>
                             <ul>
                                 @foreach ($categories as $item)
-                                    <li><a href="{{ url('view-category/'.$item->id) }}">{{$item->name}}</a></li>
+                                    <li><a href="{{ url('category/'.$item->id) }}">{{$item->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -115,7 +115,7 @@
                                 </label>
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -146,7 +146,7 @@
                                     </div>
 
                                 @endforeach
-                               
+
                             </div>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                             </div>
                         @endforeach
 
-                      
+
                     </div>
                         <div class="paginate-products d-flex justify-content-center">
                             {{ $products->links() }}

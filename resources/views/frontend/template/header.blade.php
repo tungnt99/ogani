@@ -239,37 +239,14 @@
                     <div class="hero__search__form">
                         <form action="#" role="search">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="What do yo u need?">
+                                <input class="form-control input-search" type="text" placeholder="What do you need?">
 
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </div>
-
                         </form>
                         <div class="search-result">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Left-aligned</h4>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Left-aligned</h4>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="https://laodongthudo.vn/stores/news_dataimages/minhphuong/042016/15/13/5853_avatar-wallp-1920x1080.jpg" class="media-object" style="width:80px">
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Left-aligned</h4>
-                                </div>
-                            </div>
+
+
                         </div>
                     </div>
                     <div class="hero__search__phone">
@@ -286,7 +263,46 @@
         </div>
     </div>
     <script>
+
         window.user = '{{ auth()->user() }}'
+        $('.input-search').keyup(function() {
+            var _text = $(this).val();
+            var _url = "{{asset('uploads/cover')}}";
+
+            $.ajax({
+                url: "{{route('ajax-search-product')}}?key=" + _text,
+                type: 'GET',
+                success: function(res) {
+                    console.table(res);
+                    var _html = '';
+                    _html += '<div class="product-search-list">';
+                    for (var product of res) {
+                        var slug = convertToSlug(product.title);
+                        _html += '<a href="http://localhost:8080/ogani/public/product_details/' + product.id + '-' + slug + '" class="product-item">';
+                        _html += '<div class="product-left">';
+                        _html += '<img src="' + _url + '/' + product.cover + '" class="product-object" style="width:80px; height: 80px">';
+                        _html += '</div>';
+                        _html += '<div class="product-body">';
+                        _html += '<h5 class="product-heading">' + product.title + '</h5>';
+                        _html += '</div>';
+                        _html += '</a>';
+                    }
+
+                    _html += '</div>';
+
+
+                    $('.search-result').html(_html);
+                }
+            });
+            // alert(_text)
+        });
+
+        function convertToSlug(Text){
+            return Text
+                .toLowerCase()
+                .replace(/ /g, '-')
+                .replace(/[^\w-]+/g, '');
+        }
     </script>
 </section>
 <!-- Hero Section End -->
