@@ -245,7 +245,9 @@
                             </div>
                         </form>
                         <div class="search-result">
+                            <!-- <div class="product-search-list">
 
+                            </div> -->
 
                         </div>
                     </div>
@@ -265,36 +267,49 @@
     <script>
 
         window.user = '{{ auth()->user() }}'
+        $('.search-result').hide();
         $('.input-search').keyup(function() {
             var _text = $(this).val();
             var _url = "{{asset('uploads/cover')}}";
+            if(_text != ''){
+                $.ajax({
+                    url: "{{route('ajax-search-product')}}?key=" + _text,
+                    type: 'GET',
+                    success: function(res) {
+                        console.log(res);
+                        var _html = '';
+                        if(res.length === 0){
+                            _html += '<div class="not-product">';
+                            _html += '<h3 class="text-center">Không có sản phẩm</h3>';
+                            _html += '</div>';
 
-            $.ajax({
-                url: "{{route('ajax-search-product')}}?key=" + _text,
-                type: 'GET',
-                success: function(res) {
-                    console.table(res);
-                    var _html = '';
-                    _html += '<div class="product-search-list">';
-                    for (var product of res) {
-                        var slug = convertToSlug(product.title);
-                        _html += '<a href="http://localhost:8080/ogani/public/product_details/' + product.id + '-' + slug + '" class="product-item">';
-                        _html += '<div class="product-left">';
-                        _html += '<img src="' + _url + '/' + product.cover + '" class="product-object" style="width:80px; height: 80px">';
-                        _html += '</div>';
-                        _html += '<div class="product-body">';
-                        _html += '<h5 class="product-heading">' + product.title + '</h5>';
-                        _html += '</div>';
-                        _html += '</a>';
+                        }else{
+
+                            _html += '<div class="product-search-list">';
+                            for (var product of res) {
+                                var slug = convertToSlug(product.title);
+                                _html += '<a href="http://localhost:8080/ogani/public/product_details/' + product.id + '-' + slug + '" class="product-item">';
+                                _html += '<div class="product-left">';
+                                _html += '<img src="' + _url + '/' + product.cover + '" class="product-object" style="width:80px; height: 80px">';
+                                _html += '</div>';
+                                _html += '<div class="product-body">';
+                                _html += '<h5 class="product-heading">' + product.title + '</h5>';
+                                _html += '</div>';
+                                _html += '</a>';
+                            }
+                            _html += '</div>';
+                        }
+
+
+                        $('.search-result').show();
+                        $('.search-result').html(_html);
                     }
+                });
+            }else{
+                $('.search-result').html('');
+                $('.search-result').hide();
+            }
 
-                    _html += '</div>';
-
-
-                    $('.search-result').html(_html);
-                }
-            });
-            // alert(_text)
         });
 
         function convertToSlug(Text){

@@ -2007,6 +2007,8 @@ ol {
 
 .shoping__cart__table table tbody tr td.shoping__cart__item img {
 	display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item h5 {
@@ -3897,6 +3899,7 @@ ol {
     right: 0;
     z-index: 10;
 }
+
 .search-result .product-search-list{
     border-radius: 5px;
     border: 0.5px solid #ccc;
@@ -3905,9 +3908,35 @@ ol {
     flex-direction: column;
     gap: 5px;
     background-color: #fff;
+    height: 350px;
+    overflow: auto;
+}
+.search-result .product-search-list::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.search-result .product-search-list::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
 
+.search-result .product-search-list::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
 }
 .search-result .product-item{
     cursor: pointer;
     display: flex;
+    gap: 15px;
+}
+
+.search-result .not-product{
+    background-color: #fff;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+}
+.search-result .not-product h3{
+    line-height: 50px;
+
 }
