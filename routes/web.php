@@ -22,7 +22,8 @@ use Laravel\Socialite\Facades\Socialite;
 
 
 Route::get('/', 'IndexController@index')->name('home.index');
-Route::get('/category/{cate_id}/{prod_id}', 'IndexController@productview')->name('productview');
+// Route::get('/category/{cate_id}/{prod_id}', 'IndexController@productview')->name('productview');
+Route::get('/product_details/{id}', 'IndexController@productview')-> name('productview');
 Route::get('/category/{id}', 'IndexController@viewcategory')->name('home.viewcategory');
 Route::get('/shop', 'IndexController@shop')->name('home.shop');
 
@@ -49,7 +50,7 @@ Route::post('/post-account', [
 Route::get('/login', 'LoginController@login')->name('home.login');
 Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/main', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
     Route::get('/', 'App\Http\Controllers\Admin\AdminController@main')->name('backend.main');
     Route::get('/login', 'App\Http\Controllers\Admin\AdminController@login')->name('backend.login');

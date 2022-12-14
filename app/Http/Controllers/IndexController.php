@@ -73,7 +73,7 @@ class IndexController extends Controller
     public function blog() {
         $categories = DB::select('SELECT * FROM categories');
         $blogs = DB::select('SELECT * FROM blogs');
-        
+
         return view('frontend.pages.blog')->with([
             'categories' => $categories,
             'blogs' => $blogs
@@ -96,7 +96,7 @@ class IndexController extends Controller
     }
     public function viewcategory($id)
     {
-        
+
         if(Categories::where("id", $id)->exists()){
             $categories = DB::select('SELECT * FROM categories');
 
@@ -109,27 +109,32 @@ class IndexController extends Controller
         }
 
     }
-    public function productview($cate_id, $prod_id)
+    // public function productview($cate_id, $prod_id)
+    // {
+    //     $categories = DB::select('SELECT * FROM categories');
+    //     if(Categories::where('id', $cate_id)->exists())
+    //     {
+    //         if(Products::where('id', $prod_id)->exists())
+    //         {
+    //             $products = Products::where('id',$prod_id)->first();
+    //             return view('frontend.products.view',compact('products','categories'));
+    //         }
+    //         else
+    //         {
+    //             return redirect('/')->with('status', "the link was broken");
+    //         }
+    //     }
+    //     else
+    //     {
+    //         return redirect('/')->with('status', "No such category found");
+    //     }
+    // }
+    public function productview($id)
     {
         $categories = DB::select('SELECT * FROM categories');
-        if(Categories::where('id', $cate_id)->exists())
-        {
-            if(Products::where('id', $prod_id)->exists())
-            {
-                $products = Products::where('id',$prod_id)->first();
-                return view('frontend.products.view',compact('products','categories'));
-            }
-            else
-            {
-                return redirect('/')->with('status', "the link was broken");
-            }
-        }
-        else
-        {
-            return redirect('/')->with('status', "No such category found");   
-        }
+        $products = Products::find($id);
+        return view('frontend.products.view',compact('products', 'categories'));
     }
-
     public function accountUser() {
         return view('layouts.account_user');
     }

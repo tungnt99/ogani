@@ -130,9 +130,9 @@
                                             </a>
 
                                         @endforeach
-                                       
+
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         </div> -->
@@ -165,7 +165,7 @@
                                     </div>
 
                                 @endforeach
-                               
+
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                             </div>
 
                         @endforeach
-                      
+
                     </div>
                     <div class="paginate-products d-flex justify-content-center">
                         {{ $products->links() }}

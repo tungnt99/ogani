@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    
+
     @include('frontend.template.header')
 
         @yield('main')
@@ -52,6 +52,8 @@
     <script src="{{ url('site') }}/js/customer.js"></script>
     <script src="{{ url('site') }}/js/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+
 </body>
 
 </html>
