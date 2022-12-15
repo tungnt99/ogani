@@ -218,38 +218,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            cartload();
-            function cartload() {
-                $.ajax({
-                    type: "GET",
-                    url: "load-cart-data",
-                    success: function(response) {
-                        var _cart = '';
-                        _cart += '<span class="total-count">' + response.count + '</span>';
-                        $('.cart-count').html(_cart);
-                    }
-                });
-            }
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            loadwishlist();
-
-            function loadwishlist() {
-                $.ajax({
-                    type: "GET",
-                    url: "load-wishlist-count",
-                    success: function(response) {
-                        var _wishlist = '';
-                        _wishlist += '<span class="total-wishlist">' + response.count + '</span>';
-                        $('.wishlist-count').html(_wishlist);
-                        // $('#wishlistCount').html('');
-                        // $('#wishlistCount').html(response.count);
-                    }
-                });
-            }
 			$('.addToCartBtn').click(function (e) {
 				e.preventDefault();
 				var product_id = $(this).closest('.product_data').find('.prod_id').val();
@@ -269,6 +237,7 @@
 					},
 					success: function (response) {
 						swal(response.status);
+                        cartload();
 					}
 				});
 			})
