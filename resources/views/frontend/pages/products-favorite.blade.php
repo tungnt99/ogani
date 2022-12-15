@@ -130,9 +130,9 @@
                                             </a>
 
                                         @endforeach
-                                       
+
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         </div> -->
@@ -165,7 +165,7 @@
                                     </div>
 
                                 @endforeach
-                               
+
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                             </div>
 
                         @endforeach
-                      
+
                     </div>
                     <div class="paginate-products d-flex justify-content-center">
                         {{ $products->links() }}
@@ -224,40 +224,5 @@
     <!-- Product Section End -->
 @endsection
 @section('scripts')
-	<script>
-		$(document).ready(function () {
-			cartload();
-			function cartload() {
-				$.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-				});
-				$.ajax({
-					type: "GET",
-					url: "load-cart-data",
-					success: function (response) {
-					$('#itemCount').html('');
-					$('#itemCount').html(response.count);
-					}
-				});
-			}
-            loadwishlist();
-            function loadwishlist() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "GET",
-                    url: "load-wishlist-count",
-                    success: function (response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
-                    }
-                });
-            }
-		});
-	</script>
+
 @endsection

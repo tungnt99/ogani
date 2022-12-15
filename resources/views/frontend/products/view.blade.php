@@ -213,35 +213,40 @@
 @section('scripts')
 	<script>
 		$(document).ready(function () {
-			cartload();
-			function cartload() {
-				$.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-				});
-				$.ajax({
-					type: "GET",
-					url: "{{ route('load-cart-data') }}",
-					success: function (response) {
-					$('#itemCount').html('');
-					$('#itemCount').html(response.count);
-					}
-				});
-			}
-			loadwishlist();
-            function loadwishlist() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            cartload();
+            function cartload() {
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('load-wishlist-count') }}",
-                    success: function (response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
+                    url: "load-cart-data",
+                    success: function(response) {
+                        var _cart = '';
+                        _cart += '<span class="total-count">' + response.count + '</span>';
+                        $('.cart-count').html(_cart);
+                    }
+                });
+            }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            loadwishlist();
+
+            function loadwishlist() {
+                $.ajax({
+                    type: "GET",
+                    url: "load-wishlist-count",
+                    success: function(response) {
+                        var _wishlist = '';
+                        _wishlist += '<span class="total-wishlist">' + response.count + '</span>';
+                        $('.wishlist-count').html(_wishlist);
+                        // $('#wishlistCount').html('');
+                        // $('#wishlistCount').html(response.count);
                     }
                 });
             }

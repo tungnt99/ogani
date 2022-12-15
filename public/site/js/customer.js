@@ -5,7 +5,7 @@ $(document).ready(function () {
         var dec_value = $(this).closest('.product_data').find('.qty-input').val();
         var value = parseInt(dec_value,10);
         value = isNaN(value) ? 0 : value;
-        if(value > 1) 
+        if(value > 1)
         {
             value--;
             $(this).closest('.product_data').find('.qty-input').val(value);
@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         var value = parseInt(inc_value,10);
         value = isNaN(value) ? 0 : value;
-        if(value < 10) 
+        if(value < 100)
         {
             value++;
             $(this).closest('.product_data').find('.qty-input').val(value);
@@ -32,7 +32,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         $.ajax({
             type: "POST",
             url: "deleteCart",
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         $.ajax({
             type: "POST",
             url: "deleteWishlist",

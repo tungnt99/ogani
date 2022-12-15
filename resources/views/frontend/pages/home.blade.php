@@ -49,7 +49,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="{{ url('product_details/'.$item->id) }}">
+                    <a href="{{ url('product_details/'.$pro->id) }}">
                         <div class="product-price-discount">
                             <h6>{{ $pro->title }}</h6>
                             <span>${{ $pro->price }}</span>
@@ -327,40 +327,7 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        cartload();
 
-        function cartload() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "GET",
-                url: "load-cart-data",
-                success: function(response) {
-                    $('#itemCount').html('');
-                    $('#itemCount').html(response.count);
-                }
-            });
-        }
-        loadwishlist();
-
-        function loadwishlist() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "GET",
-                url: "{{ route('load-wishlist-count') }}",
-                success: function(response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
-                }
-            });
-        }
         $('.addToWishlist').click(function(e) {
             e.preventDefault();
             var product_id = $(this).closest('.product_data').find('.prod_id').val();
