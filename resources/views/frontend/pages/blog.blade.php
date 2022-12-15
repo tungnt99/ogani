@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         @endforeach
-                    
+
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
                                 <a href="#">1</a>
@@ -124,40 +124,5 @@
     <!-- Blog Section End -->
 @endsection
 @section('scripts')
-	<script>
-		$(document).ready(function () {
-			cartload();
-			function cartload() {
-				$.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-				});
-				$.ajax({
-					type: "GET",
-					url: "load-cart-data",
-					success: function (response) {
-					$('#itemCount').html('');
-					$('#itemCount').html(response.count);
-					}
-				});
-			}
-            loadwishlist();
-            function loadwishlist() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "GET",
-                    url: "load-wishlist-count",
-                    success: function (response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
-                    }
-                });
-            }
-		});
-	</script>
+
 @endsection

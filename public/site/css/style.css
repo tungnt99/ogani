@@ -574,8 +574,8 @@ ol {
 	font-size: 18px;
 	color: #1c1c1c;
 }
-
-.header__cart ul li span {
+.header__cart ul li span .total-wishlist,
+.header__cart ul li span .total-count{
 	height: 13px;
 	width: 13px;
 	background: #7fad39;

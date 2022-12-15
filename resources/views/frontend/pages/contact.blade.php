@@ -91,7 +91,7 @@
                     <div class="col-lg-6 col-md-6">
                         <input type="text" required placeholder="Your Email" name="email">
                     </div>
-                   
+
                     <div class="col-lg-12 text-center">
                         <textarea placeholder="Your message" name="note"></textarea>
                         <button type="submit" class="site-btn">SEND MESSAGE</button>
@@ -103,40 +103,5 @@
     <!-- Contact Form End -->
 @endsection
 @section('scripts')
-	<script>
-		$(document).ready(function () {
-			cartload();
-			function cartload() {
-				$.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-				});
-				$.ajax({
-					type: "GET",
-					url: "load-cart-data",
-					success: function (response) {
-					$('#itemCount').html('');
-					$('#itemCount').html(response.count);
-					}
-				});
-			}
-            loadwishlist();
-            function loadwishlist() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "GET",
-                    url: "load-wishlist-count",
-                    success: function (response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
-                    }
-                });
-            }
-		});
-	</script>
+
 @endsection

@@ -74,38 +74,7 @@
 @section('scripts')
 	<script>
 		$(document).ready(function () {
-			cartload();
-			function cartload() {
-				$.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-				});
-				$.ajax({
-					type: "GET",
-					url: "load-cart-data",
-					success: function (response) {
-					$('#itemCount').html('');
-					$('#itemCount').html(response.count);
-					}
-				});
-			}
-            loadwishlist();
-            function loadwishlist() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "GET",
-                    url: "load-wishlist-count",
-                    success: function (response) {
-                    $('#wishlistCount').html('');
-                    $('#wishlistCount').html(response.count);
-                    }
-                });
-            }
+
             $('.addToCartBtn').click(function (e) {
 				e.preventDefault();
 				var product_id = $(this).closest('.product_data').find('.prod_id').val();
@@ -115,7 +84,7 @@
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-				
+
 				$.ajax({
 					type: "POST",
 					url: "{{route('addToCart')}}",

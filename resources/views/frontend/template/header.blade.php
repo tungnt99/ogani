@@ -186,12 +186,12 @@
                             <a href="{{ route('wishlist') }}">
                                 <i class="fa fa-heart"></i>
                             </a>
-                            <span id="wishlistCount">0</span>
+                            <span id="wishlistCount" class="wishlist-count"></span>
                             @else
-                            <a href="#">
+                            <a href="{{ route('home.login') }}">
                                 <i class="fa fa-heart"></i>
                             </a>
-                            <span id="wishlistCount">0</span>
+                            <span id="wishlistCount" class="wishlist-count"></span>
                             @endif
                         </li>
                         <li class="basket-item-count">
@@ -199,12 +199,12 @@
                             <a href="{{ route('home.cart') }}">
                                 <i class="fa fa-shopping-bag"></i>
                             </a>
-                            <span id="itemCount">0</span>
+                            <span id="itemCount" class="cart-count"></span>
                             @else
-                            <a href="#">
+                            <a href="{{ route('home.login') }}">
                                 <i class="fa fa-shopping-bag"></i>
                             </a>
-                            <span id="itemCount">0</span>
+                            <span id="itemCount" class="cart-count"></span>
                             @endif
                         </li>
                     </ul>
@@ -265,26 +265,23 @@
         </div>
     </div>
     <script>
-
         window.user = '{{ auth()->user() }}'
         $('.search-result').hide();
         $('.input-search').keyup(function() {
             var _text = $(this).val();
             var _url = "{{asset('uploads/cover')}}";
-            if(_text != ''){
+            if (_text != '') {
                 $.ajax({
                     url: "{{route('ajax-search-product')}}?key=" + _text,
                     type: 'GET',
                     success: function(res) {
                         console.log(res);
                         var _html = '';
-                        if(res.length === 0){
+                        if (res.length === 0) {
                             _html += '<div class="not-product">';
                             _html += '<h3 class="text-center">Không có sản phẩm</h3>';
                             _html += '</div>';
-
-                        }else{
-
+                        } else {
                             _html += '<div class="product-search-list">';
                             for (var product of res) {
                                 var slug = convertToSlug(product.title);
@@ -305,19 +302,60 @@
                         $('.search-result').html(_html);
                     }
                 });
-            }else{
+            } else {
                 $('.search-result').html('');
                 $('.search-result').hide();
             }
 
         });
 
-        function convertToSlug(Text){
+        function convertToSlug(Text) {
             return Text
                 .toLowerCase()
                 .replace(/ /g, '-')
                 .replace(/[^\w-]+/g, '');
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            cartload();
+            function cartload() {
+                $.ajax({
+                    type: "GET",
+                    url: "load-cart-data",
+                    success: function(response) {
+                        var _cart = '';
+                        _cart += '<span class="total-count">' + response.count + '</span>';
+                        $('.cart-count').html(_cart);
+                    }
+                });
+            }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            loadwishlist();
+
+            function loadwishlist() {
+                $.ajax({
+                    type: "GET",
+                    url: "load-wishlist-count",
+                    success: function(response) {
+                        var _wishlist = '';
+                        _wishlist += '<span class="total-wishlist">' + response.count + '</span>';
+                        $('.wishlist-count').html(_wishlist);
+                        // $('#wishlistCount').html('');
+                        // $('#wishlistCount').html(response.count);
+                    }
+                });
+            }
+        });
     </script>
 </section>
 <!-- Hero Section End -->
