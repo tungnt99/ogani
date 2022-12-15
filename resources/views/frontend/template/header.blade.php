@@ -327,7 +327,7 @@
             function cartload() {
                 $.ajax({
                     type: "GET",
-                    url: "load-cart-data",
+                    url: "{{route('load-cart-data')}}",
                     success: function(response) {
                         var _cart = '';
                         _cart += '<span class="total-count">' + response.count + '</span>';
@@ -345,13 +345,11 @@
             function loadwishlist() {
                 $.ajax({
                     type: "GET",
-                    url: "load-wishlist-count",
+                    url: "{{route('load-wishlist-count')}}",
                     success: function(response) {
                         var _wishlist = '';
                         _wishlist += '<span class="total-wishlist">' + response.count + '</span>';
                         $('.wishlist-count').html(_wishlist);
-                        // $('#wishlistCount').html('');
-                        // $('#wishlistCount').html(response.count);
                     }
                 });
             }

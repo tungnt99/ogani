@@ -8,7 +8,7 @@ use App\Models\Products;
 use Illuminate\Routing\Route;
 use App\Models\Cart;
 use App\Models\Blogs;
-
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -109,26 +109,7 @@ class IndexController extends Controller
         }
 
     }
-    // public function productview($cate_id, $prod_id)
-    // {
-    //     $categories = DB::select('SELECT * FROM categories');
-    //     if(Categories::where('id', $cate_id)->exists())
-    //     {
-    //         if(Products::where('id', $prod_id)->exists())
-    //         {
-    //             $products = Products::where('id',$prod_id)->first();
-    //             return view('frontend.products.view',compact('products','categories'));
-    //         }
-    //         else
-    //         {
-    //             return redirect('/')->with('status', "the link was broken");
-    //         }
-    //     }
-    //     else
-    //     {
-    //         return redirect('/')->with('status', "No such category found");
-    //     }
-    // }
+
     public function productview($id)
     {
         $categories = DB::select('SELECT * FROM categories');
@@ -136,7 +117,9 @@ class IndexController extends Controller
         return view('frontend.products.view',compact('products', 'categories'));
     }
     public function accountUser() {
-        return view('layouts.account_user');
+        $users = User::all();
+        // dd($users);
+        return view('layouts.account_user')->with(['users' => $users]);
     }
 
     public function upload(Request $request)

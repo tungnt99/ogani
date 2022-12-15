@@ -27,23 +27,23 @@
 					</div>
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
-							<i class="fa fa-home text-center mr-1"></i> 
+							<i class="fa fa-home text-center mr-1"></i>
 							Account
 						</a>
 						<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
-							<i class="fa fa-key text-center mr-1"></i> 
+							<i class="fa fa-key text-center mr-1"></i>
 							Password
 						</a>
 						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-							<i class="fa fa-user text-center mr-1"></i> 
+							<i class="fa fa-user text-center mr-1"></i>
 							Security
 						</a>
 						<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
-							<i class="fa fa-tv text-center mr-1"></i> 
+							<i class="fa fa-tv text-center mr-1"></i>
 							Application
 						</a>
 						<a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
-							<i class="fa fa-bell text-center mr-1"></i> 
+							<i class="fa fa-bell text-center mr-1"></i>
 							Notification
 						</a>
 					</div>
@@ -55,45 +55,30 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>First Name</label>
-								  	<input type="text" class="form-control" value="Kiran">
+								  	<input type="text" class="form-control" value="{{ Auth::user()->name}}">
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Last Name</label>
-								  	<input type="text" class="form-control" value="Acharya">
-								</div>
-							</div>
+
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Email</label>
-								  	<input type="text" class="form-control" value="kiranacharya287@gmail.com">
+								  	<input type="text" class="form-control" value="{{ Auth::user()->email}}">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Phone number</label>
-								  	<input type="text" class="form-control" value="+91 9876543215">
+								  	<input type="text" class="form-control" value="{{ Auth::user()->phone_number}}">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Company</label>
-								  	<input type="text" class="form-control" value="Kiran Workspace">
+								  	<label>Address</label>
+								  	<input type="text" class="form-control" value="{{ Auth::user()->address}}">
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Designation</label>
-								  	<input type="text" class="form-control" value="UI Developer">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-								  	<label>Bio</label>
-									<textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!</textarea>
-								</div>
-							</div>
+
+
 						</div>
 						<div>
 							<button class="btn btn-primary">Update</button>
