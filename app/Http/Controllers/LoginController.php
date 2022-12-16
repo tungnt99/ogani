@@ -25,15 +25,16 @@ class LoginController extends Controller
         }
         else if(Auth::attempt($auth) && Auth::User()->role_name === 'admin'){
             return redirect()->route('home.index');
-        } 
+        }
         else{
             return back()->with('status','Invalid login details');
         }
     }
 
-    public function logout() {
+    public function logout(Request $request) {
         if(Auth::logout())
         {
+            $request->session()->flush();
             return redirect()->route('home.login');
         }
         return redirect()->route('home.index');

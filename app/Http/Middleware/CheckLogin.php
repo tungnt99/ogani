@@ -18,7 +18,7 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()&&Auth::user()->role_name === "admin") {
+        if (Auth::check() && Auth::user()->role_name === "admin") {
             return $next($request);
         } else {
             return redirect()->route('backend.login');
