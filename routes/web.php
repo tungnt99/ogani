@@ -50,9 +50,8 @@ Route::post('/post-account', [
 Route::get('/login', 'LoginController@login')->name('home.login');
 Route::post('/login-account', 'LoginController@loginAccount')->name('login-account');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/main', 'App\Http\Controllers\Admin\AdminController@dashboard')->name('backend.dashboard');
-    Route::get('/', 'App\Http\Controllers\Admin\AdminController@main')->name('backend.main');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'App\Http\Controllers\Admin\AdminController@main')->name('backend.dashboard');
     Route::get('/login', 'App\Http\Controllers\Admin\AdminController@login')->name('backend.login');
     Route::post('/login-admin', 'App\Http\Controllers\Admin\AdminController@loginAdmin')->name('login-admin');
     Route::get('/logoutAdmin', 'App\Http\Controllers\Admin\AdminController@logoutAdmin')->name('logoutAdmin');

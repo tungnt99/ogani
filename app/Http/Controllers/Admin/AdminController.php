@@ -10,26 +10,24 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('CheckLogin', ['except' => ['edit','update']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('CheckLogin', ['except' => ['edit','update']]);
+    // }
 
 
-    public function dashboard()
-    {
-        return view('backend.dashboard');
-    }
     public function main()
     {
-        $role = DB::table('users')->select('role_name')->get();
-        if(!Auth::check() && !$role === 'admin')
+        // $role = DB::table('users')->select('role_name')->get();
+
+        // dd(Auth::check());
+        if(!Auth::check())
         {
             return view('backend.login');
         }
         else
         {
-            return redirect('admin/login');
+            return view('backend.dashboard');
         }
     }
     // login
